@@ -60,7 +60,7 @@ public class HeroKnight : MonoBehaviour
         animator.SetFloat("Speed", currentSpeed);
 
         // Debug Speed
-        Debug.Log("Current Speed: " + currentSpeed);
+        // Debug.Log("Current Speed: " + currentSpeed);
 
         // Xử lý hướng lật nhân vật (chỉ cần cho trục X)
         if (inputHorizontal > 0 && !facingRight)
@@ -73,7 +73,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Debug Animator Speed parameter
-        Debug.Log("Animator Speed parameter: " + animator.GetFloat("Speed"));
+        // Debug.Log("Animator Speed parameter: " + animator.GetFloat("Speed"));
     }
 
     void Flip()

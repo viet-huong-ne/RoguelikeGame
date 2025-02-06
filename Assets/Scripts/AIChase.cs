@@ -80,4 +80,10 @@ public class AIChase : MonoBehaviour
         // Reset trạng thái Animator khi dừng tấn công
         animator.SetBool("IsReadyToAttack", false);
     }
+
+    // Method to assign the player reference
+    public void SetPlayer(GameObject playerObject)
+    {
+        player = playerObject;
+    }
 }
