@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 2942005105149548851}
   - component: {fileID: 7364536860164018660}
   - component: {fileID: 6148737490436302131}
+  - component: {fileID: -6475721832864321849}
   - component: {fileID: 5250534983890733745}
+  - component: {fileID: -5290151099080298781}
   m_Layer: 20
   m_Name: Skeleton
   m_TagString: Skeleton
@@ -125,8 +127,6 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   stopDistance: 1
-  attackDistance: 1.5
-  attackCooldown: 2
   animator: {fileID: 2942005105149548851}
 --- !u!114 &6148737490436302131
 MonoBehaviour:
@@ -140,7 +140,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f9d06fc8d2e9d47a19b21a7bf4fd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  damageText: {fileID: 6427111076622788948, guid: 725933c5adb40f548974957858df405d,
+    type: 3}
+  health: 40
+  damageEffectDuration: 0.2
+--- !u!114 &-6475721832864321849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686311218222921155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64291a9e625614e459954747623e2b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  damageCooldown: 1
 --- !u!61 &5250534983890733745
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,3 +203,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4997971, y: 0.5788645}
   m_EdgeRadius: 0
+--- !u!50 &-5290151099080298781
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686311218222921155}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

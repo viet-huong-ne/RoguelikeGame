@@ -1,48 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AIChase : MonoBehaviour
 {
-    public GameObject player;          
-    public float speed;                
-    public float stopDistance = 1.5f;   
-    public float attackDistance = 1.5f;
-    public float attackCooldown = 1f;
-    public Animator animator;
-
+    [SerializeField] private GameObject player;           
+    [SerializeField] private float speed;                 
+    [SerializeField] private float stopDistance = 1.5f;   
+    [SerializeField] private Animator animator;
     private float distance;
-    private bool isAttacking = false;
+    private SkeletonAttack skeletonAttack; // Tham chiếu đến lớp tấn công
+    private SkeletonHealth skeletonHealth; // Thêm tham chiếu tới SkeletonHealth
 
-    void Update()
+    private bool isKnockedBack = false; // Trạng thái bị đẩy
+    private Vector2 knockbackDirection; // Hướng bị đẩy
+    private float knockbackDuration = 0.5f; // Thời gian bị đẩy
+    private float knockbackTimeLeft; // Thời gian còn lại của lực đẩy
+
+    private void Start()
     {
-        // Tính khoảng cách giữa quái và người chơi
-        distance = Vector2.Distance(transform.position, player.transform.position);
+        // Lấy AttackHandler và SkeletonHealth từ cùng GameObject
+        skeletonAttack = GetComponent<SkeletonAttack>();
+        skeletonHealth = GetComponent<SkeletonHealth>();
 
-        // Nếu quái nằm ngoài khoảng cách tấn công
-        if (distance > attackDistance)
+        if (skeletonAttack == null)
         {
-            isAttacking = false;
-            animator.SetBool("IsReadyToAttack", false);
-
-            // Nếu khoảng cách lớn hơn stopDistance, quái tiếp tục di chuyển
-            if (distance > stopDistance)
-            {
-                MoveTowardsPlayer();
-            }
+            Debug.LogError("AttackHandler is missing on " + gameObject.name);
         }
-        else
+
+        if (skeletonHealth == null)
         {
-            // Nếu quái trong phạm vi tấn công
-            if (!isAttacking)
-            {
-                isAttacking = true;
-                StartCoroutine(AttackPlayer());
-            }
+            Debug.LogError("SkeletonHealth is missing on " + gameObject.name);
         }
     }
 
-    void MoveTowardsPlayer()
+    private void Update()
+{
+    // Nếu Skeleton chết, không thực hiện hành động gì
+    if (skeletonHealth == null || skeletonHealth.IsDead())
+    {
+        return;
+    }
+
+    // Nếu quái vật đang bị đẩy, giảm thời gian lực đẩy
+    if (isKnockedBack)
+    {
+        knockbackTimeLeft -= Time.deltaTime;
+
+        // Quái vật sẽ bị đẩy ra ngoài theo hướng knockback
+        transform.position += (Vector3)knockbackDirection * speed * Time.deltaTime;
+
+        // Khi hết thời gian lực đẩy, khôi phục trạng thái
+        if (knockbackTimeLeft <= 0)
+        {
+            isKnockedBack = false;
+        }
+        return; // Ngừng các hành động khác trong khi bị đẩy
+    }
+
+    // Tính khoảng cách giữa quái và người chơi
+    distance = Vector2.Distance(transform.position, player.transform.position);
+
+    // Nếu khoảng cách lớn hơn stopDistance, quái vật di chuyển
+    if (distance > stopDistance)
+    {
+        MoveTowardsPlayer();
+    }
+    else
+    {
+        // Nếu đã chạm, cố gắng gây sát thương
+        skeletonAttack?.TryDealDamage(player);
+    }
+}
+
+    private void MoveTowardsPlayer()
     {
         // Di chuyển quái về phía người chơi
         Vector2 direction = (player.transform.position - transform.position).normalized;
@@ -62,24 +91,15 @@ public class AIChase : MonoBehaviour
         animator.SetFloat("Speed", speed);
     }
 
-    IEnumerator AttackPlayer()
-    {
-        while (isAttacking)
-        {
-            // Tấn công người chơi
-            Debug.Log("Enemy attacks the player!");
-            animator.SetBool("IsReadyToAttack", true);
+    public void ApplyKnockback(Vector2 direction, float duration)
+{
+    // Tính toán hướng lực đẩy
+    knockbackDirection = direction.normalized; // Đảm bảo hướng được chuẩn hóa
+    knockbackDuration = duration;             // Cập nhật thời gian lực đẩy
+    knockbackTimeLeft = duration;             // Đặt thời gian còn lại của lực đẩy
+    isKnockedBack = true;                     // Kích hoạt trạng thái bị đẩy
+}
 
-            // Gây sát thương (nếu có logic gây sát thương)
-            // player.GetComponent<PlayerHealth>().TakeDamage(damage);
-
-            // Chờ thời gian hồi chiêu
-            yield return new WaitForSeconds(attackCooldown);
-        }
-
-        // Reset trạng thái Animator khi dừng tấn công
-        animator.SetBool("IsReadyToAttack", false);
-    }
 
     // Method to assign the player reference
     public void SetPlayer(GameObject playerObject)

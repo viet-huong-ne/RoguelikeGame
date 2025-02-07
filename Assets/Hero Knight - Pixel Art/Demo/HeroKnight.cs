@@ -8,13 +8,13 @@ public class HeroKnight : MonoBehaviour
 
     float inputHorizontal;
     float inputVertical;
-    public float speed = 4f;
+    [SerializeField] private float speed = 4f;
     bool facingRight = true;
-
-    // Tham chiếu đến Tilemap và các giới hạn
     public Tilemap tilemap;
     private Vector2 minBounds;
     private Vector2 maxBounds;
+
+    private bool canMove = true;  // Kiểm tra di chuyển
 
     // Use this for initialization
     void Start()
@@ -38,6 +38,8 @@ public class HeroKnight : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!canMove) return;  // Nếu không di chuyển, không xử lý input
+
         // Nhận input từ người chơi
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
@@ -59,9 +61,6 @@ public class HeroKnight : MonoBehaviour
         float currentSpeed = movement.magnitude;
         animator.SetFloat("Speed", currentSpeed);
 
-        // Debug Speed
-        // Debug.Log("Current Speed: " + currentSpeed);
-
         // Xử lý hướng lật nhân vật (chỉ cần cho trục X)
         if (inputHorizontal > 0 && !facingRight)
         {
@@ -71,9 +70,11 @@ public class HeroKnight : MonoBehaviour
         {
             Flip();
         }
+    }
 
-        // Debug Animator Speed parameter
-        // Debug.Log("Animator Speed parameter: " + animator.GetFloat("Speed"));
+    public void DisableMovement()
+    {
+        canMove = false;  // Vô hiệu hóa di chuyển
     }
 
     void Flip()

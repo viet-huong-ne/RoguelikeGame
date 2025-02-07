@@ -37,6 +37,13 @@ public class SkeletonSpawner : MonoBehaviour
     {
         while (true)
         {
+            // Kiểm tra nếu player bị destroy, ngừng spawn
+            if (player == null)
+            {
+                Debug.Log("Player is destroyed, stopping skeleton spawn.");
+                yield break;
+            }
+
             yield return new WaitForSeconds(interval);
 
             if (skeletonPool.Count > 0)
