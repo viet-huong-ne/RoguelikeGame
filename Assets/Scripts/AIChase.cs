@@ -33,43 +33,43 @@ public class AIChase : MonoBehaviour
     }
 
     private void Update()
-{
-    // Nếu Skeleton chết, không thực hiện hành động gì
-    if (skeletonHealth == null || skeletonHealth.IsDead())
     {
-        return;
-    }
-
-    // Nếu quái vật đang bị đẩy, giảm thời gian lực đẩy
-    if (isKnockedBack)
-    {
-        knockbackTimeLeft -= Time.deltaTime;
-
-        // Quái vật sẽ bị đẩy ra ngoài theo hướng knockback
-        transform.position += (Vector3)knockbackDirection * speed * Time.deltaTime;
-
-        // Khi hết thời gian lực đẩy, khôi phục trạng thái
-        if (knockbackTimeLeft <= 0)
+        // Nếu Skeleton chết, không thực hiện hành động gì
+        if (skeletonHealth == null || skeletonHealth.IsDead())
         {
-            isKnockedBack = false;
+            return;
         }
-        return; // Ngừng các hành động khác trong khi bị đẩy
-    }
 
-    // Tính khoảng cách giữa quái và người chơi
-    distance = Vector2.Distance(transform.position, player.transform.position);
+        // Nếu quái vật đang bị đẩy, giảm thời gian lực đẩy
+        if (isKnockedBack)
+        {
+            knockbackTimeLeft -= Time.deltaTime;
 
-    // Nếu khoảng cách lớn hơn stopDistance, quái vật di chuyển
-    if (distance > stopDistance)
-    {
-        MoveTowardsPlayer();
+            // Quái vật sẽ bị đẩy trong một khoảng thời gian ngắn
+            transform.position += (Vector3)knockbackDirection * speed * Time.deltaTime;
+
+            // Khi hết thời gian lực đẩy, khôi phục trạng thái
+            if (knockbackTimeLeft <= 0)
+            {
+                isKnockedBack = false;
+            }
+            return; // Ngừng các hành động khác trong khi bị đẩy
+        }
+
+        // Tính khoảng cách giữa quái và người chơi
+        distance = Vector2.Distance(transform.position, player.transform.position);
+
+        // Nếu khoảng cách lớn hơn stopDistance, quái vật di chuyển
+        if (distance > stopDistance)
+        {
+            MoveTowardsPlayer();
+        }
+        else
+        {
+            // Nếu đã chạm, cố gắng gây sát thương
+            skeletonAttack?.TryDealDamage(player);
+        }
     }
-    else
-    {
-        // Nếu đã chạm, cố gắng gây sát thương
-        skeletonAttack?.TryDealDamage(player);
-    }
-}
 
     private void MoveTowardsPlayer()
     {
@@ -91,15 +91,14 @@ public class AIChase : MonoBehaviour
         animator.SetFloat("Speed", speed);
     }
 
+    // Phương thức gọi từ bên ngoài để đẩy quái vật
     public void ApplyKnockback(Vector2 direction, float duration)
-{
-    // Tính toán hướng lực đẩy
-    knockbackDirection = direction.normalized; // Đảm bảo hướng được chuẩn hóa
-    knockbackDuration = duration;             // Cập nhật thời gian lực đẩy
-    knockbackTimeLeft = duration;             // Đặt thời gian còn lại của lực đẩy
-    isKnockedBack = true;                     // Kích hoạt trạng thái bị đẩy
-}
-
+    {
+        knockbackDirection = direction;
+        knockbackDuration = duration;
+        knockbackTimeLeft = duration;
+        isKnockedBack = true;
+    }
 
     // Method to assign the player reference
     public void SetPlayer(GameObject playerObject)

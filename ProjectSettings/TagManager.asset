@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Skeleton
   - Canvas
+  - Tree
   layers:
   - Default
   - TransparentFX

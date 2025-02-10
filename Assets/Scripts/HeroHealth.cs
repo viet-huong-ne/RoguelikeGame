@@ -1,10 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroHealth : MonoBehaviour, IHealth
 {
     [SerializeField] private int health = 200;
     [SerializeField] private int MAX_HEALTH = 200;
+
+    [SerializeField] private GameObject healthBarPrefab;
+    [SerializeField] private Canvas canvas;
+
+    private GameObject healthBarInstance;
+    private Image healthBarImage;  // Biến lưu trữ Image của thanh Health
 
     [SerializeField] private float damageEffectDuration = 0.2f; // Thời gian hiệu ứng đỏ
     private SpriteRenderer spriteRenderer;
@@ -13,6 +20,7 @@ public class HeroHealth : MonoBehaviour, IHealth
     private Animator animator;
     private HeroKnight heroKnight;
     private HeroAttack heroAttack; 
+    private HealthBarBehavior healthBarBehavior;
 
     private void Start()
     {
@@ -25,6 +33,42 @@ public class HeroHealth : MonoBehaviour, IHealth
         if (spriteRenderer != null)
         {
             originalColor = spriteRenderer.color;
+        }
+
+        // Instantiate the health bar and set its parent to the Canvas
+        if (healthBarPrefab != null && canvas != null)
+        {
+            healthBarInstance = Instantiate(healthBarPrefab, transform.position, Quaternion.identity);
+            healthBarInstance.transform.SetParent(canvas.transform, false); // Set the parent of the health bar to Canvas
+
+            // Lấy Image của thanh máu từ Prefab
+            healthBarImage = healthBarInstance.transform.Find("Health").GetComponent<Image>(); // Lấy Image của phần "Health"
+
+            // Gán target cho HealthBarFollow
+            healthBarBehavior = healthBarInstance.GetComponent<HealthBarBehavior>();
+            if (healthBarBehavior != null)
+            {
+                healthBarBehavior.Target = transform;
+            }
+
+        }
+
+        // Khởi tạo thanh máu đúng theo lượng máu ban đầu
+        UpdateHealthBar();
+    }
+
+    private void Update()
+    {
+        // Cập nhật thanh máu mỗi frame
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar()
+    {
+        if (healthBarImage != null)
+        {
+            // Tính toán giá trị fillAmount dựa trên tỷ lệ máu
+            healthBarImage.fillAmount = Mathf.Clamp((float)health / MAX_HEALTH, 0f, 1f);
         }
     }
 
@@ -49,6 +93,9 @@ public class HeroHealth : MonoBehaviour, IHealth
             StartCoroutine(ShowDamageEffect());
         }
 
+        // Cập nhật thanh máu ngay khi nhận sát thương
+        UpdateHealthBar();
+
         if (health <= 0)
         {
             Die();
@@ -72,6 +119,9 @@ public class HeroHealth : MonoBehaviour, IHealth
         {
             health += amount;
         }
+
+        // Cập nhật thanh máu khi hồi máu
+        UpdateHealthBar();
     }
 
     private void Die()
