@@ -7,6 +7,8 @@ TagManager:
   - Skeleton
   - Canvas
   - Tree
+  - Experience
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -14,12 +16,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Character
-  - 
-  - 
+  - Experience
+  - Player
+  - Monster
   - 
   - TileMap
-  - 
+  - Experience
   - 
   - PopUpText
   - 

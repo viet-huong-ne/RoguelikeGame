@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6475721832864321849}
   - component: {fileID: 5250534983890733745}
   - component: {fileID: -5290151099080298781}
-  m_Layer: 20
+  m_Layer: 7
   m_Name: Skeleton
   m_TagString: Skeleton
   m_Icon: {fileID: 0}
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c6438ba7d76c24ca43af924874e81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 2
+  player: {fileID: 8778651562060787071, guid: 488b689740e9094419d23ac3d3f0f9b9, type: 3}
+  speed: 1.5
   stopDistance: 1
   animator: {fileID: 2942005105149548851}
 --- !u!114 &6148737490436302131
@@ -142,8 +142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageText: {fileID: 6427111076622788948, guid: 725933c5adb40f548974957858df405d,
     type: 3}
-  health: 40
-  damageEffectDuration: 0.2
+  health: 10
+  damageEffectDuration: 0.1
+  experiencePrefab: {fileID: 5878331991992602196, guid: 5d6071747a13b8545bcbe86becd139bd,
+    type: 3}
 --- !u!114 &-6475721832864321849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +192,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06127733, y: -0.001976639}
+  m_Offset: {x: 0.049710028, y: -0.0106521845}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -201,7 +203,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4997971, y: 0.5788645}
+  m_Size: {x: 0.21639632, y: 0.35908443}
   m_EdgeRadius: 0
 --- !u!50 &-5290151099080298781
 Rigidbody2D:
