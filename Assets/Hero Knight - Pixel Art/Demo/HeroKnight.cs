@@ -8,7 +8,7 @@ public class HeroKnight : MonoBehaviour
 
     float inputHorizontal;
     float inputVertical;
-    [SerializeField] private float speed = 4f;
+    [SerializeField] private float speed = 3.5f;
     bool facingRight = true;
     public Tilemap tilemap;
     private Vector2 minBounds;

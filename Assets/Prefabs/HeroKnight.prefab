@@ -90,6 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fee1a78dcc2d64c8169abfb217846d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
+  damageVariance: 2
+  owner: {fileID: 0}
 --- !u!1 &8778651562060787071
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,12 +102,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 10353633891668302}
-  - component: {fileID: 7456390042827147000}
-  - component: {fileID: 2863996980488533644}
-  - component: {fileID: 6330049294347835726}
   - component: {fileID: 4615858694455666333}
   - component: {fileID: 5329505866976088000}
   - component: {fileID: 7734986830372944690}
+  - component: {fileID: 7456390042827147000}
+  - component: {fileID: 2863996980488533644}
+  - component: {fileID: 6330049294347835726}
   m_Layer: 6
   m_Name: HeroKnight
   m_TagString: Player
@@ -128,6 +131,50 @@ Transform:
   - {fileID: 1402729274806745632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4615858694455666333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778651562060787071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5034bc83802944c9bca57c55e08978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  speed: 3
+  tilemap: {fileID: 0}
+--- !u!114 &5329505866976088000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778651562060787071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c9c7ae97b24944ba0e288897d25c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7734986830372944690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778651562060787071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67455d6f42001f4786498af69abda99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  MAX_HEALTH: 200
+  healthBarPrefab: {fileID: 0}
+  canvas: {fileID: 0}
+  damageEffectDuration: 0.2
 --- !u!212 &7456390042827147000
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -252,43 +299,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5434189, y: 1.2699716}
   m_EdgeRadius: 0
---- !u!114 &4615858694455666333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8778651562060787071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f5034bc83802944c9bca57c55e08978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  speed: 3
-  tilemap: {fileID: 0}
---- !u!114 &5329505866976088000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8778651562060787071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09c9c7ae97b24944ba0e288897d25c10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7734986830372944690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8778651562060787071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67455d6f42001f4786498af69abda99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
