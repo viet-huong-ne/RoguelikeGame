@@ -41,12 +41,10 @@ public class ExpItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collider entered: " + other.gameObject.name);
         // Kiểm tra nếu va chạm với người chơi
         if (other.CompareTag("Player"))
         {
-            Debug.Log("yes");
-            HeroLevel heroExp = other.GetComponent<HeroLevel>();
+            HeroExperience heroExp = other.GetComponent<HeroExperience>();
             if (heroExp != null)
             {
                 heroExp.AddExperience(10); // Thêm EXP
