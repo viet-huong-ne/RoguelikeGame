@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6475721832864321849}
   - component: {fileID: 5250534983890733745}
   - component: {fileID: -5290151099080298781}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Skeleton
   m_TagString: Skeleton
   m_Icon: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1869315837
-  m_SortingLayer: 1
+  m_SortingLayerID: -44025399
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 1018b0ba13578bf459bd254ae1a2be99,
     type: 3}
@@ -128,6 +128,9 @@ MonoBehaviour:
   speed: 1.5
   stopDistance: 1
   animator: {fileID: 2942005105149548851}
+  objectLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &6148737490436302131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +146,7 @@ MonoBehaviour:
   damageText: {fileID: 6427111076622788948, guid: 725933c5adb40f548974957858df405d,
     type: 3}
   health: 10
+  experienceDropChance: 0.7
   damageEffectDuration: 0.1
   experiencePrefab: {fileID: 5878331991992602196, guid: 5d6071747a13b8545bcbe86becd139bd,
     type: 3}
@@ -192,7 +196,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.049710028, y: -0.0106521845}
+  m_Offset: {x: 0.049710028, y: -0.052027464}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -203,7 +207,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.21639632, y: 0.35908443}
+  m_Size: {x: 0.21639632, y: 0.441835}
   m_EdgeRadius: 0
 --- !u!50 &-5290151099080298781
 Rigidbody2D:
