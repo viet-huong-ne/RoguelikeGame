@@ -6,20 +6,22 @@ public class SkeletonHealth : MonoBehaviour, IHealth
 {
     public GameObject damageText;
     [SerializeField] private int health = 20;
-    private Animator animator;  
-    private bool isDead = false;  // Biến kiểm tra tình trạng chết
+    private Animator animator;
+    private bool isDead = false;
 
-    private SpriteRenderer spriteRenderer;  // Thêm biến lưu SpriteRenderer
-    private Color originalColor;  // Lưu màu gốc
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
 
-    [SerializeField] private float damageEffectDuration = 0.2f; // Thời gian hiệu ứng đổi màu
+    [SerializeField] private float damageEffectDuration = 0.2f;
+
+    // Thêm biến để chứa prefab của viên kinh nghiệm
+    [SerializeField] private GameObject experiencePrefab;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();  // Lấy SpriteRenderer
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Lưu màu gốc của sprite
         if (spriteRenderer != null)
         {
             originalColor = spriteRenderer.color;
@@ -40,7 +42,6 @@ public class SkeletonHealth : MonoBehaviour, IHealth
             StartCoroutine(ShowDamageEffect());
         }
 
-        
         RectTransform textTransform = Instantiate(damageText).GetComponent<RectTransform>();
         textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         Canvas canvas = GameObject.FindObjectOfType<Canvas>();
@@ -48,7 +49,6 @@ public class SkeletonHealth : MonoBehaviour, IHealth
         PopUpDamage popup = textTransform.GetComponent<PopUpDamage>();
         if (popup != null)
         {
-            // Gửi giá trị damage cho popup
             popup.textMesh.text = amount.ToString();
         }
 
@@ -61,33 +61,43 @@ public class SkeletonHealth : MonoBehaviour, IHealth
     private void Die()
     {
         isDead = true;
-        Debug.Log("Skeleton is dead!");
+
+        // Rơi ra viên kinh nghiệm khi Skeleton chết
+        DropExperience();
 
         if (animator != null)
         {
             animator.SetTrigger("Death");
-            // Lấy thời gian dài của animation "Death" và hủy đối tượng sau đó
             float deathAnimationTime = animator.GetCurrentAnimatorStateInfo(0).length;
             Destroy(gameObject, deathAnimationTime); // Hủy sau khi animation hoàn tất
         }
     }
 
-    // Phương thức trả về trạng thái sống
     public bool IsDead()
     {
         return isDead;
     }
 
-    // Coroutine để thay đổi màu sắc tạm thời khi nhận sát thương
     private IEnumerator ShowDamageEffect()
     {
-        // Đổi màu thành trắng
         spriteRenderer.color = Color.red;
-
-        // Chờ trong thời gian hiệu ứng
         yield return new WaitForSeconds(damageEffectDuration);
-
-        // Khôi phục lại màu gốc
         spriteRenderer.color = originalColor;
+    }
+
+    private void DropExperience()
+    {
+        if (experiencePrefab != null)
+        {
+            // Tạo viên kinh nghiệm ở dưới Skeleton (giảm y một chút)
+            Vector3 spawnPosition = transform.position + new Vector3(0, -1, 0);
+
+            // Tạo viên kinh nghiệm tại vị trí tính toán
+            Instantiate(experiencePrefab, spawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Experience prefab not assigned in the Inspector.");
+        }
     }
 }
