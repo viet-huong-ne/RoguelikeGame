@@ -16,7 +16,9 @@ public class SkeletonHealth : MonoBehaviour, IHealth
 
     // Thêm biến để chứa prefab của viên kinh nghiệm
     [SerializeField] private GameObject experiencePrefab;
+    [SerializeField] private GameObject healthItemPrefab;  // New health item prefab
 
+    public float healthDropChance = 0.5f;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -65,6 +67,9 @@ public class SkeletonHealth : MonoBehaviour, IHealth
         // Rơi ra viên kinh nghiệm khi Skeleton chết
         DropExperience();
 
+        DropHealthItem();
+
+
         if (animator != null)
         {
             animator.SetTrigger("Death");
@@ -98,6 +103,16 @@ public class SkeletonHealth : MonoBehaviour, IHealth
         else
         {
             Debug.LogError("Experience prefab not assigned in the Inspector.");
+        }
+    }
+
+    private void DropHealthItem()
+    {
+        if (healthItemPrefab != null && Random.value < healthDropChance)
+        {
+            Vector3 spawnPosition = transform.position + new Vector3(0, -1, 0);
+            Instantiate(healthItemPrefab, spawnPosition, Quaternion.identity);
+            Debug.Log("Health item dropped!");
         }
     }
 }
