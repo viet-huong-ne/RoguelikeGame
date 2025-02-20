@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class HeroAttack : MonoBehaviour
 {
     private GameObject attackArea = default;
-
+    private GameObject secondaryAttackArea = null;
+    private bool doubleAttackEnabled = false;
     private bool attacking = false;
     private bool canAttack = true;  // Kiểm tra khả năng tấn công
 
@@ -13,9 +15,18 @@ public class HeroAttack : MonoBehaviour
     private float timer = 0f;
 
     // Start is called before the first frame update
+    public int damage = 10;   // Base damage
+    public int level = 1;     // Starting level
+
+    // Store the original scale of the attack area for scaling purposes
+    private Vector3 originalAttackAreaScale;
+
     void Start()
     {
         attackArea = transform.GetChild(0).gameObject;
+
+        // Save the original scale of the attack area
+        originalAttackAreaScale = attackArea.transform.localScale;
 
         // Đảm bảo tắt vùng tấn công ban đầu
         attackArea.SetActive(false);
@@ -35,17 +46,25 @@ public class HeroAttack : MonoBehaviour
             {
                 timer = 0;
                 attacking = false;
-                attackArea.SetActive(attacking);
+                attackArea.SetActive(false);
+                if (doubleAttackEnabled && secondaryAttackArea != null)
+                {
+                    secondaryAttackArea.SetActive(false);
+                }
             }
         }
     }
 
     private void Attack()
     {
-        if (canAttack)  // Kiểm tra xem có thể tấn công hay không
+        if (canAttack)
         {
             attacking = true;
-            attackArea.SetActive(attacking);
+            attackArea.SetActive(true);
+            if (doubleAttackEnabled && secondaryAttackArea != null)
+            {
+                secondaryAttackArea.SetActive(true);
+            }
         }
     }
 
@@ -72,5 +91,50 @@ public class HeroAttack : MonoBehaviour
     public void EnableAttack()
     {
         canAttack = true;
+    }
+
+    public void LevelUp()
+    {
+        level++;
+
+        if (level == 2 && !doubleAttackEnabled)
+        {
+            // Enable double attack by instantiating a secondary attack area.
+            doubleAttackEnabled = true;
+            // Duplicate the primary attack area as a child of the hero.
+            secondaryAttackArea = Instantiate(attackArea, transform);
+            // Mirror its position horizontally (assumes original offset on x-axis)
+            Vector3 secPos = attackArea.transform.localPosition;
+            secPos.x = -secPos.x;
+            secondaryAttackArea.transform.localPosition = secPos;
+            // Flip the scale on the X-axis so that its animation appears flipped
+            Vector3 flippedScale = originalAttackAreaScale;
+            flippedScale.x = -Mathf.Abs(flippedScale.x);
+            secondaryAttackArea.transform.localScale = flippedScale;
+            // Ensure it is inactive initially.
+            secondaryAttackArea.SetActive(false);
+
+            // Increase damage by 20%
+            damage = Mathf.RoundToInt(damage * 1.2f);
+
+            Debug.Log("Leveled up to " + level + " with double attack enabled | Damage: " + damage);
+        }
+        else if (level > 2)
+        {
+            // For levels 3 and above, further scale the attack areas and increase damage.
+            damage = Mathf.RoundToInt(damage * 1.2f);
+            // Calculate scale factor based on levels beyond 2.
+            float scaleFactor = 1f + 0.1f * (level - 2);
+            // Scale primary attack area normally.
+            attackArea.transform.localScale = originalAttackAreaScale * scaleFactor;
+            // For the secondary area, ensure its X scale remains negative for a flip effect.
+            if (secondaryAttackArea != null)
+            {
+                Vector3 newScale = originalAttackAreaScale * scaleFactor;
+                newScale.x = -Mathf.Abs(newScale.x);
+                secondaryAttackArea.transform.localScale = newScale;
+            }
+            Debug.Log("Leveled up to " + level + " | Damage: " + damage + " | Attack Area Scale: " + attackArea.transform.localScale);
+        }
     }
 }

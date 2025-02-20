@@ -6,6 +6,7 @@ public class HeroExperience : MonoBehaviour
 {
     [SerializeField] private GameObject experienceBarPrefab; // Prefab của thanh EXP
     [SerializeField] private Canvas canvas; // Canvas để chứa thanh EXP
+    [SerializeField] private HeroAttack heroAttack;    // Reference to the HeroAttack component
     private TMP_Text levelText;
     private GameObject experienceBarInstance; // Instance của thanh EXP
     private Image experienceBarImage; // Biến lưu trữ Image của thanh "Fill"
@@ -27,6 +28,10 @@ public class HeroExperience : MonoBehaviour
 
             UpdateExperienceBar();
             UpdateLevelText();
+        }
+        if (heroAttack == null)
+        {
+            heroAttack = GetComponent<HeroAttack>();
         }
     }
 
@@ -87,5 +92,9 @@ public class HeroExperience : MonoBehaviour
 
         // Cập nhật hiển thị Level
         UpdateLevelText();
+        if (heroAttack != null)
+        {
+            heroAttack.LevelUp();
+        }
     }
 }
