@@ -167,55 +167,46 @@ public class SkeletonSpawner : MonoBehaviour
 
     private Vector3 GetRandomSpawnPosition()
     {
-        // Tạo phạm vi spawn ngoài camera để không bị spawn gần người chơi
+        int maxRetries = 10; // Số lần thử vị trí spawn
+        float safeDistance = 2f; // Đảm bảo spawn ngoài vùng camera
         Vector3 screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
-        float safeDistance = 2f; // Đảm bảo rằng quái spawn ngoài vùng camera
 
-        // Tạo một phạm vi spawn rộng hơn camera
-        Vector2 randomDirection = Random.insideUnitCircle * spawnRadius;
-
-        // Vị trí spawn thử
-        Vector3 spawnPosition = player.transform.position + new Vector3(randomDirection.x, randomDirection.y, 0f);
-
-        // Kiểm tra xem vị trí spawn có nằm trong phạm vi an toàn không
-        if (Mathf.Abs(spawnPosition.x) > screenBounds.x + safeDistance && Mathf.Abs(spawnPosition.y) > screenBounds.y + safeDistance)
+        for (int retries = 0; retries < maxRetries; retries++)
         {
-            // Kiểm tra xem vị trí spawn có quá gần các quái đã spawn trước đó không
-            int maxRetries = 10;  // Giới hạn số lần thử
-            int retries = 0;
+            // Tạo vị trí spawn ngẫu nhiên trong bán kính xung quanh player
+            Vector2 randomDirection = Random.insideUnitCircle * spawnRadius;
+            Vector3 spawnPosition = player.transform.position + new Vector3(randomDirection.x, randomDirection.y, 0f);
 
-            while (retries < maxRetries)
+            // Kiểm tra spawnPosition có nằm ngoài phạm vi camera
+            if (Mathf.Abs(spawnPosition.x) > screenBounds.x + safeDistance || Mathf.Abs(spawnPosition.y) > screenBounds.y + safeDistance)
             {
-                bool isValidPosition = true;
-
-                foreach (var pos in spawnPositions)
+                // Kiểm tra vị trí spawn có giao với Tilemap Top không
+                Collider2D hitCollider = Physics2D.OverlapCircle(spawnPosition, 0.5f, LayerMask.GetMask("Object"));
+                if (hitCollider == null) // Nếu không có va chạm với Tilemap Top
                 {
-                    if (Vector3.Distance(spawnPosition, pos) < 2f) // Điều chỉnh khoảng cách này theo nhu cầu
+                    // Kiểm tra khoảng cách spawn so với các vị trí spawn trước đó
+                    bool isValidPosition = true;
+
+                    foreach (var pos in spawnPositions)
                     {
-                        isValidPosition = false;
-                        break;
+                        if (Vector3.Distance(spawnPosition, pos) < 2f) // Điều chỉnh khoảng cách này
+                        {
+                            isValidPosition = false;
+                            break;
+                        }
+                    }
+
+                    if (isValidPosition)
+                    {
+                        return spawnPosition; // Vị trí spawn hợp lệ
                     }
                 }
-
-                if (isValidPosition)
-                {
-                    return spawnPosition; // Nếu tìm được vị trí hợp lý, trả về
-                }
-
-                // Nếu không hợp lý, thử lại với một vị trí ngẫu nhiên mới
-                randomDirection = Random.insideUnitCircle * spawnRadius;
-                spawnPosition = player.transform.position + new Vector3(randomDirection.x, randomDirection.y, 0f);
-                retries++;
             }
+        }
 
-            // Nếu không tìm được vị trí hợp lý sau số lần thử, trả về vị trí ngẫu nhiên gần player
-            return spawnPosition; 
-        }
-        else
-        {
-            // Nếu nằm gần camera, tạo lại vị trí spawn
-            return GetRandomSpawnPosition();
-        }
+        // Nếu sau số lần thử vẫn không tìm được, trả về vị trí mặc định gần player
+        return player.transform.position + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0f);
     }
+
 }
 
