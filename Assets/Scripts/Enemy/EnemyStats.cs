@@ -9,10 +9,26 @@ public class EnemyStats : MonoBehaviour
     public GameObject hero;
     //show dame of skill
     public GameObject damageText;
+    private Color originalColor;
     // current stats 
+    [SerializeField]
     float currentMoveSpeed;
+    [SerializeField]
     float currentHealth;
+    [SerializeField]
     float currentDamage;
+    [SerializeField] private float damageEffectDuration = 0.2f;
+    private SpriteRenderer spriteRenderer;
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
+    }
     void Awake()
     {
         currentMoveSpeed = enemyData.MoveSpeed;
@@ -22,6 +38,7 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
+        StartCoroutine(ShowDamageEffect());
         if (currentHealth <= 0)
         {
             Kill();
@@ -36,6 +53,14 @@ public class EnemyStats : MonoBehaviour
             popup.textMesh.text = dmg.ToString();
         }
     }
+
+    private IEnumerator ShowDamageEffect()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(damageEffectDuration);
+        spriteRenderer.color = originalColor;
+    }
+
     private bool canDamage = true;      // Kiểm soát trạng thái sẵn sàng gây sát thương
 
     protected virtual void OnTriggerEnter2D(Collider2D col)
