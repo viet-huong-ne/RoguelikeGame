@@ -10,6 +10,7 @@ TagManager:
   - Experience
   - Ground
   - Enemy
+  - KCO
   layers:
   - Default
   - TransparentFX

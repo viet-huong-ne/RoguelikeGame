@@ -19,10 +19,13 @@ public class EnemyStats : MonoBehaviour
     float currentDamage;
     [SerializeField] private float damageEffectDuration = 0.2f;
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private KillCounter killCounter;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        killCounter = GameObject.Find("KCO").GetComponent<KillCounter>();
 
         if (spriteRenderer != null)
         {
@@ -95,8 +98,7 @@ public class EnemyStats : MonoBehaviour
     }
     public void Kill()
     {
+        killCounter.AddKill();
         Destroy(gameObject);  
     }
-
-
 }
