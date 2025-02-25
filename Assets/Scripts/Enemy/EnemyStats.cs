@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
+    private EnemyMovement enemyMovement;
     [SerializeField] private float damageCooldown = 1f;
     public GameObject hero;
     public GameObject damageText;
@@ -28,6 +29,7 @@ public class EnemyStats : MonoBehaviour
 
     void Start()
     {
+        enemyMovement = GetComponent<EnemyMovement>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         killCounter = GameObject.Find("KCO").GetComponent<KillCounter>();
@@ -106,8 +108,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (isDead) return; // Prevent multiple executions
         isDead = true;
-        currentMoveSpeed = 0;
-        
+        enemyMovement.StopMovement();
         animator.SetTrigger("Death");
         float deathAnimationTime = animator.GetCurrentAnimatorStateInfo(0).length;
 

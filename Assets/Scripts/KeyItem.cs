@@ -46,6 +46,10 @@ public class KeyItem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             timer.StopTimer();
+            // Kích hoạt trạng thái hút nhanh
+            ExpItem.isFastAttractMode = true;
+            SackOfGoldItem.isFastAttractMode = true;
+            CoinItem.isFastAttractMode = true;
             SummonPortal();
             Destroy(gameObject);
         }

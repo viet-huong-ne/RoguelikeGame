@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ExpItem : MonoBehaviour
 {
+    [SerializeField] private float pickUpDistance = 1f; // Khoảng cách để bắt đầu di chuyển về phía người chơi
     [SerializeField] private float moveSpeed = 5f;     // Tốc độ di chuyển về phía người chơi
     [SerializeField] private float fastMoveSpeed = 20f; // Tốc độ di chuyển khi ở chế độ hút nhanh
 
@@ -32,7 +33,7 @@ public class ExpItem : MonoBehaviour
         if (player == null) return;
 
         // Luôn di chuyển về phía người chơi nếu ở chế độ hút nhanh
-        if (isFastAttractMode || Vector3.Distance(transform.position, player.position) < 3f)
+        if (isFastAttractMode || Vector3.Distance(transform.position, player.position) < pickUpDistance)
         {
             Vector3 moveDir = (player.position - transform.position).normalized;
 

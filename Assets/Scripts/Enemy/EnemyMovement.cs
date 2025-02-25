@@ -6,10 +6,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Animator animator; // Animator to control enemy animations
 
     private Transform player;
-    private bool isKnockedBack = false; // Flag to track knockback state
-    private Vector2 knockbackDirection; // Direction of knockback
-    private float knockbackDuration = 0.5f; // Knockback duration
-    private float knockbackTimeLeft; // Remaining knockback time
+    private bool canMove = true; // Flag to control movement
 
     private void Start()
     {
@@ -27,20 +24,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        if (player == null) return; // Exit if no player found
-
-        // Handle knockback
-        if (isKnockedBack)
-        {
-            knockbackTimeLeft -= Time.deltaTime;
-            transform.position += (Vector3)knockbackDirection * enemyData.moveSpeed * Time.deltaTime;
-
-            if (knockbackTimeLeft <= 0)
-            {
-                isKnockedBack = false;
-            }
-            return; // Skip other actions during knockback
-        }
+        if (player == null || !canMove) return; // Exit if no player found or movement is disabled
         
         MoveTowardsPlayer();
     }
@@ -70,13 +54,16 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    // Apply knockback from external sources
-    public void ApplyKnockback(Vector2 direction, float duration)
+    // Public method to stop movement
+    public void StopMovement()
     {
-        knockbackDirection = direction;
-        knockbackDuration = duration;
-        knockbackTimeLeft = duration;
-        isKnockedBack = true;
+        canMove = false;
+    }
+
+    // Public method to resume movement
+    public void ResumeMovement()
+    {
+        canMove = true;
     }
 
     // Optionally set the player target dynamically
