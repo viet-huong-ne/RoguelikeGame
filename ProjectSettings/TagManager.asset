@@ -11,6 +11,11 @@ TagManager:
   - Ground
   - Enemy
   - KCO
+  - CCO
+  - Coin
+  - Portal
+  - Key
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -18,12 +23,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Experience
+  - Object
   - Player
   - Monster
   - 
   - TileMap
-  - Experience
+  - Item
   - 
   - PopUpText
   - 
@@ -31,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - Object
+  - 
   - Layer 1
   - Layer 2
   - Layer 3

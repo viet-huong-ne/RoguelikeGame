@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
-/// <summary>
-/// Base scripts for all weapon controller
-/// </summary>
+
 public class WeaponController : MonoBehaviour
 {
     [Header("Weapon Stats")]
@@ -12,21 +7,30 @@ public class WeaponController : MonoBehaviour
     float currentCooldown;
 
     protected HeroKnight pm;
+    private HeroHealth heroHealth; // Reference to HeroHealth
+
     protected virtual void Start()
     {
         pm = FindObjectOfType<HeroKnight>();
-        currentCooldown = weaponData.cooldownDuration; // at the start set the current cooldown to be the cooldown duration
+        heroHealth = GetComponentInParent<HeroHealth>();
+        currentCooldown = weaponData.cooldownDuration;
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
+        if (heroHealth != null && heroHealth.IsDead())
+        {
+            return; // Do nothing if the hero is dead
+        }
+
         currentCooldown -= Time.deltaTime;
-        if (currentCooldown <= 0f) {
+        if (currentCooldown <= 0f)
+        {
             Attack();
         }
     }
-    protected virtual void Attack() 
+
+    protected virtual void Attack()
     {
         currentCooldown = weaponData.cooldownDuration;
     }

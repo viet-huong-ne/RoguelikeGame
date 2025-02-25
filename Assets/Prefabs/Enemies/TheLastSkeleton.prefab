@@ -18,8 +18,8 @@ GameObject:
   - component: {fileID: 5250534983890733745}
   - component: {fileID: -5290151099080298781}
   - component: {fileID: 2102016891266666580}
-  m_Layer: 7
-  m_Name: Skeleton
+  m_Layer: 8
+  m_Name: TheLastSkeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686311218222921155}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.4, y: -0.1, z: 1}
   m_LocalScale: {x: 3, y: 3, z: 2}
   m_ConstrainProportionsScale: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 1018b0ba13578bf459bd254ae1a2be99,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.8336911, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3976185e7bf356c4884119f59e67333a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: a1a25f3ff39d84340821b462ab1a5605, type: 2}
+  enemyData: {fileID: 11400000, guid: cbe23013e86621d4ebab7a69facacf54, type: 2}
   animator: {fileID: 2942005105149548851}
 --- !u!114 &3443579091957602101
 MonoBehaviour:
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd3315a0d265984f968f971954ded3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: a1a25f3ff39d84340821b462ab1a5605, type: 2}
+  enemyData: {fileID: 11400000, guid: cbe23013e86621d4ebab7a69facacf54, type: 2}
   damageCooldown: 1
   hero: {fileID: 8778651562060787071, guid: 488b689740e9094419d23ac3d3f0f9b9, type: 3}
   damageText: {fileID: 6427111076622788948, guid: 725933c5adb40f548974957858df405d,
@@ -169,8 +169,18 @@ MonoBehaviour:
   currentHealth: 0
   currentDamage: 0
   damageEffectDuration: 0.2
-  killCounter: {fileID: 8056820621896708870, guid: df0141d35c01322488febe597ab25e6e,
+  killCounter: {fileID: 6762532489318787552, guid: 8152f4d1d5fc7b54297b5a71b773dd70,
     type: 3}
+  experiencePrefab: {fileID: 5878331991992602196, guid: 5d6071747a13b8545bcbe86becd139bd,
+    type: 3}
+  coinPrefab: {fileID: 100000, guid: 49e6ee33250214a9facc214f3a2fecb7, type: 3}
+  sackOfGoldPrefab: {fileID: 5890640295506549874, guid: b342d026b4b7f744d873248467a31b95,
+    type: 3}
+  keyPrefab: {fileID: 3586792564736082944, guid: 05a0a84e0a4ce494abd866cdf3a30ed5,
+    type: 3}
+  coinDropRate: 20
+  sackOfGoldDropRate: 5
+  experienceDropRate: 70
 --- !u!114 &-6475721832864321849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +249,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686311218222921155}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

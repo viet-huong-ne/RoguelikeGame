@@ -41,14 +41,14 @@ public class EnemyMovement : MonoBehaviour
             }
             return; // Skip other actions during knockback
         }
-
-        // Calculate distance to the player
-        float distance = Vector2.Distance(transform.position, player.position);
+        
         MoveTowardsPlayer();
     }
 
     private void MoveTowardsPlayer()
     {
+        Debug.Log($"Current Move Speed: {enemyData.moveSpeed}");
+
         // Move towards the player
         Vector2 direction = (player.position - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, player.position, enemyData.moveSpeed * Time.deltaTime);
