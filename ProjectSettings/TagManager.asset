@@ -6,9 +6,10 @@ TagManager:
   tags:
   - Skeleton
   - Canvas
-  - Tree
   - Experience
   - Ground
+  - Object
+  - Undefined
   layers:
   - Default
   - TransparentFX
@@ -19,10 +20,10 @@ TagManager:
   - Experience
   - Player
   - Monster
-  - 
+  - Object
   - TileMap
   - Experience
-  - 
+  - Attack
   - PopUpText
   - 
   - 

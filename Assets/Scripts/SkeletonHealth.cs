@@ -11,7 +11,7 @@ public class SkeletonHealth : MonoBehaviour, IHealth
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
-
+    [SerializeField] private float experienceDropChance = 0.7f;
     [SerializeField] private float damageEffectDuration = 0.2f;
 
     // Thêm biến để chứa prefab của viên kinh nghiệm
@@ -92,17 +92,22 @@ public class SkeletonHealth : MonoBehaviour, IHealth
 
     private void DropExperience()
     {
-        if (experiencePrefab != null)
+        if (Random.value <= experienceDropChance) 
         {
-            // Tạo viên kinh nghiệm ở dưới Skeleton (giảm y một chút)
-            Vector3 spawnPosition = transform.position + new Vector3(0, -1, 0);
+            if (experiencePrefab != null)
+            {
+                Vector3 spawnPosition = transform.position + new Vector3(0, -1, 0);
 
-            // Tạo viên kinh nghiệm tại vị trí tính toán
-            Instantiate(experiencePrefab, spawnPosition, Quaternion.identity);
+                Instantiate(experiencePrefab, spawnPosition, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogError("Experience prefab not assigned in the Inspector.");
+            }
         }
         else
         {
-            Debug.LogError("Experience prefab not assigned in the Inspector.");
+            Debug.Log("No experience dropped this time.");
         }
     }
 
