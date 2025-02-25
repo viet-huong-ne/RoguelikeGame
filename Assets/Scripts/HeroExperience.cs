@@ -38,7 +38,7 @@ public class HeroExperience : MonoBehaviour
         UpdateLevelText();
     }
 
-    // Cập nhật tiến độ thanh EXP
+    // Cập nhật tiến độ thanh EXP 
     private void UpdateExperienceBar()
     {
         if (experienceBarImage != null)

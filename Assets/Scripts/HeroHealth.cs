@@ -21,7 +21,7 @@
         private HeroKnight heroKnight;
         private HeroAttack heroAttack; 
         private HealthBarBehavior healthBarBehavior;
-
+        private bool isDead = false;
         private void Start()
         {
             // Lấy SpriteRenderer và lưu màu gốc
@@ -127,6 +127,8 @@
         private void Die()
         {
             Debug.Log("I am dead!");
+            
+            isDead = true;
 
             // Gọi trigger để phát animation chết
             if (animator != null)
@@ -149,6 +151,8 @@
             // Đợi animation chết trước khi hủy nhân vật
             StartCoroutine(WaitForDeathAnimation());
         }
+
+        public bool IsDead() => isDead;
 
         private IEnumerator WaitForDeathAnimation()
         {

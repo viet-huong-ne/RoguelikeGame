@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class ExpItem : MonoBehaviour
 {
-    [SerializeField] private float pickUpDistance = 3f; // Khoảng cách để bắt đầu di chuyển về phía người chơi
+    [SerializeField] private float pickUpDistance = 1f; // Khoảng cách để bắt đầu di chuyển về phía người chơi
     [SerializeField] private float moveSpeed = 5f;     // Tốc độ di chuyển về phía người chơi
+    [SerializeField] private float fastMoveSpeed = 20f; // Tốc độ di chuyển khi ở chế độ hút nhanh
 
     private Transform player; // Lưu trữ tham chiếu đến vị trí người chơi
+
+    // Biến tĩnh để kiểm soát chế độ hút nhanh
+    public static bool isFastAttractMode = false;
 
     private void Start()
     {
@@ -28,14 +32,14 @@ public class ExpItem : MonoBehaviour
     {
         if (player == null) return;
 
-        // Kiểm tra khoảng cách giữa viên EXP và Player
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-        if (distanceToPlayer < pickUpDistance)
+        // Luôn di chuyển về phía người chơi nếu ở chế độ hút nhanh
+        if (isFastAttractMode || Vector3.Distance(transform.position, player.position) < pickUpDistance)
         {
-            // Di chuyển viên EXP về phía người chơi
             Vector3 moveDir = (player.position - transform.position).normalized;
-            transform.position += moveDir * moveSpeed * Time.deltaTime;
+
+            // Chọn tốc độ dựa trên trạng thái hút nhanh
+            float currentMoveSpeed = isFastAttractMode ? fastMoveSpeed : moveSpeed;
+            transform.position += moveDir * currentMoveSpeed * Time.deltaTime;
         }
     }
 
