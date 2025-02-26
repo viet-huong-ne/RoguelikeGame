@@ -3,7 +3,6 @@ using UnityEngine.Tilemaps;
 
 public class HeroKnight : MonoBehaviour
 {
-    private Rigidbody2D rb;
     public Animator animator;
 
     float inputHorizontal;
@@ -11,15 +10,21 @@ public class HeroKnight : MonoBehaviour
     [SerializeField] private float speed = 3.5f;
     bool facingRight = true;
     public Tilemap tilemap;
-    private Vector2 minBounds;
-    private Vector2 maxBounds;
+    public Vector2 moveDir;
+    [HideInInspector]
+    public Vector2 lastMovedVector;
+    public Vector2 minBounds;
+    public Vector2 maxBounds;
 
     private bool canMove = true;  // Kiểm tra di chuyển
-
+    // Reference
+    Rigidbody2D rb;
+    public CharacterScriptableObject characterData;
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        lastMovedVector = new Vector2(1, 0f);
         animator = GetComponent<Animator>();
 
         // Kiểm tra và cài đặt Tilemap để lấy các giới hạn của nó
@@ -43,7 +48,21 @@ public class HeroKnight : MonoBehaviour
         // Nhận input từ người chơi
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
-
+        // lấy địa điểm nhân vật
+        moveDir = new Vector2(inputHorizontal, inputVertical).normalized;
+        // lấy hướng mặt của nhân vật
+        if (moveDir.x != 0)
+        {
+            lastMovedVector = new Vector2(moveDir.x, 0f); //Last moved X
+        }
+        if (moveDir.y != 0)
+        {
+            lastMovedVector = new Vector2(0f, moveDir.y); //Last moved Y
+        }
+        if (moveDir.x != 0 && moveDir.y != 0)
+        {
+            lastMovedVector = new Vector2(moveDir.x, moveDir.y);
+        }
         // Tính toán hướng di chuyển
         Vector2 movement = new Vector2(inputHorizontal, inputVertical) * speed;
 
