@@ -47622,6 +47622,11 @@ PrefabInstance:
       objectReference: {fileID: 163713440}
     - target: {fileID: 8702340591290088047, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
+      propertyPath: experienceToNextLevel
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702340591290088047, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
       propertyPath: skillSelectionManager
       value: 
       objectReference: {fileID: 1884114666}
