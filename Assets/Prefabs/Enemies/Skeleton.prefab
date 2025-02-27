@@ -282,6 +282,10 @@ MonoBehaviour:
   damageText: {fileID: 6427111076622788948, guid: 725933c5adb40f548974957858df405d,
     type: 3}
   health: 20
+  experienceDropChance: 0.7
   damageEffectDuration: 0.2
   experiencePrefab: {fileID: 1396483985542999309, guid: 1df66766d74b9d94eaf89b0d703881c5,
     type: 3}
+  healthItemPrefab: {fileID: 8204195233382434521, guid: a264e295b6c6dc543bd249cc8623b9ed,
+    type: 3}
+  healthDropChance: 0.5
