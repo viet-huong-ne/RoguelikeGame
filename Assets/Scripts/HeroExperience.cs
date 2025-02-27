@@ -12,7 +12,7 @@ public class HeroExperience : MonoBehaviour
     [SerializeField] private int currentLevel = 1; // Cấp độ hiện tại
     [SerializeField] private int currentExperience = 0; // EXP hiện tại
     [SerializeField] private int experienceToNextLevel = 100; // EXP cần để lên cấp
-
+    [SerializeField] private SkillSelectionManager skillSelectionManager;
     private void Start()
     {
         // Instantiate thanh EXP và gắn nó vào Canvas
@@ -38,7 +38,7 @@ public class HeroExperience : MonoBehaviour
         UpdateLevelText();
     }
 
-    // Cập nhật tiến độ thanh EXP
+    // Cập nhật tiến độ thanh EXP 
     private void UpdateExperienceBar()
     {
         if (experienceBarImage != null)
@@ -83,7 +83,8 @@ public class HeroExperience : MonoBehaviour
         // Tăng yêu cầu EXP cho cấp tiếp theo
         experienceToNextLevel = Mathf.FloorToInt(experienceToNextLevel * 1.2f);
 
-        Debug.Log($"Leveled up! New Level: {currentLevel}");
+        // Hiển thị bảng chọn kỹ năng
+        skillSelectionManager.ShowSkillSelectionPanel();
 
         // Cập nhật hiển thị Level
         UpdateLevelText();

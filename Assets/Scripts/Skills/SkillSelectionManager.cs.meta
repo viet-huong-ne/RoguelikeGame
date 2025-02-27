@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: caf54b3d8c3c1564382d9872805179ac
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - skillSelectionPanelPrefab: {fileID: 2786238429121670801, guid: d1962fae2c7b34e46bb78480ddc0132e,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
