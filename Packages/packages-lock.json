@@ -131,7 +131,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
+<<<<<<< Updated upstream
       "version": "1.0.6",
+=======
+      "version": "2.0.3",
+>>>>>>> Stashed changes
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -177,6 +181,17 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< Updated upstream
+=======
+    "com.unity.multiplayer.center": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      }
+    },
+>>>>>>> Stashed changes
     "com.unity.test-framework": {
       "version": "1.1.33",
       "depth": 0,
@@ -188,6 +203,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< Updated upstream
     "com.unity.textmeshpro": {
       "version": "3.0.9",
       "depth": 0,
@@ -197,6 +213,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> Stashed changes
     "com.unity.timeline": {
       "version": "1.7.6",
       "depth": 0,
