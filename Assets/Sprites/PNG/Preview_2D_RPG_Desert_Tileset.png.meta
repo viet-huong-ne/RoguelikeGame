@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Preview_2D_RPG_Desert_Tileset_0: 7615215780452827336
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
