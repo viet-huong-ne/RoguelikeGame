@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class HeroKnight : MonoBehaviour
+public class HeroKnight : Singleton<HeroKnight>
 {
     public Animator animator;
 
