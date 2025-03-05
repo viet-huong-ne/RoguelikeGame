@@ -1,16 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
     [Header("Weapon Stats")]
-    public WeaponScriptableObject weaponData;
-    float currentCooldown;
+    public WeaponScriptableObject weaponData ;
+    float currentCooldown = 0.5f;
 
     protected HeroKnight pm;
     private HeroHealth heroHealth; // Reference to HeroHealth
 
     protected virtual void Start()
     {
+        if (weaponData == null)
+        {
+            Debug.LogError("WeaponController: weaponData chưa được gán! Hãy kiểm tra Inspector.");
+            return;
+        }
         pm = FindObjectOfType<HeroKnight>();
         heroHealth = GetComponentInParent<HeroHealth>();
         currentCooldown = weaponData.cooldownDuration;
