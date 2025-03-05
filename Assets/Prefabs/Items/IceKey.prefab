@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4146060049558314148}
   - component: {fileID: 2474074057002304606}
   m_Layer: 0
-  m_Name: Key
+  m_Name: IceKey
   m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpDistance: 1
   moveSpeed: 5
-  portalPrefab: {fileID: 4514807974302638953, guid: 3342aff0cb682574a9c4f029f216d7e4,
+  portalPrefab: {fileID: 3713696870867015875, guid: bf0d48d0ca7d8a7409149474e1bb9ab2,
     type: 3}
   portalOffset: 5
   timer: {fileID: 6640099396071206427, guid: 94e8e6a6294e47a46bca6de018773057, type: 3}
