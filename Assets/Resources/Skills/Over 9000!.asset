@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Over 9000!
   m_EditorClassIdentifier: 
   skillName: Over 9000!
-  skillDescription: +10 damage for Slash
+  skillDescription: +5 damage for Slash
   skillIcon: {fileID: 21300000, guid: 964aa99f5fb4e684db09dcec4bc3e18a, type: 3}
+  effectType: 1
+  value: 5
+  valueType: 0
+  effectDirection: 0
+  probability: 0.4
