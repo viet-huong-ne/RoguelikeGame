@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SkillSelectionManager : MonoBehaviour
+public class SkillSelectionManager : Singleton<SkillSelectionManager>
 {
     [SerializeField] private GameObject skillSelectionPanelPrefab; // Prefab của Panel
     private GameObject skillSelectionPanelInstance;

@@ -6703,7 +6703,7 @@ MonoBehaviour:
   intervalDecreaseRate: 0.1
   spawnRadius: 25
   timer: {fileID: 1943927203}
-  decisionTime: 120
+  decisionTime: 90
   theLastDropRate: 0.2
 --- !u!4 &923419907
 Transform:
@@ -6762,6 +6762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionName: ToIceScene
+  timerPrefab: {fileID: 5626495355527169147, guid: 94e8e6a6294e47a46bca6de018773057,
+    type: 3}
 --- !u!4 &984122939
 Transform:
   m_ObjectHideFlags: 0

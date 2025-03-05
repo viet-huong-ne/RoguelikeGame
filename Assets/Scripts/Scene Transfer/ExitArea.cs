@@ -36,5 +36,6 @@ public class ExitArea : MonoBehaviour
         }
         Debug.Log("Đang load scene: " + sceneToLoad);
         SceneManager.LoadScene(sceneToLoad);
+        Debug.Log("Scene đã được load xong.");
     }
 }

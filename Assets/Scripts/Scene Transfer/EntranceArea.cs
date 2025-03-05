@@ -19,7 +19,35 @@ public class EntranceArea : MonoBehaviour
                 // Set the camera to follow the player
                 CameraController.Instance.SetPlayerCameraFollow();
                 UIFade.Instance.FadeToClear();
+
+                // Assign the player and Timer to MonsterSpawner
+                AssignToMonsterSpawner(playerController);
             }
+        }
+    }
+
+    private void AssignToMonsterSpawner(HeroKnight player)
+    {
+        // Find MonsterSpawner in the scene
+        MonsterSpawner spawner = FindObjectOfType<MonsterSpawner>();
+        if (spawner != null)
+        {
+            // Assign the player to MonsterSpawner
+            spawner.player = player.gameObject;
+            Debug.Log("Player assigned to MonsterSpawner.");
+
+            // Find the existing Timer from DontDestroyOnLoad
+            Timer existingTimer = FindObjectOfType<Timer>();
+            if (existingTimer != null)
+            {
+                // Assign the existing Timer to the MonsterSpawner
+                spawner.timer = existingTimer;
+                Debug.Log("Existing Timer has been assigned to MonsterSpawner.");
+            }
+    }
+        else
+        {
+            Debug.LogWarning("MonsterSpawner not found in the scene.");
         }
     }
 }
