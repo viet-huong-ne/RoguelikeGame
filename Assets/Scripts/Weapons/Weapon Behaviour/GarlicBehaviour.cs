@@ -20,5 +20,11 @@ public class GarlicBehaviour : MeleeWeaponBehaviour
 
             makedEnemies.Add(col.gameObject);
         }
+        if (col.CompareTag("BringerOfDeath"))
+        {
+            BODStats enemy = col.GetComponent<BODStats>();
+            enemy.TakeDamage(currentDamage);
+            makedEnemies.Add(col.gameObject);
+        }
     }
 }

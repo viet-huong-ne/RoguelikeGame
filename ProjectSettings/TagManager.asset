@@ -16,6 +16,7 @@ TagManager:
   - Portal
   - Key
   - Object
+  - BringerOfDeath
   layers:
   - Default
   - TransparentFX

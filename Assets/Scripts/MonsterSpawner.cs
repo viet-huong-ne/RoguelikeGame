@@ -70,10 +70,10 @@ public class MonsterSpawner : MonoBehaviour
         mainCamera = Camera.main; // Lấy camera chính
 
         // Immediately spawn a few skeletons when the game starts
-        SpawnInitialSkeletons();
+        SpawnInitialMonster();
 
         // Continue with the regular spawning
-        StartCoroutine(SpawnSkeletons());
+        StartCoroutine(SpawnMonsters());
         StartCoroutine(CheckSpawnTheLast());
     }
 
@@ -123,7 +123,7 @@ public class MonsterSpawner : MonoBehaviour
         canSpawnTheLast = false;
     }
 
-    private void SpawnInitialSkeletons()
+    private void SpawnInitialMonster()
     {
         if (heroHealth != null && heroHealth.IsDead())
         {
@@ -143,7 +143,7 @@ public class MonsterSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnSkeletons()
+    private IEnumerator SpawnMonsters()
     {
         while (true)
         {
