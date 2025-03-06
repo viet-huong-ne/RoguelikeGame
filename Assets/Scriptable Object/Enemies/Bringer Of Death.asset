@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdb041d9b80e4947825218e6611044f, type: 3}
   m_Name: Bringer Of Death
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 1
   maxHealth: 500
   damage: 30

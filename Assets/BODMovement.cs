@@ -58,14 +58,26 @@ public class BODMovement : MonoBehaviour
     // Public method to stop movement
     public void StopMovement()
     {
+        Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
+        if (rigidbody2D != null)
+        {
+            rigidbody2D.linearVelocity = Vector2.zero; // Dừng mọi vận tốc
+        }
         Debug.Log("STOP");
         canMove = false;
     }
 
-    // Public method to resume movement
     public void ResumeMovement()
     {
         canMove = true;
+
+        Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
+        if (rigidbody2D != null)
+        {
+            rigidbody2D.linearVelocity = Vector2.zero;
+        }
+
+        Debug.Log("RESUME");
     }
 
     // Optionally set the player target dynamically

@@ -39,9 +39,17 @@ public class BODCast : MonoBehaviour
 
     void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        if (isCasting)
         {
-            FinishCasting();
+            bodMovement.StopMovement();
+
+            // Kiểm tra nếu animation "Cast" đã hoàn thành
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("Cast") && stateInfo.normalizedTime >= 1f)
+            {
+                FinishCasting();
+            }
+            return;
         }
     }
 
@@ -177,6 +185,8 @@ public class BODCast : MonoBehaviour
 
     void FinishCasting()
     {
+        if (!isCasting) return;
+
         isCasting = false;
 
         if (bodMovement != null)
@@ -187,5 +197,7 @@ public class BODCast : MonoBehaviour
         {
             Debug.LogWarning("BODMovement is missing!");
         }
+
+        Debug.Log("Casting finished. Movement resumed.");
     }
 }
