@@ -241,9 +241,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSpellPrefab: {fileID: 3586419016984674645, guid: 09334d395a11b2f44896045b679a79c9,
     type: 3}
+  monsterPrefab: {fileID: 686311218222921155, guid: 2a7b75d354b3a7749bd57f56e44d3edc,
+    type: 3}
   spawnOffsetY: 1.5
   castAnimationDuration: 1.5
   numberOfCasts: 3
   castInterval: 1
   castCooldown: 7
+  monsterSpawnInterval: 20
   player: {fileID: 0}

@@ -177,8 +177,8 @@ MonoBehaviour:
   sackOfGoldPrefab: {fileID: 5890640295506549874, guid: b342d026b4b7f744d873248467a31b95,
     type: 3}
   keyPrefab: {fileID: 0}
-  coinDropRate: 20
-  sackOfGoldDropRate: 5
+  coinDropRate: 10
+  sackOfGoldDropRate: 6
   experienceDropRate: 70
 --- !u!114 &-6475721832864321849
 MonoBehaviour:

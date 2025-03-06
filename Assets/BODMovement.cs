@@ -31,6 +31,7 @@ public class BODMovement : MonoBehaviour
 
     public void MoveTowardsPlayer()
     {
+        if (player == null || !canMove) return;
         //Debug.Log($"Current Move Speed: {enemyData.moveSpeed}");
 
         // Move towards the player

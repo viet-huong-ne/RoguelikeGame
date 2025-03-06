@@ -21,10 +21,9 @@ public class MonsterSpawner : MonoBehaviour
     private float spawnRadius = 15f; // Bán kính spawn xung quanh player
     private HeroHealth heroHealth; // Reference to HeroHealth
     private float skeletonInterval; // Thời gian giữa mỗi lần spawn quái
-    private int waveCount = 0; // Số wave đã qua
     private float elapsedTime = 0f; // Track elapsed time for gradual increase
     private int skeletonDensityMultiplier = 1; // Density multiplier to control skeleton count
-    private bool canSpawnWave = false; // Điều kiện để có thể spawn wave to
+    // private bool canSpawnWave = false;
     private List<Vector3> spawnPositions = new List<Vector3>(); // Lưu trữ các vị trí đã spawn
     private Camera mainCamera;
     [SerializeField]

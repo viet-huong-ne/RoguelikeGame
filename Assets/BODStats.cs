@@ -91,14 +91,21 @@ public class BODStats : MonoBehaviour
         canDamage = true;  // Re-enable damage after cooldown
     }
 
+    [System.Obsolete]
     public void Die()
     {
         if (isDead) return; // Prevent multiple executions
         isDead = true;
         bodMovement.StopMovement();
+        enemyData.moveSpeed = 0;
         animator.SetTrigger("Death");
         float deathAnimationTime = animator.GetCurrentAnimatorStateInfo(0).length;
-
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.isKinematic = true; 
+        }
         DropKey(keyPrefab);
         
         killCounter.AddKill();
