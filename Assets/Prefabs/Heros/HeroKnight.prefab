@@ -145,7 +145,6 @@ GameObject:
   m_Component:
   - component: {fileID: 10353633891668302}
   - component: {fileID: 4615858694455666333}
-  - component: {fileID: 5329505866976088000}
   - component: {fileID: 7734986830372944690}
   - component: {fileID: 8702340591290088047}
   - component: {fileID: 7456390042827147000}
@@ -199,18 +198,6 @@ MonoBehaviour:
   minBounds: {x: 0, y: 0}
   maxBounds: {x: 0, y: 0}
   characterData: {fileID: 11400000, guid: 4b3b9b5c0131e3e4095c09ed6beab926, type: 2}
---- !u!114 &5329505866976088000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8778651562060787071}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09c9c7ae97b24944ba0e288897d25c10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7734986830372944690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +233,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   currentLevel: 1
   currentExperience: 0
-  experienceToNextLevel: 100
+  experienceToNextLevel: 60
   skillSelectionManager: {fileID: 0}
 --- !u!212 &7456390042827147000
 SpriteRenderer:
@@ -289,9 +276,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1869315837
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: -44025399
+  m_SortingLayer: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -311,7 +298,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8778651562060787071}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -360,11 +347,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.009249166, y: 0.67597693}
+  m_Offset: {x: -0.057882607, y: 0.41703987}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -374,7 +361,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4341248, y: 0.9247011}
+  m_Size: {x: 0.77298075, y: 0.4068272}
   m_EdgeRadius: 0
 --- !u!95 &6145173538674276104
 Animator:
@@ -405,7 +392,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8778651562060787071}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c57b3cea1ae06843b71a53e1f7efc43, type: 3}
   m_Name: 

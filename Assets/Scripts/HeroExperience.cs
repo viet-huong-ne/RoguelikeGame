@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeroExperience : MonoBehaviour
+public class HeroExperience : Singleton<HeroExperience>
 {
     [SerializeField] private GameObject experienceBarPrefab; // Prefab của thanh EXP
     [SerializeField] private Canvas canvas; // Canvas để chứa thanh EXP

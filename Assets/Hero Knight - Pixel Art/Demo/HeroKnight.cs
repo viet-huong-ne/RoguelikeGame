@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class HeroKnight : MonoBehaviour
+public class HeroKnight : Singleton<HeroKnight>
 {
     public Animator animator;
 
     float inputHorizontal;
     float inputVertical;
-    [SerializeField] private float speed = 3.5f;
+    [SerializeField] public float speed = 3f;
     bool facingRight = true;
     public Tilemap tilemap;
     public Vector2 moveDir;

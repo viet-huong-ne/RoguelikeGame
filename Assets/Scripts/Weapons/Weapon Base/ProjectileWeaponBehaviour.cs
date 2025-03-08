@@ -79,6 +79,12 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
             enemy.TakeDamage(currentDamage);
             ReducePierce();
         }
+        if (col.CompareTag("BringerOfDeath"))
+        {
+            BODStats enemy = col.GetComponent<BODStats>();
+            enemy.TakeDamage(currentDamage);
+            ReducePierce();
+        }
     }
     void ReducePierce()
     {

@@ -10,7 +10,7 @@ public class MonsterSpawner : MonoBehaviour
     private GameObject theLastPrefab;
     [SerializeField] private GameObject keyPrefab;
     [SerializeField]
-    private GameObject player;  // Reference to the player
+    public GameObject player;  // Reference to the player
     [SerializeField]
     private int initialSkeletons = 5;
     [SerializeField]
@@ -21,14 +21,13 @@ public class MonsterSpawner : MonoBehaviour
     private float spawnRadius = 15f; // Bán kính spawn xung quanh player
     private HeroHealth heroHealth; // Reference to HeroHealth
     private float skeletonInterval; // Thời gian giữa mỗi lần spawn quái
-    private int waveCount = 0; // Số wave đã qua
     private float elapsedTime = 0f; // Track elapsed time for gradual increase
     private int skeletonDensityMultiplier = 1; // Density multiplier to control skeleton count
-    private bool canSpawnWave = false; // Điều kiện để có thể spawn wave to
+    // private bool canSpawnWave = false;
     private List<Vector3> spawnPositions = new List<Vector3>(); // Lưu trữ các vị trí đã spawn
     private Camera mainCamera;
     [SerializeField]
-    private Timer timer;
+    public Timer timer;
     private bool isTheLastSpawned = false;
     private bool canSpawnTheLast = false;
     private float keyPickedTime = -1f;
@@ -37,8 +36,22 @@ public class MonsterSpawner : MonoBehaviour
     private float decisionTime = 30f;
     [SerializeField]
     private float theLastDropRate = 0.2f;
+
+    void Awake(){
+        Debug.Log("HIHIHI");
+    }
+
     void Start()
     {
+        if (player == null)
+        {
+            Debug.LogWarning("Player is not assigned to MonsterSpawner.");
+        }
+        else
+        {
+            Debug.Log("MonsterSpawner initialized with player: " + player.name);
+        }
+        
         if (timer != null)
         {
             timer.StartTimer();
@@ -56,10 +69,10 @@ public class MonsterSpawner : MonoBehaviour
         mainCamera = Camera.main; // Lấy camera chính
 
         // Immediately spawn a few skeletons when the game starts
-        SpawnInitialSkeletons();
+        SpawnInitialMonster();
 
         // Continue with the regular spawning
-        StartCoroutine(SpawnSkeletons());
+        StartCoroutine(SpawnMonsters());
         StartCoroutine(CheckSpawnTheLast());
     }
 
@@ -109,7 +122,7 @@ public class MonsterSpawner : MonoBehaviour
         canSpawnTheLast = false;
     }
 
-    private void SpawnInitialSkeletons()
+    private void SpawnInitialMonster()
     {
         if (heroHealth != null && heroHealth.IsDead())
         {
@@ -129,7 +142,7 @@ public class MonsterSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnSkeletons()
+    private IEnumerator SpawnMonsters()
     {
         while (true)
         {

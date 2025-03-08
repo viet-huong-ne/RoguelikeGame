@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409adeffad039c34f8145a7173b360c1, type: 3}
+  m_Name: GYATT
+  m_EditorClassIdentifier: 
+  skillName: GYATT
+  skillDescription: -2 damage for slash
+  skillIcon: {fileID: 21300000, guid: 28b2749fe49b6b745a924df7f95b3150, type: 3}
+  effectType: 1
+  value: 2
+  valueType: 0
+  effectDirection: 1
+  probability: 0.1

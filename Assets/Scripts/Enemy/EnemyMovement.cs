@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
-        Debug.Log($"Current Move Speed: {enemyData.moveSpeed}");
+        //Debug.Log($"Current Move Speed: {enemyData.moveSpeed}");
 
         // Move towards the player
         Vector2 direction = (player.position - transform.position).normalized;

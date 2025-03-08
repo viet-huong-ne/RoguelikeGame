@@ -2,10 +2,10 @@
     using UnityEngine;
     using UnityEngine.UI;
 
-    public class HeroHealth : MonoBehaviour, IHealth
+    public class HeroHealth : Singleton<HeroHealth>, IHealth
     {
-        [SerializeField] private int health = 200;
-        [SerializeField] private int MAX_HEALTH = 200;
+        [SerializeField] public int health = 200;
+        [SerializeField] public int MAX_HEALTH = 200;
 
         [SerializeField] private GameObject healthBarPrefab;
         [SerializeField] private Canvas canvas;

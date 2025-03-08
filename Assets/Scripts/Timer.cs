@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
+public class Timer : Singleton<Timer>
 {
     public Text timerText;
     private float elapsedTime = 0f; 
@@ -20,7 +20,8 @@ public class Timer : MonoBehaviour
 
             // Update the text UI
             timerText.text = $"{minutes:0}:{seconds:00}";
-        }
+        }        
+            DontDestroyOnLoad(this.gameObject);
     }
 
     public float GetElapsedTime()
