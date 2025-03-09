@@ -5,11 +5,13 @@ public class BODCast : MonoBehaviour
 {
     [SerializeField] private GameObject deathSpellPrefab;
     [SerializeField] private GameObject monsterPrefab; // Prefab của monster
+    [SerializeField] private GameObject bigDeathSpellPrefab;
     [SerializeField] private float spawnOffsetY = 1.5f;
     [SerializeField] private float castAnimationDuration = 1.5f;
     [SerializeField] private int numberOfCasts = 3;
     [SerializeField] private float castInterval = 1f;
-    [SerializeField] private float castCooldown = 7f;
+    [SerializeField] private float castDeathSpellsCooldown = 7f;
+    [SerializeField] private float castBIGDeathSpellsCooldown = 30f;
     [SerializeField] private float monsterSpawnInterval = 20f; // Interval for spawning monsters
 
     private Animator animator;
@@ -35,6 +37,7 @@ public class BODCast : MonoBehaviour
 
         StartCoroutine(AutoCastDeathSpellRoutine());
         StartCoroutine(AutoSummonSpellRoutine());
+        StartCoroutine(AutoCastBIGDeathSpellRoutine());
     }
 
     void Update()
@@ -58,7 +61,7 @@ public class BODCast : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(castCooldown);
+            yield return new WaitForSeconds(castDeathSpellsCooldown);
             if (!isCasting)
             {
                 StartCoroutine(CastDeathSpellMultipleTimes());
@@ -76,6 +79,45 @@ public class BODCast : MonoBehaviour
                 StartCoroutine(CastSummonSpell());
             }
         }
+    }
+
+    IEnumerator AutoCastBIGDeathSpellRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(castBIGDeathSpellsCooldown);
+            if (!isCasting)
+            {
+                StartCoroutine(CastBIGDeathSpellMultipleTimes());
+            }
+        }
+    }
+
+    IEnumerator CastBIGDeathSpellMultipleTimes()
+    {
+        isCasting = true;
+
+        if (bodMovement != null)
+        {
+            bodMovement.StopMovement();
+        }
+        else
+        {
+            Debug.LogWarning("BODMovement is missing!");
+        }
+
+        animator.SetTrigger("Cast");
+        yield return new WaitForSeconds(castAnimationDuration);
+
+        SpawnBIGDeathSpell();
+
+        // Check if the animation is done
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("Cast"))
+        {
+            yield return null;
+        }
+
+        FinishCasting();
     }
 
     IEnumerator CastDeathSpellMultipleTimes()
@@ -139,6 +181,12 @@ public class BODCast : MonoBehaviour
     {
         Vector3 spawnPosition = player.transform.position + new Vector3(0, spawnOffsetY, 0);
         Instantiate(deathSpellPrefab, spawnPosition, Quaternion.identity);
+    }
+
+    void SpawnBIGDeathSpell()
+    {
+        Vector3 spawnPosition = player.transform.position + new Vector3(0, spawnOffsetY + 3, 0);
+        Instantiate(bigDeathSpellPrefab, spawnPosition, Quaternion.identity);
     }
 
     void SummonMonstesAroundPlayer()
