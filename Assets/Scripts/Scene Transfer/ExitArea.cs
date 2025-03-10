@@ -8,7 +8,7 @@ public class ExitArea : MonoBehaviour
     [SerializeField] private string sceneTransitionName;
 
     private float waitToLoadTime = 1f;
-    private bool isTransitioning = false;
+    // private bool isTransitioning = false;
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Va chạm với: " + other.gameObject.name + " | Layer: " + other.gameObject.layer);

@@ -19,7 +19,6 @@ public class BODStats : MonoBehaviour
     private int dropCount = 0;
     private Animator animator;
     private bool isDead = false;
-    private bool canDamage = true;  // This flag ensures damage is only applied after cooldown
 
     void Start()
     {
@@ -67,28 +66,9 @@ public class BODStats : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D col)
+    public void TriggerAttackAnimation()
     {
-        if (col.CompareTag("Player") && canDamage)
-        {
-            animator.SetTrigger("Attack");
-            // Damage the player
-            HeroHealth hero = col.GetComponent<HeroHealth>();
-            if (hero != null)
-            {
-                hero.TakeDamage((int)currentDamage);
-            }
-            
-            // Start cooldown
-            StartCoroutine(DamageCooldown());
-        }
-    }
-
-    private IEnumerator DamageCooldown()
-    {
-        canDamage = false;  // Disable damage during cooldown
-        yield return new WaitForSeconds(damageCooldown);  // Wait for the cooldown duration
-        canDamage = true;  // Re-enable damage after cooldown
+        animator.SetTrigger("Attack");
     }
 
     public void Die()
@@ -96,9 +76,15 @@ public class BODStats : MonoBehaviour
         if (isDead) return; // Prevent multiple executions
         isDead = true;
         bodMovement.StopMovement();
+        enemyData.moveSpeed = 0;
         animator.SetTrigger("Death");
         float deathAnimationTime = animator.GetCurrentAnimatorStateInfo(0).length;
-
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.isKinematic = true; 
+        }
         DropKey(keyPrefab);
         
         killCounter.AddKill();
