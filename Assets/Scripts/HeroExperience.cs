@@ -1,11 +1,14 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class HeroExperience : Singleton<HeroExperience>
 {
     [SerializeField] private GameObject experienceBarPrefab; // Prefab của thanh EXP
     [SerializeField] private Canvas canvas; // Canvas để chứa thanh EXP
+    [SerializeField] private GameObject knife;
+    [SerializeField] private GameObject garlic;
     private TMP_Text levelText;
     private GameObject experienceBarInstance; // Instance của thanh EXP
     private Image experienceBarImage; // Biến lưu trữ Image của thanh "Fill"
@@ -85,8 +88,13 @@ public class HeroExperience : Singleton<HeroExperience>
 
         // Hiển thị bảng chọn kỹ năng
         skillSelectionManager.ShowSkillSelectionPanel();
-
+        UpdateWeapons();
         // Cập nhật hiển thị Level
         UpdateLevelText();
+    }
+    void UpdateWeapons()
+    {
+        knife.SetActive(currentLevel >= 4);   // Mở khóa Knife khi cấp 4
+        garlic.SetActive(currentLevel >= 8);  // Mở khóa Garlic khi cấp 8
     }
 }
