@@ -107,7 +107,34 @@ public class MonsterSpawner : MonoBehaviour
     {
         Vector3 spawnPosition = GetRandomSpawnPosition();
         GameObject monster = Instantiate(prefab, spawnPosition, Quaternion.identity);
-        monster.GetComponent<EnemyMovement>().SetPlayer(player);
+
+        // Change background music
+        GameObject backgroundMusicObject = GameObject.Find("BackgroundMusicManager");
+        if (backgroundMusicObject != null)
+        {
+            BackgroundMusicController musicController = backgroundMusicObject.GetComponent<BackgroundMusicController>();
+            if (musicController != null)
+            {
+                // Correct Resources.Load path
+                AudioClip newMusicClip = Resources.Load<AudioClip>("Music/BOD_Theme");
+                if (newMusicClip != null)
+                {
+                    musicController.ChangeMusic(newMusicClip);
+                }
+                else
+                {
+                    Debug.LogWarning("New music clip not found in Resources/Music/BOD_Theme!");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("BackgroundMusicController component not found on BackgroundMusic object!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("BackgroundMusic object not found in the scene!");
+        }
     }
 
     public void OnKeyPickedUp()

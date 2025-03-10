@@ -45,6 +45,25 @@ public class KeyItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/KeyReceived"), 1f);
+            // Stop background music
+            GameObject backgroundMusicObject = GameObject.Find("BackgroundMusicManager");
+            if (backgroundMusicObject != null)
+            {
+                BackgroundMusicController musicController = backgroundMusicObject.GetComponent<BackgroundMusicController>();
+                if (musicController != null)
+                {
+                    musicController.StopMusic();
+                }
+                else
+                {
+                    Debug.LogWarning("BackgroundMusicController component not found on BackgroundMusic object!");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("BackgroundMusic object not found in the scene!");
+            }
             timer.StopTimer();
             // Kích hoạt trạng thái hút nhanh
             ExpItem.isFastAttractMode = true;

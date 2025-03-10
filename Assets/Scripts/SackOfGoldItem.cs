@@ -50,6 +50,7 @@ public class SackOfGoldItem : MonoBehaviour
             if (coinCounter != null)
             {
                 coinCounter.AddSackOfGold();
+                SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/CoinReceived"), 1f);
                 Destroy(gameObject);
             }
             else{

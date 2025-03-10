@@ -50,6 +50,7 @@ public class CoinItem : MonoBehaviour
             if (coinCounter != null)
             {
                 coinCounter.AddCoin();
+                SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/CoinReceived"), 1f);
                 Destroy(gameObject);
             }
             else{
