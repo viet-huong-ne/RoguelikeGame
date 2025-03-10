@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slash Weapon
   m_EditorClassIdentifier: 
   prefab: {fileID: 498643028509200113, guid: 06c427a815aee484ba63f33b41127f3e, type: 3}
-  damage: 20
+  damage: 25
   speed: 0
   cooldownDuration: 3
   pierce: 0

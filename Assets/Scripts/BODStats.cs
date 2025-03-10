@@ -73,6 +73,7 @@ public class BODStats : MonoBehaviour
 
     public void Die()
     {
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/BossDeath"), 1f);
         if (isDead) return; // Prevent multiple executions
         isDead = true;
         bodMovement.StopMovement();

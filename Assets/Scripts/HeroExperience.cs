@@ -60,6 +60,11 @@ public class HeroExperience : Singleton<HeroExperience>
         }
     }
 
+    public int GetHeroLevel()
+    {
+        return currentLevel;
+    }
+
     // Thêm EXP
     public void AddExperience(int amount)
     {

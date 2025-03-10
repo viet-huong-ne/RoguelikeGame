@@ -5,7 +5,8 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
 {
     [SerializeField] private GameObject skillSelectionPanelPrefab; // Prefab của Panel
     private GameObject skillSelectionPanelInstance;
-
+    [SerializeField]
+    private GameObject heroKnight;
     private bool isSkillSelectionActive = false;
 
     // Danh sách để theo dõi các kỹ năng đã chọn
@@ -111,12 +112,35 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
                 break;
 
             case SkillEffectType.Attack:
-                ApplyAttackEffect(skill);
+                ActivateSkill(skill);
                 break;
 
             case SkillEffectType.Speed:
                 ApplySpeedEffect(skill);
                 break;
+
+            case SkillEffectType.AttachObject:  // Gắn GameObject vào player
+                AttachObjectToPlayer(skill);
+                break;
+        }
+    }
+
+    private void AttachObjectToPlayer(SkillScriptableObject skill)
+    {
+        if (heroKnight != null && skill.objectToAttach != null)
+        {
+            // Instantiate object và gắn vào HeroKnight
+            GameObject obj = Instantiate(skill.objectToAttach, heroKnight.transform.position, Quaternion.identity);
+
+            // Gắn đối tượng vào HeroKnight
+            obj.transform.SetParent(heroKnight.transform);
+
+            // Có thể điều chỉnh vị trí đối tượng sao cho nó phù hợp với vị trí của HeroKnight, ví dụ như gắn lên người của hero
+            obj.transform.localPosition = Vector3.zero;  // Vị trí local của object so với HeroKnight (có thể thay đổi)
+        }
+        else
+        {
+            Debug.LogWarning("No HeroKnight or no object to attach in skill: " + skill.skillName);
         }
     }
 
@@ -199,9 +223,30 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         }
     }
 
-    private void ApplyAttackEffect(SkillScriptableObject skill)
+    void ActivateSkill(SkillScriptableObject skill)
     {
-        
+        // Giả sử SlashController, ShieldController, KnifeController được tham chiếu
+        SlashController slashController = FindObjectOfType<SlashController>();
+        GarlicController garlicController = FindObjectOfType<GarlicController>();
+        KnifeController knifeController = FindObjectOfType<KnifeController>();
+
+        // Kiểm tra TargetType và gọi phương thức thích hợp
+        if (skill.targetType == AttackTargetType.Slash && slashController != null)
+        {
+            slashController.ApplyEffect(skill);
+        }
+        else if (skill.targetType == AttackTargetType.Shield && garlicController != null)
+        {
+            garlicController.ApplyEffect(skill);
+        }
+        else if (skill.targetType == AttackTargetType.Knife && knifeController != null)
+        {
+            knifeController.ApplyEffect(skill);
+        }
+        else
+        {
+            Debug.LogWarning("No suitable controller found for the selected target type.");
+        }
     }
 
     private void ApplySpeedEffect(SkillScriptableObject skill)

@@ -26,6 +26,10 @@ public class KillCounter : MonoBehaviour
         enemyCountText.text = kills.ToString();
     }
 
+    public int GetKill(){
+        return kills;
+    }
+
     public void AddKill(){
         kills++;
     }

@@ -28,7 +28,38 @@ public class SkillManager : Singleton<SkillManager>
             float roll = Random.Range(0f, 1f);
             if (roll <= skill.probability)
             {
-                validSkills.Add(skill);
+                // Kiểm tra xem kỹ năng có liên quan đến TargetType là Slash, Garlic, hoặc Knife
+                if (skill.targetType == AttackTargetType.Slash)
+                {
+                    // Kiểm tra nếu SlashController đã được gắn vào HeroKnight
+                    HeroKnight heroKnight = FindObjectOfType<HeroKnight>();
+                    if (heroKnight != null && heroKnight.GetComponentInChildren<SlashController>() != null)
+                    {
+                        validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ
+                    }
+                }
+                else if (skill.targetType == AttackTargetType.Shield)
+                {
+                    // Kiểm tra nếu ShieldController đã được gắn vào HeroKnight
+                    HeroKnight heroKnight = FindObjectOfType<HeroKnight>();
+                    if (heroKnight != null && heroKnight.GetComponentInChildren<GarlicController>() != null)
+                    {
+                        validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ
+                    }
+                }
+                else if (skill.targetType == AttackTargetType.Knife)
+                {
+                    // Kiểm tra nếu KnifeController đã được gắn vào HeroKnight
+                    HeroKnight heroKnight = FindObjectOfType<HeroKnight>();
+                    if (heroKnight != null && heroKnight.GetComponentInChildren<KnifeController>() != null)
+                    {
+                        validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ
+                    }
+                }
+                else
+                {
+                    validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ nếu không có target type đặc biệt
+                }
             }
         }
 
@@ -41,8 +72,10 @@ public class SkillManager : Singleton<SkillManager>
             return selectedSkill;
         }
 
-        // Trả về null nếu không có kỹ năng nào hợp lệ
-        return null;
+        // Nếu không có kỹ năng nào hợp lệ, chọn một kỹ năng ngẫu nhiên từ toàn bộ danh sách
+        SkillScriptableObject fallbackSkill = skills[Random.Range(0, GetSkillCount())];
+        Debug.LogWarning($"No valid skill found. Fallback to skill {fallbackSkill.skillName}");
+        return fallbackSkill;
     }
 
     public int GetSkillCount()

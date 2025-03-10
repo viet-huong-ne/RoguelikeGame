@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2535826624540422019}
   - component: {fileID: 8452422268093919899}
-  - component: {fileID: 3912326014771935029}
   - component: {fileID: 2961705893570476611}
   - component: {fileID: 8010567806215482293}
   - component: {fileID: 8238048885201264348}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SlashAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,21 +81,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.25, y: 0.05}
   m_EdgeRadius: 0
---- !u!114 &3912326014771935029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498643028509200113}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14fee1a78dcc2d64c8169abfb217846d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  damageVariance: 2
-  owner: {fileID: 0}
 --- !u!212 &2961705893570476611
 SpriteRenderer:
   m_ObjectHideFlags: 0

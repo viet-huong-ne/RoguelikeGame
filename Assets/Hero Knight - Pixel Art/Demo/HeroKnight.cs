@@ -41,6 +41,10 @@ public class HeroKnight : Singleton<HeroKnight>
         }
     }
 
+    public void SetSpeed(float boostSpeed){
+        speed = boostSpeed;
+    }
+
     void FixedUpdate()
     {
         if (!canMove) return;  // Nếu không di chuyển, không xử lý input
