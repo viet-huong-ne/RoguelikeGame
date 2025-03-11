@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SkillSelectionManager : Singleton<SkillSelectionManager>
 {
-    [SerializeField] private GameObject skillSelectionPanelPrefab; // Prefab của Panel
+    [SerializeField] private GameObject skillSelectionPanelPrefab;
     private GameObject skillSelectionPanelInstance;
     [SerializeField]
     private GameObject heroKnight;
@@ -135,8 +135,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
             // Gắn đối tượng vào HeroKnight
             obj.transform.SetParent(heroKnight.transform);
 
-            // Có thể điều chỉnh vị trí đối tượng sao cho nó phù hợp với vị trí của HeroKnight, ví dụ như gắn lên người của hero
-            obj.transform.localPosition = Vector3.zero;  // Vị trí local của object so với HeroKnight (có thể thay đổi)
+            obj.transform.localPosition = Vector3.zero;
         }
         else
         {

@@ -15,6 +15,9 @@ public class FastFoot : MonoBehaviour
     private Rigidbody2D rb;  // Sử dụng Rigidbody2D để điều khiển vận tốc nếu HeroKnight sử dụng 2D
     private HeroKnight heroKnight;  // Tham chiếu đến HeroKnight để thay đổi tốc độ
 
+    // Tham chiếu đến script Cooldown để đồng bộ UI
+    public Cooldown cooldownUI;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  // Lấy Rigidbody2D của object
@@ -22,6 +25,17 @@ public class FastFoot : MonoBehaviour
 
         // Lấy tốc độ ban đầu từ HeroKnight
         currentSpeed = heroKnight.speed;
+
+        // Tìm và gán Cooldown script từ Canvas (nếu chưa gán trong Inspector)
+        if (cooldownUI == null)
+        {
+            // Tìm đối tượng Canvas chứa Cooldown và lấy tham chiếu đến script Cooldown
+            Canvas canvas = FindObjectOfType<Canvas>();
+            if (canvas != null)
+            {
+                cooldownUI = canvas.GetComponentInChildren<Cooldown>();
+            }
+        }
     }
 
     void Update()
@@ -66,7 +80,7 @@ public class FastFoot : MonoBehaviour
         currentSpeed = originalSpeed;
         heroKnight.SetSpeed(currentSpeed);  // Gán lại tốc độ ban đầu của HeroKnight
 
-        // Kích hoạt thời gian hồi chiêu
+        // Kích hoạt thời gian hồi chiêu và đồng bộ UI
         StartCoroutine(Cooldown());
 
         isBoosting = false;
@@ -75,6 +89,7 @@ public class FastFoot : MonoBehaviour
     private IEnumerator Cooldown()
     {
         isCooldown = true;  // Kích hoạt thời gian hồi chiêu
+        cooldownUI.StartCooldown(cooldownTime);  // Gọi phương thức từ Cooldown script để bắt đầu đếm thời gian UI
         yield return new WaitForSeconds(cooldownTime);  // Đợi đến khi hết thời gian hồi chiêu
         isCooldown = false;  // Kết thúc thời gian hồi chiêu
     }
