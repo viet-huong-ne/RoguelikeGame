@@ -18,6 +18,16 @@ public class HeroExperience : Singleton<HeroExperience>
     [SerializeField] private SkillSelectionManager skillSelectionManager;
     private void Start()
     {
+        if (knife != null)
+        {
+            knife.SetActive(false);
+        }
+
+        if (garlic != null)
+        {
+            garlic.SetActive(false);
+        }
+        
         // Instantiate thanh EXP và gắn nó vào Canvas
         if (experienceBarPrefab != null && canvas != null)
         {

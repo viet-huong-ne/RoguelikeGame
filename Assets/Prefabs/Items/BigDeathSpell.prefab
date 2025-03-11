@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 610879633078977353}
   - component: {fileID: 1254130512253107318}
   - component: {fileID: 4489353466078073978}
-  - component: {fileID: 3819784268202058711}
   - component: {fileID: 2111771596249211267}
+  - component: {fileID: 5535174876821335098}
+  - component: {fileID: 2158945986667795745}
   m_Layer: 0
   m_Name: BigDeathSpell
   m_TagString: Untagged
@@ -113,21 +114,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3819784268202058711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5656136835218325050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4abe55e6d42da8442a73041fa87bba7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 150
-  delayBeforeDamage: 2
-  animationDuration: 1
 --- !u!60 &2111771596249211267
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -181,3 +167,71 @@ PolygonCollider2D:
       - {x: 0.07950054, y: -0.2854538}
       - {x: 0.08521636, y: -0.21618952}
   m_UseDelaunayMesh: 0
+--- !u!114 &5535174876821335098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656136835218325050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 4
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.4
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 2, y: 2, z: 0}
+--- !u!114 &2158945986667795745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656136835218325050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519ba723020eadd41b3e7fb78011d4e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 150
+  delayBeforeDamage: 2
+  animationDuration: 1

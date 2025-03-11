@@ -61,7 +61,7 @@
                 }
 
             }
-
+            
             // Khởi tạo thanh máu đúng theo lượng máu ban đầu
             UpdateHealthBar();
         }
@@ -70,6 +70,10 @@
         {
             // Cập nhật thanh máu mỗi frame
             UpdateHealthBar();
+        }
+
+        public int GetCurrentHealth(){
+            return health;
         }
 
         private void UpdateHealthBar()
@@ -83,7 +87,6 @@
 
         public void TakeDamage(int amount)
         {
-            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Hurt"), 1f);
             if (amount < 0)
             {
                 throw new System.ArgumentOutOfRangeException("Cannot have negative damage");
@@ -94,8 +97,18 @@
             {
                 return;
             }
+            
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Hurt"), 1f);
 
             health -= amount;
+
+            // Gọi Die nếu máu <= 0
+            if (health <= 0)
+            {
+                health = 0; // Đảm bảo không để giá trị âm
+                Die();
+                return; // Thoát khỏi hàm sau khi chết
+            }
 
             // Kích hoạt hiệu ứng bị đánh
             if (spriteRenderer != null)
@@ -105,11 +118,6 @@
 
             // Cập nhật thanh máu ngay khi nhận sát thương
             UpdateHealthBar();
-
-            if (health <= 0)
-            {
-                Die();
-            }
         }
 
         public void Heal(int amount)
@@ -138,9 +146,11 @@
         {
             Debug.Log("I am dead!");
             SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/GameOver"), 1f);
-            slashController.ResetDamage();
-            garlicController.ResetDamage();
-            knifeController.ResetDamage();
+
+            slashController?.ResetDamage();
+            garlicController?.ResetDamage();
+            knifeController?.ResetDamage();
+
             isDead = true;
             timer.StopTimer();
 

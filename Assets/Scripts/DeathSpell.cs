@@ -12,6 +12,8 @@ public class DeathSpell : MonoBehaviour
 
     private void Start()
     {
+        
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/SummonSpell"), 1f);
         animator = GetComponent<Animator>();
     }
 

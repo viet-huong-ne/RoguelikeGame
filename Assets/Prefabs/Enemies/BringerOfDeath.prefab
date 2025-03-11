@@ -225,7 +225,8 @@ MonoBehaviour:
   currentHealth: 0
   currentDamage: 0
   damageEffectDuration: 0.2
-  killCounter: {fileID: 0}
+  killCounter: {fileID: 6762532489318787552, guid: 8152f4d1d5fc7b54297b5a71b773dd70,
+    type: 3}
   keyPrefab: {fileID: 3586792564736082944, guid: 05a0a84e0a4ce494abd866cdf3a30ed5,
     type: 3}
 --- !u!114 &5476171340426336683
@@ -254,7 +255,7 @@ MonoBehaviour:
   castBIGDeathSpellsCooldown: 30
   monsterSpawnInterval: 20
   spawnDistance: 2.5
-  player: {fileID: 0}
+  player: {fileID: 8778651562060787071, guid: 488b689740e9094419d23ac3d3f0f9b9, type: 3}
 --- !u!1 &3243412264508411672
 GameObject:
   m_ObjectHideFlags: 0

@@ -233,9 +233,11 @@ MonoBehaviour:
   experienceBarPrefab: {fileID: 1396483985542999309, guid: 1df66766d74b9d94eaf89b0d703881c5,
     type: 3}
   canvas: {fileID: 0}
+  knife: {fileID: 5222567351272673381}
+  garlic: {fileID: 1146150926299410603}
   currentLevel: 1
   currentExperience: 0
-  experienceToNextLevel: 60
+  experienceToNextLevel: 40
   skillSelectionManager: {fileID: 0}
 --- !u!212 &7456390042827147000
 SpriteRenderer:
@@ -353,7 +355,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.027169406, y: 0.58563364}
+  m_Offset: {x: -0.0991351, y: 0.53434014}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -363,7 +365,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5068015, y: 0.8355019}
+  m_Size: {x: 0.51787317, y: 0.9380889}
   m_EdgeRadius: 0
 --- !u!95 &6145173538674276104
 Animator:

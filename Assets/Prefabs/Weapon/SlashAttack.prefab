@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2961705893570476611}
   - component: {fileID: 8010567806215482293}
   - component: {fileID: 8238048885201264348}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SlashAttack
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

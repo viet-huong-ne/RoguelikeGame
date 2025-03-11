@@ -223,7 +223,6 @@ public class BODCast : MonoBehaviour
             {
                 // Instantiate the monsterPrefab
                 Instantiate(monsterPrefab, spawnPosition, Quaternion.identity);
-                SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/SummonSpell"), 1f);
                 Debug.Log("Spawned a monster at: " + spawnPosition);
             }
             else
