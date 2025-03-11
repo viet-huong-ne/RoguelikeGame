@@ -108,11 +108,6 @@ public class HeroKnight : Singleton<HeroKnight>
 
         facingRight = !facingRight;
     }
-    public void SetSpeed(float newSpeed)
-    {
-        speed = newSpeed;
-    }
-
     public void ResetSpeed()
     {
         speed = currentSpeed;

@@ -50804,7 +50804,7 @@ Transform:
   m_GameObject: {fileID: 1686459922}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6283374, y: 4.232357, z: -10.021206}
+  m_LocalPosition: {x: -2.5416627, y: 4.2123566, z: -10.021206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -51116,7 +51116,7 @@ Transform:
   m_GameObject: {fileID: 1754007503}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6283374, y: 4.232357, z: -10.021206}
+  m_LocalPosition: {x: -2.5416627, y: 4.2123566, z: -10.021206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52231,12 +52231,12 @@ PrefabInstance:
     - target: {fileID: 10353633891668302, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.96
+      value: -1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10353633891668302, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.96
+      value: 1.94
       objectReference: {fileID: 0}
     - target: {fileID: 10353633891668302, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
@@ -52283,6 +52283,26 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 939671115}
+    - target: {fileID: 6330049294347835726, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.51787317
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330049294347835726, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.9380889
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330049294347835726, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0991351
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330049294347835726, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.53434014
+      objectReference: {fileID: 0}
     - target: {fileID: 7734986830372944690, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
       propertyPath: timer

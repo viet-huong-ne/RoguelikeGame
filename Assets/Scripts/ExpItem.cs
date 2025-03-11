@@ -43,7 +43,7 @@ public class ExpItem : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         // Kiểm tra nếu va chạm với người chơi
         if (other.CompareTag("Player"))
