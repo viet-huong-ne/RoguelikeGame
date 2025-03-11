@@ -83,6 +83,7 @@
 
         public void TakeDamage(int amount)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Hurt"), 1f);
             if (amount < 0)
             {
                 throw new System.ArgumentOutOfRangeException("Cannot have negative damage");
@@ -136,6 +137,7 @@
         private void Die()
         {
             Debug.Log("I am dead!");
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/GameOver"), 1f);
             slashController.ResetDamage();
             garlicController.ResetDamage();
             knifeController.ResetDamage();

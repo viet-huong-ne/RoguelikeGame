@@ -7,6 +7,8 @@ public class SkillManager : Singleton<SkillManager>
 
     private SkillScriptableObject[] skills;
 
+    private List<SkillScriptableObject> attachedSkills = new List<SkillScriptableObject>();
+
     private void Awake()
     {
         Instance = this;
@@ -17,6 +19,26 @@ public class SkillManager : Singleton<SkillManager>
         Debug.Log($"Loaded {skills.Length} skills from Resources/Skills.");
     }
 
+    // Kiểm tra nếu kỹ năng đã được gắn
+    public bool IsSkillAttached(SkillScriptableObject skill)
+    {
+        return attachedSkills.Contains(skill);
+    }
+
+    // Thêm kỹ năng vào danh sách attachedSkills
+    public void AddAttachedSkill(SkillScriptableObject skill)
+    {
+        if (!attachedSkills.Contains(skill))
+        {
+            attachedSkills.Add(skill);
+            Debug.Log($"Skill {skill.skillName} đã được thêm vào danh sách attachedSkills.");
+        }
+        else
+        {
+            Debug.LogWarning($"Skill {skill.skillName} đã tồn tại trong danh sách attachedSkills.");
+        }
+    }
+
     // Lấy một skill ngẫu nhiên và kiểm tra tỉ lệ xác suất
     public SkillScriptableObject GetSkill()
     {
@@ -25,6 +47,12 @@ public class SkillManager : Singleton<SkillManager>
 
         foreach (SkillScriptableObject skill in skills)
         {
+            // Bỏ qua kỹ năng nếu nó đã được gắn
+            if (IsSkillAttached(skill))
+            {
+                continue;
+            }
+
             float roll = Random.Range(0f, 1f);
             if (roll <= skill.probability)
             {

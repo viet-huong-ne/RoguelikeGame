@@ -82,6 +82,8 @@ public class HeroExperience : Singleton<HeroExperience>
     // Xử lý lên cấp
     private void LevelUp()
     {
+        
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/LevelUp"), 1f);
         currentLevel++; // Tăng cấp
         currentExperience -= experienceToNextLevel; // Trừ EXP đã tiêu tốn
 

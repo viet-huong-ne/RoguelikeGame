@@ -13,6 +13,7 @@ public class BODCast : MonoBehaviour
     [SerializeField] private float castDeathSpellsCooldown = 7f;
     [SerializeField] private float castBIGDeathSpellsCooldown = 30f;
     [SerializeField] private float monsterSpawnInterval = 20f; // Interval for spawning monsters
+    [SerializeField] private float spawnDistance = 2.5f;
 
     private Animator animator;
     private bool isCasting = false;
@@ -204,8 +205,6 @@ public class BODCast : MonoBehaviour
             Debug.LogWarning("Monster prefab is not assigned.");
             return;
         }
-
-        float spawnDistance = 4f;
 
         Vector3[] spawnOffsets = new Vector3[]
         {

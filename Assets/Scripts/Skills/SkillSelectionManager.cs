@@ -8,6 +8,11 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
     [SerializeField]
     private GameObject heroKnight;
     private bool isSkillSelectionActive = false;
+    // Tham chiếu tới Canvas
+    private Canvas canvas;
+
+    // Tham chiếu tới script Cooldown
+    private Cooldown cooldownUI;
 
     // Danh sách để theo dõi các kỹ năng đã chọn
     private List<SkillScriptableObject> selectedSkills = new List<SkillScriptableObject>();
@@ -127,15 +132,54 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
 
     private void AttachObjectToPlayer(SkillScriptableObject skill)
     {
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Attach"), 1f);
+
+        // Kiểm tra nếu chưa gán canvas
+        if (canvas == null)
+        {
+            canvas = FindObjectOfType<Canvas>();
+            if (canvas == null)
+            {
+                Debug.LogError("Canvas không tồn tại trong scene!");
+                return;
+            }
+        }
+
+        // Kiểm tra nếu chưa gán CooldownUI
+        if (cooldownUI == null)
+        {
+            cooldownUI = canvas.GetComponentInChildren<Cooldown>();
+            if (cooldownUI == null)
+            {
+                Debug.LogError("CooldownUI không tồn tại trong Canvas!");
+                return;
+            }
+        }
+
+        // Kiểm tra HeroKnight và object của skill
         if (heroKnight != null && skill.objectToAttach != null)
         {
+            // Kiểm tra nếu kỹ năng đã được gắn
+            if (SkillManager.Instance.IsSkillAttached(skill))
+            {
+                Debug.LogWarning($"Skill {skill.skillName} đã được gắn. Không thể gắn lại.");
+                return;
+            }
+
             // Instantiate object và gắn vào HeroKnight
             GameObject obj = Instantiate(skill.objectToAttach, heroKnight.transform.position, Quaternion.identity);
 
             // Gắn đối tượng vào HeroKnight
             obj.transform.SetParent(heroKnight.transform);
-
             obj.transform.localPosition = Vector3.zero;
+
+            // Thêm kỹ năng vào danh sách attachedSkills
+            SkillManager.Instance.AddAttachedSkill(skill);
+
+            // Hiển thị icon cooldown
+            cooldownUI.ShowCooldownIcon(canvas.transform);
+
+            Debug.Log($"Skill {skill.skillName} đã được gắn thành công vào HeroKnight.");
         }
         else
         {
@@ -148,6 +192,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         // Kiểm tra hướng tác động (tăng hay giảm)
         if (skill.effectDirection == EffectDirection.Increase)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Heal"), 1f);
             // Kiểm tra giá trị là Flat hay Percentage
             if (skill.valueType == ValueType.Flat)
             {
@@ -161,6 +206,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         }
         else if (skill.effectDirection == EffectDirection.Decrease)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Hurt"), 1f);
             // Kiểm tra giá trị là Flat hay Percentage
             if (skill.valueType == ValueType.Flat)
             {
@@ -179,6 +225,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         // Tăng/giảm MaxHP
         if (skill.effectDirection == EffectDirection.Increase)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/IncreaseMaxHealth"), 1f);
             float previousMaxHealth = HeroHealth.Instance.MAX_HEALTH; // Lưu MaxHP trước khi thay đổi
 
             if (skill.valueType == ValueType.Flat)
@@ -205,6 +252,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         }
         else if (skill.effectDirection == EffectDirection.Decrease)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/DecreaseMaxHealth"), 1f);
             if (skill.valueType == ValueType.Flat)
             {
                 HeroHealth.Instance.MAX_HEALTH -= (int)skill.value; // Giảm MaxHP cố định
@@ -252,6 +300,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
     {
         if (skill.effectDirection == EffectDirection.Increase)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/SpeedUp"), 1f);
             // Tăng tốc độ (cố định hay phần trăm)
             if (skill.valueType == ValueType.Flat)
             {
@@ -264,6 +313,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         }
         else if (skill.effectDirection == EffectDirection.Decrease)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/SlowDown"), 1f);
             if (skill.valueType == ValueType.Flat)
             {
                 HeroKnight.Instance.speed -= skill.value;

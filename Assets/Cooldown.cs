@@ -3,28 +3,34 @@ using UnityEngine.UI;
 
 public class Cooldown : MonoBehaviour
 {
-    [SerializeField]
     private Image abilityImage;
+    private GameObject currentCooldownIcon;
+
+    [SerializeField]
+    private GameObject dashIconPrefab; // Prefab cho background
+    [SerializeField]
+    private GameObject dashIconCDPrefab; // Prefab cho filled icon
+
     private float cooldownTime;
     private float currentCooldown;
     private bool isCooldown;
 
-    public KeyCode ability;
-
     void Start()
     {
-        abilityImage.fillAmount = 0;
+        abilityImage = null; // Reset để đảm bảo không dùng dữ liệu cũ
+
+        // Nếu cooldown icon đã tồn tại, đặt fillAmount về 0
+        if (abilityImage != null)
+            abilityImage.fillAmount = 0;
     }
 
     void Update()
     {
         if (isCooldown)
         {
-            // Làm đầy thanh cooldown UI dựa trên thời gian trôi qua
             currentCooldown -= Time.deltaTime;
-            abilityImage.fillAmount = Mathf.Clamp01(currentCooldown / cooldownTime);  // Đảm bảo giá trị fillAmount từ 0 đến 1
+            abilityImage.fillAmount = Mathf.Clamp01(currentCooldown / cooldownTime);
 
-            // Khi cooldown hết, reset trạng thái UI
             if (currentCooldown <= 0)
             {
                 isCooldown = false;
@@ -33,11 +39,37 @@ public class Cooldown : MonoBehaviour
         }
     }
 
-    // Phương thức này được gọi từ FastFoot script để bắt đầu cooldown
     public void StartCooldown(float cooldownDuration)
     {
+        // Đặt fillAmount về 0 trước khi bắt đầu cooldown
+        if (abilityImage != null)
+            abilityImage.fillAmount = 0;
+
         cooldownTime = cooldownDuration;
         currentCooldown = cooldownTime;
-        isCooldown = true;  // Bắt đầu thời gian cooldown
+        isCooldown = true;
+    }
+
+    public void ShowCooldownIcon(Transform parentTransform)
+    {
+        if (dashIconPrefab != null && dashIconCDPrefab != null)
+        {
+            // Tạo icon background
+            GameObject dashIcon = Instantiate(dashIconPrefab, parentTransform);
+
+            // Tạo icon filled và gắn nó vào icon background
+            currentCooldownIcon = Instantiate(dashIconCDPrefab, parentTransform);
+
+            // Gắn Image component từ prefab để quản lý cooldown
+            abilityImage = currentCooldownIcon.GetComponent<Image>();
+
+            // Đặt fillAmount về 0 khi khởi tạo
+            if (abilityImage != null)
+                abilityImage.fillAmount = 0;
+        }
+        else
+        {
+            Debug.LogError("DashIconPrefab hoặc DashIconCDPrefab chưa được gán!");
+        }
     }
 }

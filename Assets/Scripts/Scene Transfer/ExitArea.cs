@@ -11,6 +11,7 @@ public class ExitArea : MonoBehaviour
     // private bool isTransitioning = false;
     private void OnTriggerEnter2D(Collider2D other)
     {
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Teleport"), 1f);
         Debug.Log("Va chạm với: " + other.gameObject.name + " | Layer: " + other.gameObject.layer);
         HeroKnight playerController = other.gameObject.GetComponent<HeroKnight>();
         Debug.Log("nhân vật:" + playerController);

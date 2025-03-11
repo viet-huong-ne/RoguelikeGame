@@ -77,7 +77,7 @@ public class BODStats : MonoBehaviour
         if (isDead) return; // Prevent multiple executions
         isDead = true;
         bodMovement.StopMovement();
-        enemyData.moveSpeed = 0;
+        currentMoveSpeed = 0;
         animator.SetTrigger("Death");
         float deathAnimationTime = animator.GetCurrentAnimatorStateInfo(0).length;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();

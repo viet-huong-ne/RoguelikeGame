@@ -17,6 +17,8 @@ public class GarlicController : WeaponController
 
     public void ApplyEffect(SkillScriptableObject skill)
     {
+        
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/ShieldUp"), 1f);
         // Chỉ thay đổi giá trị trong game, không thay đổi ScriptableObject
         if (skill.effectDirection == EffectDirection.Increase)
         {
@@ -31,6 +33,7 @@ public class GarlicController : WeaponController
         }
         else if (skill.effectDirection == EffectDirection.Decrease)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/ShieldDrop"), 1f);
             if (skill.valueType == ValueType.Flat)
             {
                 weaponData.damage -= skill.value;

@@ -19,6 +19,7 @@ public class SlashController : WeaponController
         // Chỉ thay đổi giá trị trong game, không thay đổi ScriptableObject
         if (skill.effectDirection == EffectDirection.Increase)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/DrawSword"), 1f);
             if (skill.valueType == ValueType.Flat)
             {
                 weaponData.damage += skill.value;
@@ -30,6 +31,7 @@ public class SlashController : WeaponController
         }
         else if (skill.effectDirection == EffectDirection.Decrease)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/SwordDrop"), 1f);
             if (skill.valueType == ValueType.Flat)
             {
                 weaponData.damage -= skill.value;
@@ -53,6 +55,7 @@ public class SlashController : WeaponController
 
     protected override void Attack()
     {
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Slash"), 1f);
         base.Attack();
         Vector3 attackDirection = pm.lastMovedVector.normalized;
         GameObject spawnSlash = Instantiate(weaponData.Prefab);

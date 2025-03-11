@@ -20,6 +20,7 @@ public class KnifeController : WeaponController
         // Chỉ thay đổi giá trị trong game, không thay đổi ScriptableObject
         if (skill.effectDirection == EffectDirection.Increase)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/SharpenKnife"), 1f);
             if (skill.valueType == ValueType.Flat)
             {
                 weaponData.damage += skill.value;
@@ -31,6 +32,7 @@ public class KnifeController : WeaponController
         }
         else if (skill.effectDirection == EffectDirection.Decrease)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/KnifeDrop"), 1f);
             if (skill.valueType == ValueType.Flat)
             {
                 weaponData.damage -= skill.value;

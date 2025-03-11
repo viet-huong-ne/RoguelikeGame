@@ -17,7 +17,7 @@ public class FastFoot : MonoBehaviour
 
     // Tham chiếu đến script Cooldown để đồng bộ UI
     public Cooldown cooldownUI;
-
+    private AudioClip dashSoundEffect; // Biến lưu âm thanh Dash
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  // Lấy Rigidbody2D của object
@@ -36,6 +36,12 @@ public class FastFoot : MonoBehaviour
                 cooldownUI = canvas.GetComponentInChildren<Cooldown>();
             }
         }
+        // Tải trước âm thanh Dash
+        dashSoundEffect = Resources.Load<AudioClip>("SoundEffects/Dash");
+        if (dashSoundEffect == null)
+        {
+            Debug.LogError("Không tìm thấy âm thanh Dash trong Resources/SoundEffects!");
+        }
     }
 
     void Update()
@@ -45,6 +51,8 @@ public class FastFoot : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Dash"), 1f);
             // Khi ấn phím Space và chưa kích hoạt tăng tốc và không trong cooldown
             StartCoroutine(BoostSpeed());
         }

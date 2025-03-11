@@ -21,4 +21,4 @@ MonoBehaviour:
   effectDirection: 0
   targetType: 1
   objectToAttach: {fileID: 0}
-  probability: 0.1
+  probability: 0.05
