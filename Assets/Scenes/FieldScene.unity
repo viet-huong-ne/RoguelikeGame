@@ -1743,6 +1743,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &619266924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5222567351272673381, guid: 488b689740e9094419d23ac3d3f0f9b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 811244261931648245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &626114389
 GameObject:
   m_ObjectHideFlags: 0
@@ -48936,6 +48942,12 @@ Transform:
   - {fileID: 833799587}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1121425525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1146150926299410603, guid: 488b689740e9094419d23ac3d3f0f9b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 811244261931648245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1149699720
 GameObject:
   m_ObjectHideFlags: 0
@@ -52315,9 +52327,19 @@ PrefabInstance:
       objectReference: {fileID: 163713440}
     - target: {fileID: 8702340591290088047, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
+      propertyPath: knife
+      value: 
+      objectReference: {fileID: 619266924}
+    - target: {fileID: 8702340591290088047, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 163713440}
+    - target: {fileID: 8702340591290088047, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
+      propertyPath: garlic
+      value: 
+      objectReference: {fileID: 1121425525}
     - target: {fileID: 8702340591290088047, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
       propertyPath: skillSelectionManager
