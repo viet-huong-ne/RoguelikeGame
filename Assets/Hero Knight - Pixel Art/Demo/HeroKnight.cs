@@ -27,19 +27,27 @@ public class HeroKnight : Singleton<HeroKnight>
         lastMovedVector = new Vector2(1, 0f);
         animator = GetComponent<Animator>();
 
-        // Kiểm tra và cài đặt Tilemap để lấy các giới hạn của nó
-        if (tilemap != null)
-        {
-            // Lấy giới hạn của Tilemap từ bounding box
-            Bounds tilemapBounds = tilemap.localBounds;
-            minBounds = tilemapBounds.min;
-            maxBounds = tilemapBounds.max;
-        }
-        else
-        {
-            Debug.LogError("Tilemap reference is missing!");
-        }
-    }
+		// Kiểm tra và cài đặt Tilemap để lấy các giới hạn của nó
+		if (tilemap != null)
+		{
+			// Convert tilemap cell bounds to world space
+			BoundsInt cellBounds = tilemap.cellBounds;
+			Vector3Int minCell = cellBounds.min;
+			Vector3Int maxCell = cellBounds.max;
+
+			// Convert tile positions to world positions
+			Vector3 minWorld = tilemap.CellToWorld(minCell);
+			Vector3 maxWorld = tilemap.CellToWorld(maxCell);
+
+			// Adjust bounds slightly to keep the player inside
+			minBounds = new Vector2(minWorld.x, minWorld.y);
+			maxBounds = new Vector2(maxWorld.x, maxWorld.y);
+		}
+		else
+		{
+			Debug.LogError("Tilemap reference is missing!");
+		}
+	}
 
     void FixedUpdate()
     {
