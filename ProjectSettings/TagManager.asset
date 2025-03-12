@@ -18,6 +18,8 @@ TagManager:
   - Object
   - BringerOfDeath
   - Attack
+  - BackgroundMusic
+  - SoundEffect
   layers:
   - Default
   - TransparentFX

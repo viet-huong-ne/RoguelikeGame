@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class SkillManager : Singleton<SkillManager>
+public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
 
@@ -11,7 +11,16 @@ public class SkillManager : Singleton<SkillManager>
 
     private void Awake()
     {
-        Instance = this;
+        // Singleton pattern
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persist across scenes
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         // Load tất cả SkillScriptableObjects từ Resources/Skills
         skills = Resources.LoadAll<SkillScriptableObject>("Skills");
@@ -57,36 +66,40 @@ public class SkillManager : Singleton<SkillManager>
             if (roll <= skill.probability)
             {
                 // Kiểm tra xem kỹ năng có liên quan đến TargetType là Slash, Garlic, hoặc Knife
-                if (skill.targetType == AttackTargetType.Slash)
+                HeroKnight heroKnight = FindObjectOfType<HeroKnight>(); // Tìm HeroKnight một lần để tránh lặp lại
+                if (heroKnight != null)
                 {
-                    // Kiểm tra nếu SlashController đã được gắn vào HeroKnight
-                    HeroKnight heroKnight = FindObjectOfType<HeroKnight>();
-                    if (heroKnight != null && heroKnight.GetComponentInChildren<SlashController>() != null)
+                    if (skill.targetType == AttackTargetType.Slash)
                     {
-                        validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ
+                        // Kiểm tra nếu SlashController đã được gắn và đang active
+                        SlashController slashController = heroKnight.GetComponentInChildren<SlashController>();
+                        if (slashController != null && slashController.gameObject.activeInHierarchy)
+                        {
+                            validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ
+                        }
                     }
-                }
-                else if (skill.targetType == AttackTargetType.Shield)
-                {
-                    // Kiểm tra nếu ShieldController đã được gắn vào HeroKnight
-                    HeroKnight heroKnight = FindObjectOfType<HeroKnight>();
-                    if (heroKnight != null && heroKnight.GetComponentInChildren<GarlicController>() != null)
+                    else if (skill.targetType == AttackTargetType.Shield)
                     {
-                        validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ
+                        // Kiểm tra nếu GarlicController đã được gắn và đang active
+                        GarlicController garlicController = heroKnight.GetComponentInChildren<GarlicController>();
+                        if (garlicController != null && garlicController.gameObject.activeInHierarchy)
+                        {
+                            validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ
+                        }
                     }
-                }
-                else if (skill.targetType == AttackTargetType.Knife)
-                {
-                    // Kiểm tra nếu KnifeController đã được gắn vào HeroKnight
-                    HeroKnight heroKnight = FindObjectOfType<HeroKnight>();
-                    if (heroKnight != null && heroKnight.GetComponentInChildren<KnifeController>() != null)
+                    else if (skill.targetType == AttackTargetType.Knife)
                     {
-                        validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ
+                        // Kiểm tra nếu KnifeController đã được gắn và đang active
+                        KnifeController knifeController = heroKnight.GetComponentInChildren<KnifeController>();
+                        if (knifeController != null && knifeController.gameObject.activeInHierarchy)
+                        {
+                            validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ
+                        }
                     }
-                }
-                else
-                {
-                    validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ nếu không có target type đặc biệt
+                    else
+                    {
+                        validSkills.Add(skill); // Thêm kỹ năng vào danh sách hợp lệ nếu không có target type đặc biệt
+                    }
                 }
             }
         }

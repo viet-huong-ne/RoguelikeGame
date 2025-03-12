@@ -17,7 +17,7 @@ public class BODCast : MonoBehaviour
 
     private Animator animator;
     private bool isCasting = false;
-    public GameObject player;
+    private Transform player;
 
     private BODMovement bodMovement;
 
@@ -25,13 +25,14 @@ public class BODCast : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        if (player == null)
+        HeroKnight heroKnight = FindObjectOfType<HeroKnight>();
+        if (heroKnight != null)
         {
-            player = GameObject.FindWithTag("Player");
+            player = heroKnight.transform;
         }
         else
         {
-            Debug.LogError("Player not found!");
+            Debug.LogError("No HeroKnight found in the scene.");
         }
 
         bodMovement = GetComponent<BODMovement>();
@@ -182,14 +183,12 @@ public class BODCast : MonoBehaviour
     {
         Vector3 spawnPosition = player.transform.position + new Vector3(0, spawnOffsetY, 0);
         Instantiate(deathSpellPrefab, spawnPosition, Quaternion.identity);
-        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/DeathSpell"), 1f);
     }
 
     void SpawnBIGDeathSpell()
     {
         Vector3 spawnPosition = player.transform.position + new Vector3(0, spawnOffsetY + 3, 0);
         Instantiate(bigDeathSpellPrefab, spawnPosition, Quaternion.identity);
-        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Kirin"), 1f);
     }
 
     void SummonMonstesAroundPlayer()
@@ -205,7 +204,7 @@ public class BODCast : MonoBehaviour
             Debug.LogWarning("Monster prefab is not assigned.");
             return;
         }
-
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/SummonSpell"), 1f);
         Vector3[] spawnOffsets = new Vector3[]
         {
             new Vector3(spawnDistance, spawnDistance, 0),    // Chéo trên phải

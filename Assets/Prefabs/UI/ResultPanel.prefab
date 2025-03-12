@@ -287,7 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8a313d32817a249a4ca1ac5f6f2c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCounter: {fileID: 0}
 --- !u!1 &2729629383122862669
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5068337139d4b4292248526439418a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killCounter: {fileID: 0}
 --- !u!1 &2794823516284257177
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +996,7 @@ GameObject:
   - component: {fileID: 1909211611550485357}
   - component: {fileID: 3923039462598354916}
   - component: {fileID: 5016714342998398752}
+  - component: {fileID: -3099295754011287490}
   m_Layer: 5
   m_Name: ResultPanel
   m_TagString: Untagged
@@ -1072,6 +1071,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-3099295754011287490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675502009916861059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d3cd978e906d74583af7060dd3649a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5437681569096347607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,7 +1521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ff917c8ec20bb4e9659bc0483b7e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerPrefab: {fileID: 0}
 --- !u!1 &7443068752716812539
 GameObject:
   m_ObjectHideFlags: 0

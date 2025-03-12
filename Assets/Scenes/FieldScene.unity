@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 83997347}
   m_Layer: 0
   m_Name: BackgroundMusicManager
-  m_TagString: Untagged
+  m_TagString: BackgroundMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,6 +295,13 @@ MonoBehaviour:
   mapWidth: 10
   mapHeight: 10
   maxSpawnInterval: 20
+  minSpawnInterval: 5
+  tilemapLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  maxRetries: 10
+  spawnRadius: 0.5
+  spawnPositions: []
 --- !u!4 &138786599
 Transform:
   m_ObjectHideFlags: 0
@@ -4078,7 +4085,7 @@ MonoBehaviour:
   initialSkeletons: 5
   initialMonsterInterval: 5
   intervalDecreaseRate: 0.1
-  spawnRadius: 25
+  spawnRadius: 30
   timer: {fileID: 1545851627}
   decisionTime: 90
   theLastDropRate: 0.2
@@ -48996,7 +49003,7 @@ GameObject:
   - component: {fileID: 1149704594}
   m_Layer: 0
   m_Name: SoundEffectManager
-  m_TagString: Untagged
+  m_TagString: SoundEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52198,7 +52205,7 @@ PrefabInstance:
     - target: {fileID: 7734986830372944690, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
       propertyPath: health
-      value: 10
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8702340591290088047, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}

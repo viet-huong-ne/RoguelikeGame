@@ -95,7 +95,6 @@ public class HeroExperience : Singleton<HeroExperience>
     // Xử lý lên cấp
     private void LevelUp()
     {
-        
         SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/LevelUp"), 1f);
         currentLevel++; // Tăng cấp
         currentExperience -= experienceToNextLevel; // Trừ EXP đã tiêu tốn
@@ -111,7 +110,24 @@ public class HeroExperience : Singleton<HeroExperience>
     }
     void UpdateWeapons()
     {
-        knife.SetActive(currentLevel >= 4);   // Mở khóa Knife khi cấp 4
-        garlic.SetActive(currentLevel >= 8);  // Mở khóa Garlic khi cấp 8
+        bool knifeShouldBeActive = currentLevel >= 4;
+        if (knife.activeSelf != knifeShouldBeActive)
+        {
+            knife.SetActive(knifeShouldBeActive);
+            if (knifeShouldBeActive)
+            {
+                SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Attach"), 1f);
+            }
+        }
+
+        bool garlicShouldBeActive = currentLevel >= 8;
+        if (garlic.activeSelf != garlicShouldBeActive)
+        {
+            garlic.SetActive(garlicShouldBeActive);
+            if (garlicShouldBeActive)
+            {
+                SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Attach"), 1f);
+            }
+        }
     }
 }

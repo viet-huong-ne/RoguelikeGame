@@ -22,4 +22,4 @@ MonoBehaviour:
   targetType: 3
   objectToAttach: {fileID: 6883017358652919715, guid: 98a8ee30dab695843a246bfdf1608515,
     type: 3}
-  probability: 1
+  probability: 0.4

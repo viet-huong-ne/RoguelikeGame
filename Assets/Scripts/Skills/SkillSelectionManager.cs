@@ -28,6 +28,9 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         // Tạm dừng game
         Time.timeScale = 0f;
 
+        // Tạm dừng tất cả âm thanh
+        PauseAllSoundEffects();
+
         // Tạo panel chọn kỹ năng
         skillSelectionPanelInstance = Instantiate(skillSelectionPanelPrefab, FindObjectOfType<Canvas>().transform);
         isSkillSelectionActive = true;
@@ -94,6 +97,8 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         ApplySkillEffect(skill);
 
         HideSkillSelectionPanel();
+        
+        ResumeAllSoundEffects();
     }
 
     public void ApplySkillEffect(SkillScriptableObject skill)
@@ -321,6 +326,41 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
             else if (skill.valueType == ValueType.Percentage)
             {
                 HeroKnight.Instance.speed -= HeroKnight.Instance.speed * (skill.value / 100f); // Giảm tốc độ theo phần trăm
+            }
+        }
+    }
+
+    // Tạm dừng tất cả hiệu ứng âm thanh, trừ nhạc nền
+    private void PauseAllSoundEffects()
+    {
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+
+        foreach (AudioSource audioSource in allAudioSources)
+        {
+            // Giả sử nhạc nền được gắn tag "BackgroundMusic"
+            if (audioSource.CompareTag("BackgroundMusic"))
+            {
+                continue; // Bỏ qua AudioSource của nhạc nền
+            }
+
+            if (audioSource.isPlaying) // Chỉ tạm dừng các AudioSource đang phát
+            {
+                audioSource.Pause();
+                Debug.Log($"Paused sound effect: {audioSource.clip?.name ?? "Unnamed Clip"}");
+            }
+        }
+    }
+
+    private void ResumeAllSoundEffects()
+    {
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+
+        foreach (AudioSource audioSource in allAudioSources)
+        {
+            if (!audioSource.isPlaying) // Chỉ tiếp tục các AudioSource bị tạm dừng
+            {
+                audioSource.UnPause();
+                Debug.Log($"Resumed sound effect: {audioSource.clip?.name ?? "Unnamed Clip"}");
             }
         }
     }

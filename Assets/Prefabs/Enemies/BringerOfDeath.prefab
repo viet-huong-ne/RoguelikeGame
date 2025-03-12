@@ -255,7 +255,6 @@ MonoBehaviour:
   castBIGDeathSpellsCooldown: 30
   monsterSpawnInterval: 20
   spawnDistance: 2.5
-  player: {fileID: 8778651562060787071, guid: 488b689740e9094419d23ac3d3f0f9b9, type: 3}
 --- !u!1 &3243412264508411672
 GameObject:
   m_ObjectHideFlags: 0
