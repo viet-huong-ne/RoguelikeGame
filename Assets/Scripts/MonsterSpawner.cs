@@ -107,7 +107,6 @@ public class MonsterSpawner : MonoBehaviour
     {
         Vector3 spawnPosition = GetRandomSpawnPosition();
         GameObject monster = Instantiate(prefab, spawnPosition, Quaternion.identity);
-        monster.GetComponent<EnemyMovement>().SetPlayer(player);
     }
 
     public void OnKeyPickedUp()

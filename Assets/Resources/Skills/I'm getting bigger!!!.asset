@@ -19,4 +19,6 @@ MonoBehaviour:
   value: 20
   valueType: 1
   effectDirection: 0
-  probability: 0.4
+  targetType: 3
+  objectToAttach: {fileID: 0}
+  probability: 0.2

@@ -43,7 +43,7 @@ public class ExpItem : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         // Kiểm tra nếu va chạm với người chơi
         if (other.CompareTag("Player"))
@@ -51,6 +51,8 @@ public class ExpItem : MonoBehaviour
             HeroExperience heroExp = other.GetComponent<HeroExperience>();
             if (heroExp != null)
             {
+                
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/ExperienceReceived"), 1f);
                 heroExp.AddExperience(10); // Thêm EXP
                 Destroy(gameObject);      // Xóa viên EXP
             }

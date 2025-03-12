@@ -1,12 +1,14 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class HeroExperience : Singleton<HeroExperience>
 {
     [SerializeField] private GameObject experienceBarPrefab; // Prefab của thanh EXP
     [SerializeField] private Canvas canvas; // Canvas để chứa thanh EXP
-    [SerializeField] private HeroAttack heroAttack;    // Reference to the HeroAttack component
+    [SerializeField] private GameObject knife;
+    [SerializeField] private GameObject garlic;
     private TMP_Text levelText;
     private GameObject experienceBarInstance; // Instance của thanh EXP
     private Image experienceBarImage; // Biến lưu trữ Image của thanh "Fill"
@@ -16,6 +18,16 @@ public class HeroExperience : Singleton<HeroExperience>
     [SerializeField] private SkillSelectionManager skillSelectionManager;
     private void Start()
     {
+        if (knife != null)
+        {
+            knife.SetActive(false);
+        }
+
+        if (garlic != null)
+        {
+            garlic.SetActive(false);
+        }
+        
         // Instantiate thanh EXP và gắn nó vào Canvas
         if (experienceBarPrefab != null && canvas != null)
         {
@@ -65,6 +77,11 @@ public class HeroExperience : Singleton<HeroExperience>
         }
     }
 
+    public int GetHeroLevel()
+    {
+        return currentLevel;
+    }
+
     // Thêm EXP
     public void AddExperience(int amount)
     {
@@ -82,6 +99,7 @@ public class HeroExperience : Singleton<HeroExperience>
     // Xử lý lên cấp
     private void LevelUp()
     {
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/LevelUp"), 1f);
         currentLevel++; // Tăng cấp
         currentExperience -= experienceToNextLevel; // Trừ EXP đã tiêu tốn
 
@@ -90,12 +108,34 @@ public class HeroExperience : Singleton<HeroExperience>
 
         // Hiển thị bảng chọn kỹ năng
         skillSelectionManager.ShowSkillSelectionPanel();
-
+        UpdateWeapons();
         // Cập nhật hiển thị Level
         UpdateLevelText();
         if (heroAttack != null)
         {
             heroAttack.LevelUp();
+        }
+    }
+    void UpdateWeapons()
+    {
+        bool knifeShouldBeActive = currentLevel >= 4;
+        if (knife.activeSelf != knifeShouldBeActive)
+        {
+            knife.SetActive(knifeShouldBeActive);
+            if (knifeShouldBeActive)
+            {
+                SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Attach"), 1f);
+            }
+        }
+
+        bool garlicShouldBeActive = currentLevel >= 8;
+        if (garlic.activeSelf != garlicShouldBeActive)
+        {
+            garlic.SetActive(garlicShouldBeActive);
+            if (garlicShouldBeActive)
+            {
+                SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Attach"), 1f);
+            }
         }
     }
 }

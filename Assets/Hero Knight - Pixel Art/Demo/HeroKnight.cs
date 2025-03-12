@@ -15,7 +15,7 @@ public class HeroKnight : Singleton<HeroKnight>
     public Vector2 lastMovedVector;
     public Vector2 minBounds;
     public Vector2 maxBounds;
-
+    private float currentSpeed = 3f;
     private bool canMove = true;  // Kiểm tra di chuyển
     // Reference
     Rigidbody2D rb;
@@ -48,6 +48,10 @@ public class HeroKnight : Singleton<HeroKnight>
 			Debug.LogError("Tilemap reference is missing!");
 		}
 	}
+
+    public void SetSpeed(float boostSpeed){
+        speed = boostSpeed;
+    }
 
     void FixedUpdate()
     {
@@ -111,5 +115,9 @@ public class HeroKnight : Singleton<HeroKnight>
         gameObject.transform.localScale = currentScale;
 
         facingRight = !facingRight;
+    }
+    public void ResetSpeed()
+    {
+        speed = currentSpeed;
     }
 }

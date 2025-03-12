@@ -6,17 +6,19 @@
     {
         [SerializeField] public int health = 200;
         [SerializeField] public int MAX_HEALTH = 200;
-
+        [SerializeField] private GameObject resultPanelPrefab; // Prefab của Panel
+        private GameObject resultPanelInstance;
         [SerializeField] private GameObject healthBarPrefab;
         [SerializeField] private Canvas canvas;
-
+        [SerializeField] private Timer timer;
         private GameObject healthBarInstance;
         private Image healthBarImage;  // Biến lưu trữ Image của thanh Health
-
+        private SlashController slashController;
+        private GarlicController garlicController;
+        private KnifeController knifeController;
         [SerializeField] private float damageEffectDuration = 0.2f; // Thời gian hiệu ứng đỏ
         private SpriteRenderer spriteRenderer;
         private Color originalColor;
-
         private Animator animator;
         private HeroKnight heroKnight;
         private HeroAttack heroAttack; 
@@ -29,7 +31,14 @@
             animator = GetComponent<Animator>(); 
             heroKnight = GetComponent<HeroKnight>(); 
             heroAttack = GetComponent<HeroAttack>();
-
+            // Nếu SlashController gắn vào GameObject khác (ví dụ, heroKnight)
+            if (heroKnight != null)
+            {
+                // Giả sử SlashController được gắn vào GameObject của heroKnight
+                slashController = heroKnight.GetComponentInChildren<SlashController>();
+                garlicController = heroKnight.GetComponentInChildren<GarlicController>();
+                knifeController = heroKnight.GetComponentInChildren<KnifeController>();
+            }
             if (spriteRenderer != null)
             {
                 originalColor = spriteRenderer.color;
@@ -52,7 +61,7 @@
                 }
 
             }
-
+            
             // Khởi tạo thanh máu đúng theo lượng máu ban đầu
             UpdateHealthBar();
         }
@@ -61,6 +70,10 @@
         {
             // Cập nhật thanh máu mỗi frame
             UpdateHealthBar();
+        }
+
+        public int GetCurrentHealth(){
+            return health;
         }
 
         private void UpdateHealthBar()
@@ -84,8 +97,18 @@
             {
                 return;
             }
+            
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Hurt"), 1f);
 
             health -= amount;
+
+            // Gọi Die nếu máu <= 0
+            if (health <= 0)
+            {
+                health = 0; // Đảm bảo không để giá trị âm
+                Die();
+                return; // Thoát khỏi hàm sau khi chết
+            }
 
             // Kích hoạt hiệu ứng bị đánh
             if (spriteRenderer != null)
@@ -95,11 +118,6 @@
 
             // Cập nhật thanh máu ngay khi nhận sát thương
             UpdateHealthBar();
-
-            if (health <= 0)
-            {
-                Die();
-            }
         }
 
         public void Heal(int amount)
@@ -127,28 +145,47 @@
         private void Die()
         {
             Debug.Log("I am dead!");
-            
-            isDead = true;
+            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/GameOver"), 1f);
+            // Stop background music
+            GameObject backgroundMusicObject = GameObject.Find("BackgroundMusicManager");
+            if (backgroundMusicObject != null)
+            {
+                BackgroundMusicController musicController = backgroundMusicObject.GetComponent<BackgroundMusicController>();
+                if (musicController != null)
+                {
+                    musicController.StopMusic();
+                }
+                else
+                {
+                    Debug.LogWarning("BackgroundMusicController component not found on BackgroundMusic object!");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("BackgroundMusic object not found in the scene!");
+            }
+            slashController?.ResetDamage();
+            garlicController?.ResetDamage();
+            knifeController?.ResetDamage();
 
-            // Gọi trigger để phát animation chết
+            isDead = true;
+            timer.StopTimer();
+
             if (animator != null)
             {
                 animator.SetTrigger("Death");
             }
 
-            // Tạm dừng di chuyển của nhân vật khi chết
             if (heroKnight != null)
             {
                 heroKnight.DisableMovement();
             }
 
-            // Vô hiệu hóa tấn công khi chết
             if (heroAttack != null)
             {
                 heroAttack.DisableAttack();
             }
 
-            // Đợi animation chết trước khi hủy nhân vật
             StartCoroutine(WaitForDeathAnimation());
         }
 
@@ -156,14 +193,13 @@
 
         private IEnumerator WaitForDeathAnimation()
         {
-            // Lấy thời gian dài của animation "Death"
             AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             float animationDuration = stateInfo.length;
 
-            // Chờ cho animation chết hoàn tất
             yield return new WaitForSecondsRealtime(animationDuration + 1f);
 
-            Destroy(gameObject);
+            resultPanelInstance = Instantiate(resultPanelPrefab, FindObjectOfType<Canvas>().transform);
+            Time.timeScale = 0f;
         }
 
         private IEnumerator ShowDamageEffect()

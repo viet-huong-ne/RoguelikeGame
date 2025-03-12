@@ -12,12 +12,21 @@ public enum ValueType
     Percentage
 }
 
+public enum AttackTargetType
+{
+    Slash,
+    Shield,
+    Knife,
+    Not
+}
+
 public enum SkillEffectType
 {
     CurrentHP, 
     Attack,
     Speed,
-    MaxHP
+    MaxHP,
+    AttachObject 
 }
 
 [CreateAssetMenu(fileName = "SkillScriptableObject", menuName = "ScriptableObjects/Skill")]
@@ -27,10 +36,11 @@ public class SkillScriptableObject : ScriptableObject
     public string skillDescription;
     public Sprite skillIcon;
 
-    public SkillEffectType effectType;
+    public SkillEffectType effectType;  // Chọn loại hiệu ứng (CurrentHP, Attack, v.v.)
     public float value;
     public ValueType valueType;
     public EffectDirection effectDirection;
-
+    public AttackTargetType targetType;
+    public GameObject objectToAttach;
     public float probability;
 }

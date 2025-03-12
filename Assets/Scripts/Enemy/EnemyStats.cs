@@ -108,6 +108,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (isDead) return; // Prevent multiple executions
         isDead = true;
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/MonsterDeath"), 1f);
         enemyMovement.StopMovement();
         animator.SetTrigger("Death");
         float deathAnimationTime = animator.GetCurrentAnimatorStateInfo(0).length;

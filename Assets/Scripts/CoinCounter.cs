@@ -31,4 +31,9 @@ public class CoinCounter : MonoBehaviour
     public void AddSackOfGold(){
         coins += 10;
     }
+
+    public int GetCoins()
+    {
+        return coins;
+    }
 }

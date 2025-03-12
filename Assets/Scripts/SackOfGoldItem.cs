@@ -42,7 +42,7 @@ public class SackOfGoldItem : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         // Kiểm tra nếu va chạm với người chơi
         if (other.CompareTag("Player"))
@@ -50,6 +50,7 @@ public class SackOfGoldItem : MonoBehaviour
             if (coinCounter != null)
             {
                 coinCounter.AddSackOfGold();
+                SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/CoinReceived"), 1f);
                 Destroy(gameObject);
             }
             else{
