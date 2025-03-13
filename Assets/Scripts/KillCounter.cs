@@ -1,16 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class KillCounter : MonoBehaviour
+public class KillCounter : Singleton<KillCounter>
 {
     int kills;
     public Text enemyCountText;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject); 
-    }
     void Start()
     {
         

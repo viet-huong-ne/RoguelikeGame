@@ -16,6 +16,10 @@ public class CoinEarned : MonoBehaviour
         }
 
         coinCounter = FindObjectOfType<CoinCounter>();
+        if (coinCounter == null)
+        {
+            Debug.LogError("Coin not found in the scene! Please ensure a Coin component exists in the canvas.");
+        }
     }
 
     public void Update()

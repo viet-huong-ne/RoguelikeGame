@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CoinCounter : MonoBehaviour
+public class CoinCounter : Singleton<CoinCounter>
 {
     int coins;
     public Text coinCountText;
@@ -9,10 +9,6 @@ public class CoinCounter : MonoBehaviour
     void Start()
     {
         
-    }
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
     }
     // Update is called once per frame
     void Update()
