@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ResultPanel : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,5 +32,10 @@ public class ResultPanel : MonoBehaviour
         {
             Debug.LogWarning("BackgroundMusic object not found in the scene!");
         }
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 }
