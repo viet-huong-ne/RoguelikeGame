@@ -36,6 +36,8 @@ public class ResultPanel : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        gameObject.SetActive(false);
+
         SceneManager.LoadScene("MenuScene");
     }
 }
