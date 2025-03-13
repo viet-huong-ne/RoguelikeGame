@@ -8,6 +8,8 @@ public class BigDeathSpell : MonoBehaviour
     [SerializeField] private float animationDuration = 1f;
 
     private Cinemachine.CinemachineImpulseSource impulseSource;
+    
+    private bool isPlayerInRange = false; 
 
     private void Start()
     {
@@ -30,8 +32,10 @@ public class BigDeathSpell : MonoBehaviour
             impulseSource.GenerateImpulse();
         }
 
-        // Gây sát thương
-        playerHealth.TakeDamage(damageAmount);
+        if (isPlayerInRange)
+        {
+            playerHealth.TakeDamage(damageAmount); 
+        }
 
         yield return new WaitForSeconds(animationDuration);
 
@@ -42,11 +46,20 @@ public class BigDeathSpell : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
+            isPlayerInRange = true;
             HeroHealth playerHealth = col.GetComponent<HeroHealth>();
             if (playerHealth != null)
             {
                 StartCoroutine(CastSpell(playerHealth));
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            isPlayerInRange = false; 
         }
     }
 }

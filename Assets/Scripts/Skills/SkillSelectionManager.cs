@@ -16,6 +16,12 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
 
     // Danh sách để theo dõi các kỹ năng đã chọn
     private List<SkillScriptableObject> selectedSkills = new List<SkillScriptableObject>();
+    [SerializeField] private HeroExperience heroExperience;
+
+    public bool IsSkillSelectionActive()
+    {
+        return isSkillSelectionActive;
+    }
 
     public void ShowSkillSelectionPanel()
     {
@@ -97,8 +103,17 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         ApplySkillEffect(skill);
 
         HideSkillSelectionPanel();
-        
+
         ResumeAllSoundEffects();
+
+        // Tiếp tục trò chơi
+        Time.timeScale = 1f;
+
+        // Gọi bảng kỹ năng tiếp theo nếu có
+        if (HeroExperience.Instance.HasSkillSelectionInQueue())
+        {
+            HeroExperience.Instance.ProcessNextSkillSelection();
+        }
     }
 
     public void ApplySkillEffect(SkillScriptableObject skill)

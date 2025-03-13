@@ -51,9 +51,9 @@ public class ExpItem : MonoBehaviour
             HeroExperience heroExp = other.GetComponent<HeroExperience>();
             if (heroExp != null)
             {
-                
-            SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/ExperienceReceived"), 1f);
+                SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/ExperienceReceived"), 1f);
                 heroExp.AddExperience(10); // Thêm EXP
+                Debug.Log("Picked up experience");
                 Destroy(gameObject);      // Xóa viên EXP
             }
         }
