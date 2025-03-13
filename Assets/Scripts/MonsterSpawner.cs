@@ -48,6 +48,8 @@ public class MonsterSpawner : MonoBehaviour
     }
     void Start()
     {
+        timer.StartTimer();
+        Time.timeScale = 1f;
         if (player == null)
         {
             Debug.LogWarning("Player is not assigned to MonsterSpawner.");
