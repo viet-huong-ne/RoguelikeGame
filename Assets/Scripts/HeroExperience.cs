@@ -48,10 +48,6 @@ public class HeroExperience : Singleton<HeroExperience>
             UpdateExperienceBar();
             UpdateLevelText();
         }
-        if (heroAttack == null)
-        {
-            heroAttack = GetComponent<HeroAttack>();
-        }
     }
 
 
@@ -125,10 +121,6 @@ public class HeroExperience : Singleton<HeroExperience>
 
         UpdateWeapons();
         UpdateLevelText();
-        if (heroAttack != null)
-        {
-            heroAttack.LevelUp();
-        }
     }
 
     public void ProcessNextSkillSelection()

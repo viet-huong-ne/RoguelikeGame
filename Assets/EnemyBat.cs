@@ -88,16 +88,18 @@ public class EnemyBat : MonoBehaviour
 	{
 		if (canDamage)
 		{
+			animator.SetTrigger("Attack"); // Play attack animation
 			StartCoroutine(DealDamageCoroutine(target));
 		}
 	}
 
 	private IEnumerator DealDamageCoroutine(GameObject target)
 	{
+		yield return new WaitForSeconds(0.2f); // Adjust timing to sync with animation
 		HeroHealth heroHealth = target.GetComponent<HeroHealth>();
 		if (heroHealth != null)
 		{
-			heroHealth.TakeDamage(((int)enemyData.Damage));
+			heroHealth.TakeDamage((int)enemyData.Damage);
 		}
 		canDamage = false;
 		yield return new WaitForSeconds(damageCooldown);
