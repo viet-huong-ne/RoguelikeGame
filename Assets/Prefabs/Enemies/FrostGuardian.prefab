@@ -79,9 +79,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -44025399
+  m_SortingLayer: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 8681008312180965034, guid: 78d316657da3f0b46827cc03b736c5ce,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -184,7 +184,7 @@ MonoBehaviour:
   currentDamage: 0
   damageEffectDuration: 0.2
   killCounter: {fileID: 0}
-  keyPrefab: {fileID: 3586792564736082944, guid: 05a0a84e0a4ce494abd866cdf3a30ed5,
+  keyPrefab: {fileID: 3586792564736082944, guid: bd24fc99da9c59f4faff775e60860574,
     type: 3}
 --- !u!114 &1185522675430439127
 MonoBehaviour:

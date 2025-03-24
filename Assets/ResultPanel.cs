@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ResultPanel : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,5 +32,31 @@ public class ResultPanel : MonoBehaviour
         {
             Debug.LogWarning("BackgroundMusic object not found in the scene!");
         }
+    }
+
+    public void LoadMainMenu()
+    {
+        // Hủy tất cả các đối tượng DontDestroyOnLoad trước khi chuyển sang MenuScene
+        DestroyDontDestroyOnLoadObjects();
+        Destroy(gameObject);
+        // Tải scene chính
+        SceneManager.LoadScene("MenuScene");
+    }
+
+    private void DestroyDontDestroyOnLoadObjects()
+    {
+        // Tìm tất cả các đối tượng
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+            // Kiểm tra nếu đối tượng nằm trong "DontDestroyOnLoad"
+            if (obj.scene.name == "DontDestroyOnLoad")
+            {
+                Destroy(obj);
+            }
+        }
+
+        Debug.Log("All DontDestroyOnLoad objects have been destroyed.");
     }
 }

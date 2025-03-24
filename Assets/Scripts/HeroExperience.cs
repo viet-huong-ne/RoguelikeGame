@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +19,10 @@ public class HeroExperience : Singleton<HeroExperience>
     [SerializeField] private int currentExperience = 0; // EXP hiện tại
     [SerializeField] private int experienceToNextLevel = 100; // EXP cần để lên cấp
     [SerializeField] private SkillSelectionManager skillSelectionManager;
+    private Queue<Action> skillSelectionQueue = new Queue<Action>();
+    private bool isWaitingForNextSkill = false;
+    private bool isFirstSkillSelection = true;
+
     private void Start()
     {
         if (knife != null)
@@ -82,7 +89,6 @@ public class HeroExperience : Singleton<HeroExperience>
         return currentLevel;
     }
 
-    // Thêm EXP
     public void AddExperience(int amount)
     {
         currentExperience += amount;
@@ -94,28 +100,71 @@ public class HeroExperience : Singleton<HeroExperience>
         }
 
         UpdateExperienceBar();
+
+        // Nếu không chờ bảng kỹ năng tiếp theo và không có bảng kỹ năng đang hiển thị, xử lý tiếp
+        if (skillSelectionQueue.Count > 0 && !isWaitingForNextSkill && !SkillSelectionManager.Instance.IsSkillSelectionActive())
+        {
+            ProcessNextSkillSelection();
+        }
     }
 
-    // Xử lý lên cấp
     private void LevelUp()
     {
-        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/LevelUp"), 1f);
+        
         currentLevel++; // Tăng cấp
         currentExperience -= experienceToNextLevel; // Trừ EXP đã tiêu tốn
 
         // Tăng yêu cầu EXP cho cấp tiếp theo
         experienceToNextLevel = Mathf.FloorToInt(experienceToNextLevel * 1.2f);
 
-        // Hiển thị bảng chọn kỹ năng
-        skillSelectionManager.ShowSkillSelectionPanel();
+        // Thêm bảng chọn kỹ năng vào hàng đợi
+        skillSelectionQueue.Enqueue(() =>
+        {
+            skillSelectionManager.ShowSkillSelectionPanel();
+        });
+
         UpdateWeapons();
-        // Cập nhật hiển thị Level
         UpdateLevelText();
         if (heroAttack != null)
         {
             heroAttack.LevelUp();
         }
     }
+
+    public void ProcessNextSkillSelection()
+    {
+        if (skillSelectionQueue.Count > 0)
+        {
+            if (isFirstSkillSelection)
+            {
+                // Hiển thị ngay lập tức lần đầu tiên
+                isFirstSkillSelection = false;
+                skillSelectionQueue.Dequeue()?.Invoke();
+            }
+            else
+            {
+                // Các lần sau thì chờ 0.5 giây
+                StartCoroutine(ShowNextSkillSelectionWithDelay());
+            }
+        }
+    }
+
+    private IEnumerator ShowNextSkillSelectionWithDelay()
+    {
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/LevelUp"), 1f);
+        isWaitingForNextSkill = true;
+
+        yield return new WaitForSeconds(0.5f); // Chờ 0.5 giây
+
+        skillSelectionQueue.Dequeue()?.Invoke();
+        isWaitingForNextSkill = false;
+    }
+
+    public bool HasSkillSelectionInQueue()
+    {
+        return skillSelectionQueue.Count > 0;
+    }
+
     void UpdateWeapons()
     {
         bool knifeShouldBeActive = currentLevel >= 4;

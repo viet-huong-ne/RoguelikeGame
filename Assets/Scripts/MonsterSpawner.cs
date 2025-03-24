@@ -36,13 +36,20 @@ public class MonsterSpawner : MonoBehaviour
     private float decisionTime = 30f;
     [SerializeField]
     private float theLastDropRate = 0.2f;
+    private float levelElapsedTime = 0f; // Đếm thời gian từ lúc vào màn mới
+    private bool isNewLevel = true; // Đánh dấu nếu vừa vào màn mới
 
     void Awake(){
         Debug.Log("HIHIHI");
     }
-
+    private void Update()
+    {
+        levelElapsedTime += Time.deltaTime; // Tính thời gian chỉ riêng màn hiện tại
+    }
     void Start()
     {
+        timer.StartTimer();
+        Time.timeScale = 1f;
         if (player == null)
         {
             Debug.LogWarning("Player is not assigned to MonsterSpawner.");
@@ -84,7 +91,7 @@ public class MonsterSpawner : MonoBehaviour
 
             float elapsedTime = timer.GetElapsedTime(); // Lấy thời gian từ Timer
 
-            if (!isTheLastSpawned && !isPortalActivated && timer.GetElapsedTime() > decisionTime)
+            if (!isTheLastSpawned && !isPortalActivated && levelElapsedTime/*timer.GetElapsedTime()*/ > decisionTime)
             {
                 canSpawnTheLast = true;
 
@@ -238,6 +245,13 @@ public class MonsterSpawner : MonoBehaviour
         // Nếu sau số lần thử vẫn không tìm được, trả về vị trí mặc định gần player
         return player.transform.position + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0f);
     }
+    public void StartNewLevel()
+    {
+        levelElapsedTime = 0f; // Reset bộ đếm cho màn mới
+        isNewLevel = true; // Đánh dấu là màn mới
+        isTheLastSpawned = false; // Reset trạng thái boss
+    }
+
 
 }
 

@@ -19,7 +19,8 @@ public class EntranceArea : MonoBehaviour
                 // Set the camera to follow the player
                 CameraController.Instance.SetPlayerCameraFollow();
                 UIFade.Instance.FadeToClear();
-
+                MonsterSpawner spawner = FindObjectOfType<MonsterSpawner>();
+                spawner.StartNewLevel();
                 // Assign the player and Timer to MonsterSpawner
                 AssignToMonsterSpawner(playerController);
             }

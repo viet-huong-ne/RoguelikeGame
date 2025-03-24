@@ -20,6 +20,7 @@ TagManager:
   - Attack
   - BackgroundMusic
   - SoundEffect
+  - MiniMapCamera
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - 
   - TileMap
   - Item
-  - 
+  - MiniMapIcon
   - PopUpText
   - MonsterAttackArea
   - Attack
