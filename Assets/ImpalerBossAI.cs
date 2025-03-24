@@ -50,7 +50,7 @@ public class ImpalerBossAI : MonoBehaviour
 
 	IEnumerator MeleeAttack(int attackType)
 	{
-		animator.SetTrigger($"Attack{attackType}");
+		animator.SetTrigger($"attack{attackType}");
 		yield return new WaitForSeconds(1f);
 		isAttacking = false;
 	}
@@ -58,7 +58,7 @@ public class ImpalerBossAI : MonoBehaviour
 	IEnumerator CounterAttack()
 	{
 		isCountering = true;
-		animator.SetTrigger("Counter");
+		animator.SetTrigger("counter");
 		yield return new WaitForSeconds(1.5f);
 		isCountering = false;
 		isAttacking = false;
