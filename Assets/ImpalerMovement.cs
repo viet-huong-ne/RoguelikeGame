@@ -30,19 +30,30 @@ public class ImpalerMovement : MonoBehaviour
 	}
 
 	public void MoveTowardsPlayer()
-	{
-		if (player == null || !canMove) return;
+    {
+        if (player == null || !canMove) return;
+        //Debug.Log($"Current Move Speed: {enemyData.moveSpeed}");
 
-		// Move towards the player
-		//Vector2 direction = (player.position - transform.position).normalized;
-		transform.position = Vector2.MoveTowards(transform.position, player.position, enemyData.moveSpeed * Time.deltaTime);
+        // Move towards the player
+        Vector2 direction = (player.position - transform.position).normalized;
+        transform.position = Vector2.MoveTowards(transform.position, player.position, enemyData.moveSpeed * Time.deltaTime);
 
-		// Update animator's speed parameter
-		if (animator != null)
-		{
-			animator.SetFloat("Speed", enemyData.moveSpeed);
-		}
-	}
+        // Flip the enemy to face the player
+        if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
+        // Update animator's speed parameter
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", enemyData.moveSpeed);
+        }
+    }
 
 	// Public method to stop movement
 	public void StopMovement()

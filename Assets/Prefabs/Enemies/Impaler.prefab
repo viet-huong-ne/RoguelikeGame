@@ -152,17 +152,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.701091, y: 0.6936381}
+  m_Offset: {x: -0.005193591, y: -0.109251186}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 1.9407408, y: -0.060402684}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.35, y: 1.49}
     newSize: {x: 1.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.72429943, y: 1.1024549}
+  m_Size: {x: 0.40242296, y: 0.9264301}
   m_EdgeRadius: 0
 --- !u!50 &8601253317820839594
 Rigidbody2D:
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712858310789068509}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 374cc22e14d9cf24fbd913bacf5c64b1, type: 3}
   m_Name: 
@@ -230,7 +230,8 @@ MonoBehaviour:
   damageEffectDuration: 0.2
   killCounter: {fileID: 6762532489318787552, guid: 8152f4d1d5fc7b54297b5a71b773dd70,
     type: 3}
-  keyPrefab: {fileID: 0}
+  keyPrefab: {fileID: 3586792564736082944, guid: bd24fc99da9c59f4faff775e60860574,
+    type: 3}
 --- !u!114 &2406320944000602442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +313,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.017673776, y: -0.15526856}
+  m_Offset: {x: 1.67673, y: -1.0282085}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -322,7 +323,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.47346184, y: 1.2176559}
+  m_Size: {x: 0.23481917, y: 0.82968235}
   m_EdgeRadius: 0
 --- !u!114 &320055186581516950
 MonoBehaviour:
