@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class SkillManager : MonoBehaviour
 {
@@ -9,7 +10,16 @@ public class SkillManager : MonoBehaviour
 
     private List<SkillScriptableObject> attachedSkills = new List<SkillScriptableObject>();
 
-    private void Awake()
+	private void Start()
+	{
+		// Assign default skills if in LavaScene
+		if (SceneManager.GetActiveScene().name == "LavaScene")
+		{
+			AssignDefaultSkills();
+		}
+	}
+
+	private void Awake()
     {
         // Singleton pattern
         if (Instance == null)
@@ -123,4 +133,17 @@ public class SkillManager : MonoBehaviour
     {
         return skills.Length;
     }
+
+	private void AssignDefaultSkills()
+	{
+		// Select a few default skills
+		foreach (var skill in skills)
+		{
+			if (skill.skillName == "TestSkill1" || skill.skillName == "TestSkill2") // Replace with actual skill names
+			{
+				AddAttachedSkill(skill);
+			}
+		}
+		Debug.Log("Default test skills assigned in LavaScene.");
+	}
 }

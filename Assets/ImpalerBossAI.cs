@@ -3,84 +3,49 @@ using UnityEngine;
 
 public class ImpalerBossAI : MonoBehaviour
 {
-	public Animator animator;
-	public Transform player;
-	public float attackRange = 2f;
-	public float moveSpeed = 3f;
-	public int health = 100;
+	[SerializeField] private Animator animator;
+	[SerializeField] private float attackCooldown = 2f;
+	[SerializeField] private float attackRange = 2f;
+	[SerializeField] private int maxAttacks = 6;
+	private Transform player;
+	private bool isAttacking = false;
+	private ImpalerMovement impalerMovement;
 
-	private bool isAttacking;
-	private bool isCountering;
-
-	void Update()
+	private void Start()
 	{
-		if (health <= 0) return;
+		player = GameObject.FindGameObjectWithTag("Player").transform;
+		impalerMovement = GetComponent<ImpalerMovement>();
+		StartCoroutine(AttackRoutine());
+	}
 
-		float distance = Vector2.Distance(transform.position, player.position);
-		if (distance <= attackRange && !isAttacking)
+	private IEnumerator AttackRoutine()
+	{
+		while (true)
 		{
-			ChooseAttack();
-		}
-		else
-		{
-			MoveTowardsPlayer();
+			yield return new WaitForSeconds(attackCooldown);
+			if (player == null || animator.GetBool("IsDead")) yield break;
+
+			float distance = Vector2.Distance(transform.position, player.position);
+			if (distance <= attackRange && !isAttacking)
+			{
+				StartCoroutine(PerformAttack());
+			}
 		}
 	}
 
-	void MoveTowardsPlayer()
-	{
-		if (isAttacking) return;
-		transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
-	}
-
-	void ChooseAttack()
+	private IEnumerator PerformAttack()
 	{
 		isAttacking = true;
-		int attackType = Random.Range(1, 7); // 1-5 melee, 6 is counter
+		impalerMovement.StopMovement();
 
-		if (attackType <= 5)
-		{
-			StartCoroutine(MeleeAttack(attackType));
-		}
-		else
-		{
-			StartCoroutine(CounterAttack());
-		}
-	}
+		int attackID = Random.Range(1, maxAttacks + 1);
+		animator.SetInteger("AttackID", attackID);
+		animator.SetBool("Walk", false);
+		yield return new WaitForSeconds(1.5f); 
 
-	IEnumerator MeleeAttack(int attackType)
-	{
-		animator.SetTrigger($"attack{attackType}");
-		yield return new WaitForSeconds(1f);
+		animator.SetInteger("AttackID", 0);
+		animator.SetBool("Walk", true);
+		impalerMovement.ResumeMovement();
 		isAttacking = false;
-	}
-
-	IEnumerator CounterAttack()
-	{
-		isCountering = true;
-		animator.SetTrigger("counter");
-		yield return new WaitForSeconds(1.5f);
-		isCountering = false;
-		isAttacking = false;
-	}
-
-	public void TakeDamage(int damage)
-	{
-		if (health <= 0) return;
-
-		health -= damage;
-		animator.SetTrigger("Hit");
-
-		if (health <= 0)
-		{
-			StartCoroutine(Die());
-		}
-	}
-
-	IEnumerator Die()
-	{
-		animator.SetTrigger("Death");
-		yield return new WaitForSeconds(2f);
-		Destroy(gameObject);
 	}
 }

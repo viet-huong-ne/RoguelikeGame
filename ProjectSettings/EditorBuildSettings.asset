@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 691873d45914f264e87584e1d9483e1c
   - enabled: 1
+    path: Assets/Scenes/LavaScene.unity
+    guid: 5a513d3250eca2d42b5d85f7482531a8
+  - enabled: 1
     path: Assets/Scenes/FieldScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -17,8 +20,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DesertScene.unity
     guid: 76ee884ea13eaf641b2dcfd87eb1a0ae
-  - enabled: 1
-    path: Assets/Scenes/LavaScene.unity
-    guid: 5a513d3250eca2d42b5d85f7482531a8
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

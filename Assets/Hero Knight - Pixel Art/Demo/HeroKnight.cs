@@ -47,9 +47,10 @@ public class HeroKnight : Singleton<HeroKnight>
 		{
 			Debug.LogError("Tilemap reference is missing!");
 		}
+		AssignStartingSkills();
 	}
 
-    public void SetSpeed(float boostSpeed){
+	public void SetSpeed(float boostSpeed){
         speed = boostSpeed;
     }
 
@@ -120,4 +121,12 @@ public class HeroKnight : Singleton<HeroKnight>
     {
         speed = currentSpeed;
     }
+
+	private void AssignStartingSkills()
+	{
+		if (SkillManager.Instance != null)
+		{
+			Debug.Log("HeroKnight assigning default skills.");
+		}
+	}
 }
