@@ -40,7 +40,7 @@ public class BODStats : MonoBehaviour
             if (musicController != null)
             {
                 // Correct Resources.Load path
-                AudioClip newMusicClip = Resources.Load<AudioClip>("Music/BOD_Theme");
+                AudioClip newMusicClip = Resources.Load<AudioClip>("Music/ImpalerBoss_Theme");
                 if (newMusicClip != null)
                 {
                     musicController.ChangeMusic(newMusicClip);
