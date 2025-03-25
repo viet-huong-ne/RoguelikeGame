@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8968431366172798906}
   - component: {fileID: 8601253317820839594}
   - component: {fileID: 8737577713173983887}
-  - component: {fileID: 8506378735437605673}
   - component: {fileID: 9061991509030554659}
+  - component: {fileID: 5843430432091557465}
   m_Layer: 8
   m_Name: ImpalerBoss
   m_TagString: BringerOfDeath
@@ -206,31 +206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 88135c67c1cebc442bc8b5bc88d0a487, type: 2}
   animator: {fileID: 7247365946851877872}
---- !u!114 &8506378735437605673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712858310789068509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c1b22a0bf67aef448cd647b924b7fb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: cbe23013e86621d4ebab7a69facacf54, type: 2}
-  damageCooldown: 2
-  hero: {fileID: 8778651562060787071, guid: 488b689740e9094419d23ac3d3f0f9b9, type: 3}
-  damageText: {fileID: 6427111076622788948, guid: 725933c5adb40f548974957858df405d,
-    type: 3}
-  currentMoveSpeed: 0
-  currentHealth: 0
-  currentDamage: 0
-  damageEffectDuration: 0.2
-  killCounter: {fileID: 6762532489318787552, guid: 8152f4d1d5fc7b54297b5a71b773dd70,
-    type: 3}
-  keyPrefab: {fileID: 3586792564736082944, guid: 05a0a84e0a4ce494abd866cdf3a30ed5,
-    type: 3}
 --- !u!114 &9061991509030554659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +223,31 @@ MonoBehaviour:
   attackRange: 2
   moveSpeed: 3
   health: 100
+--- !u!114 &5843430432091557465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712858310789068509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0457ab7d1fd6d7746a5453bc065aef5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: cbe23013e86621d4ebab7a69facacf54, type: 2}
+  damageCooldown: 2
+  hero: {fileID: 0}
+  damageText: {fileID: 6427111076622788948, guid: 725933c5adb40f548974957858df405d,
+    type: 3}
+  currentMoveSpeed: 0
+  currentHealth: 0
+  currentDamage: 0
+  damageEffectDuration: 0.2
+  killCounter: {fileID: 6762532489318787552, guid: 8152f4d1d5fc7b54297b5a71b773dd70,
+    type: 3}
+  keyPrefab: {fileID: 3586792564736082944, guid: bd24fc99da9c59f4faff775e60860574,
+    type: 3}
 --- !u!1 &3243412264508411672
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.67, y: 0.807, z: -0.5}
-  m_LocalScale: {x: 0.55, y: 0.60438776, z: 1.8812476}
+  m_LocalScale: {x: 1.2740165, y: 1.4, z: 4.3577104}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8969752797682826553}

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BODStats : MonoBehaviour
+public class FrostGuardianStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
     private BODMovement bodMovement;
@@ -40,14 +40,14 @@ public class BODStats : MonoBehaviour
             if (musicController != null)
             {
                 // Correct Resources.Load path
-                AudioClip newMusicClip = Resources.Load<AudioClip>("Music/BOD_Theme");
+                AudioClip newMusicClip = Resources.Load<AudioClip>("Music/FrostGuardian_Theme");
                 if (newMusicClip != null)
                 {
                     musicController.ChangeMusic(newMusicClip);
                 }
                 else
                 {
-                    Debug.LogWarning("New music clip not found in Resources/Music/BOD_Theme!");
+                    Debug.LogWarning("New music clip not found in Resources/Music/FrostGuardian_Theme!");
                 }
             }
             else

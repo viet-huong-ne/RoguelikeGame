@@ -470,11 +470,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ImpalerBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 1712858310789068509, guid: 4e13366062348534e916add23dd01a81,
+    - target: {fileID: 5843430432091557465, guid: 4e13366062348534e916add23dd01a81,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: hero
+      value: 
+      objectReference: {fileID: 6323719955371659701}
     - target: {fileID: 8969752797682826553, guid: 4e13366062348534e916add23dd01a81,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55811,8 +55811,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6516f537f47ccfb45a1034e192a49a95, type: 3}
-  m_Resource: {fileID: 8300000, guid: 6516f537f47ccfb45a1034e192a49a95, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8e425c23d61d6ac4486490561f93fa8e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8e425c23d61d6ac4486490561f93fa8e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -56462,7 +56462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1866892244
 Transform:
   m_ObjectHideFlags: 0
