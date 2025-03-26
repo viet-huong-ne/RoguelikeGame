@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 
-public class SoundEffectManager : MonoBehaviour
+public class SoundEffectManager : Singleton<SoundEffectManager>
 {
     public static SoundEffectManager Instance;
 

@@ -111,7 +111,7 @@ public class HeroExperience : Singleton<HeroExperience>
         currentExperience -= experienceToNextLevel; // Trừ EXP đã tiêu tốn
 
         // Tăng yêu cầu EXP cho cấp tiếp theo
-        experienceToNextLevel = Mathf.FloorToInt(experienceToNextLevel * 1.2f);
+        experienceToNextLevel = Mathf.FloorToInt(experienceToNextLevel * 1.1f);
 
         // Thêm bảng chọn kỹ năng vào hàng đợi
         skillSelectionQueue.Enqueue(() =>

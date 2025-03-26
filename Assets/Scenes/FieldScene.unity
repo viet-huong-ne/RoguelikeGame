@@ -298,7 +298,7 @@ MonoBehaviour:
   minSpawnInterval: 5
   tilemapLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   maxRetries: 10
   spawnRadius: 0.5
   spawnPositions: []
@@ -333,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 300604779}
   - component: {fileID: 300604780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Altar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326762194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Pillar Broke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 358785016}
   - component: {fileID: 358785017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar Broken Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 359924041}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pillar X2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 374874218}
   - component: {fileID: 374874217}
   - component: {fileID: 374874216}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 389648725}
   - component: {fileID: 389648724}
   - component: {fileID: 389648723}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +902,7 @@ GameObject:
   - component: {fileID: 434628282}
   - component: {fileID: 434628281}
   - component: {fileID: 434628280}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Stone Coffin V
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1052,84 +1052,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &435642768
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 900664449400574099, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.8562522
-      objectReference: {fileID: 0}
-    - target: {fileID: 900664449400574099, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 1.6904967
-      objectReference: {fileID: 0}
-    - target: {fileID: 1712858310789068509, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_Name
-      value: Impaler
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: fad34c20156bafa4c8b26ec1eb9171cd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fad34c20156bafa4c8b26ec1eb9171cd, type: 3}
 --- !u!1 &463576062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,7 +1064,7 @@ GameObject:
   - component: {fileID: 463576066}
   - component: {fileID: 463576065}
   - component: {fileID: 463576064}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1374,7 +1296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 538111002}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pillar X2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,7 +1332,7 @@ GameObject:
   - component: {fileID: 563030091}
   - component: {fileID: 563030090}
   - component: {fileID: 563030089}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar X2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1638,7 +1560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 582047196}
   - component: {fileID: 582047197}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar X3 Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1821,7 +1743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 649254159}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pillar X3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,7 +1777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 732884109}
   - component: {fileID: 732884110}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar X2 Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3964,7 +3886,7 @@ GameObject:
   - component: {fileID: 882301538}
   - component: {fileID: 882301537}
   - component: {fileID: 882301536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Stone T7 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48549,7 +48471,7 @@ GameObject:
   - component: {fileID: 994995948}
   - component: {fileID: 994995947}
   - component: {fileID: 994995946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Well
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48711,7 +48633,7 @@ GameObject:
   - component: {fileID: 1077269029}
   - component: {fileID: 1077269028}
   - component: {fileID: 1077269027}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48919,7 +48841,7 @@ GameObject:
   - component: {fileID: 1149699724}
   - component: {fileID: 1149699723}
   - component: {fileID: 1149699722}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar Broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49123,7 +49045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157225029}
   - component: {fileID: 1157225030}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar X2 Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49210,7 +49132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1159443708}
   - component: {fileID: 1159443709}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar Broken Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49299,7 +49221,7 @@ GameObject:
   - component: {fileID: 1234863296}
   - component: {fileID: 1234863295}
   - component: {fileID: 1234863294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49459,7 +49381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1303981435}
   - component: {fileID: 1303981436}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Altar Rune 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49548,7 +49470,7 @@ GameObject:
   - component: {fileID: 1309292311}
   - component: {fileID: 1309292310}
   - component: {fileID: 1309292309}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar Broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49710,7 +49632,7 @@ GameObject:
   - component: {fileID: 1335950083}
   - component: {fileID: 1335950082}
   - component: {fileID: 1335950081}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Stone T7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49882,7 +49804,7 @@ GameObject:
   - component: {fileID: 1342040222}
   - component: {fileID: 1342040221}
   - component: {fileID: 1342040220}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50044,7 +49966,7 @@ GameObject:
   - component: {fileID: 1394539899}
   - component: {fileID: 1394539898}
   - component: {fileID: 1394539897}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50291,7 +50213,7 @@ GameObject:
   - component: {fileID: 1477768721}
   - component: {fileID: 1477768720}
   - component: {fileID: 1477768719}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50494,7 +50416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1503385746}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Altar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50528,7 +50450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1537872805}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pillar X1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50576,7 +50498,7 @@ GameObject:
   - component: {fileID: 1557992016}
   - component: {fileID: 1557992015}
   - component: {fileID: 1557992014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar X2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50754,7 +50676,7 @@ Transform:
   m_GameObject: {fileID: 1686459922}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6916627, y: 4.352357, z: -10.021206}
+  m_LocalPosition: {x: 0.78833723, y: 6.0523567, z: -10.021206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50852,7 +50774,7 @@ GameObject:
   - component: {fileID: 1711942004}
   - component: {fileID: 1711942003}
   - component: {fileID: 1711942002}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51089,7 +51011,7 @@ Transform:
   m_GameObject: {fileID: 1754007503}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6916627, y: 4.352357, z: -10.021206}
+  m_LocalPosition: {x: 0.78833723, y: 6.0523567, z: -10.021206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -51139,7 +51061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1754835325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51175,7 +51097,7 @@ GameObject:
   - component: {fileID: 1761806402}
   - component: {fileID: 1761806401}
   - component: {fileID: 1761806400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51325,89 +51247,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1789571538
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1712858310789068509, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_Name
-      value: BringerOfDeath
-      objectReference: {fileID: 0}
-    - target: {fileID: 1712858310789068509, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5476171340426336683, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8737577713173983887, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969752797682826553, guid: a217838a38e462d4b990b87d74581f52,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a217838a38e462d4b990b87d74581f52, type: 3}
 --- !u!1 &1799211790
 GameObject:
   m_ObjectHideFlags: 0
@@ -51503,7 +51342,7 @@ GameObject:
   - component: {fileID: 1806451035}
   - component: {fileID: 1806451034}
   - component: {fileID: 1806451033}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51674,7 +51513,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866892244}
-  - component: {fileID: 1866892245}
   m_Layer: 0
   m_Name: Camera Holder
   m_TagString: Untagged
@@ -51700,18 +51538,6 @@ Transform:
   - {fileID: 626114391}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1866892245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866892243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e1160f666fabcd47a4f0c26cf4a8f53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1884114665
 GameObject:
   m_ObjectHideFlags: 0
@@ -51769,7 +51595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2038220300}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pillar X1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51802,7 +51628,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2066284138}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Gravestone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51836,6 +51662,74 @@ Transform:
   - {fileID: 463576063}
   m_Father: {fileID: 939671109}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2073703037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4409353085318268537, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_Name
+      value: LavalPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.1035757
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.495821
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559664370307885649, guid: 09544dcd25a37284f90f5ba74985b64c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09544dcd25a37284f90f5ba74985b64c, type: 3}
 --- !u!1 &2106826083
 GameObject:
   m_ObjectHideFlags: 0
@@ -51846,7 +51740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2106826084}
   - component: {fileID: 2106826085}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Altar Rune 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51935,7 +51829,7 @@ GameObject:
   - component: {fileID: 2120248613}
   - component: {fileID: 2120248612}
   - component: {fileID: 2120248611}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Gravestone B (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52097,7 +51991,7 @@ GameObject:
   - component: {fileID: 2124875665}
   - component: {fileID: 2124875664}
   - component: {fileID: 2124875663}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Props Rune Pillar X3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52376,12 +52270,12 @@ PrefabInstance:
     - target: {fileID: 10353633891668302, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.36
+      value: 2.12
       objectReference: {fileID: 0}
     - target: {fileID: 10353633891668302, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.08
+      value: 3.78
       objectReference: {fileID: 0}
     - target: {fileID: 10353633891668302, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
@@ -52423,11 +52317,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1146150926299410603, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4615858694455666333, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 939671115}
+    - target: {fileID: 5222567351272673381, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7734986830372944690, guid: 488b689740e9094419d23ac3d3f0f9b9,
         type: 3}
       propertyPath: timer
@@ -52569,5 +52473,4 @@ SceneRoots:
   - {fileID: 83997346}
   - {fileID: 1149704595}
   - {fileID: 138786599}
-  - {fileID: 1789571538}
-  - {fileID: 435642768}
+  - {fileID: 2073703037}

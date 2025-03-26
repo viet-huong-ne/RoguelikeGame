@@ -91,6 +91,11 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
 			enemy.TakeDamage(currentDamage);
 			ReducePierce();
 		}
+        if (col.CompareTag("FrostGuardian"))
+        {
+            FrostGuardianStats enemy = col.GetComponent<FrostGuardianStats>();
+            enemy.TakeDamage(currentDamage);
+        }
 	}
     void ReducePierce()
     {

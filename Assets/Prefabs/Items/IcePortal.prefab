@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1447e2cce460a82429f88404d5fcc225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: LavaScene
-  sceneTransitionName: ToLavaScene
+  sceneToLoad: IceScene
+  sceneTransitionName: ToIceScene
 --- !u!82 &5699909084750072952
 AudioSource:
   m_ObjectHideFlags: 0

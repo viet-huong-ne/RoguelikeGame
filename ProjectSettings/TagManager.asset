@@ -21,6 +21,8 @@ TagManager:
   - BackgroundMusic
   - SoundEffect
   - MiniMapCamera
+  - Impaler
+  - FrostGuardian
   layers:
   - Default
   - TransparentFX

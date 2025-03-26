@@ -144,6 +144,7 @@
 
         private void Die()
         {
+            heroKnight.SetSpeed(0);
             Debug.Log("I am dead!");
             SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/GameOver"), 1f);
             // Stop background music

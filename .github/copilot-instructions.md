@@ -2,13 +2,13 @@
 - Project name: RoguelikeGame
 - Unity version: Unity 6000.0.38f1
 - Active scene:
-  - Name: LavaScene
+  - Name: IceScene
   - Tags:
-    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Skeleton, Canvas, Tree, Experience, Ground, Enemy, KCO, CCO, Coin, Portal, Key, Object, BringerOfDeath, Attack, BackgroundMusic, SoundEffect, MiniMapCamera
+    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Skeleton, Canvas, Tree, Experience, Ground, Enemy, KCO, CCO, Coin, Portal, Key, Object, BringerOfDeath, Attack, BackgroundMusic, SoundEffect, MiniMapCamera, Impaler, FrostGuardian
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Object, Player, Monster, TileMap, Item, MiniMapIcon, PopUpText, MonsterAttackArea, Attack, Layer 1, Layer 2, Layer 3
 - Active game object:
-  - Name: Impaler
-  - Tag: BringerOfDeath
+  - Name: FrostGuardian
+  - Tag: FrostGuardian
   - Layer: Monster
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

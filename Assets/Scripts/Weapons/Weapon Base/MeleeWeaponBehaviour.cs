@@ -47,5 +47,10 @@ public class MeleeWeaponBehaviour : MonoBehaviour
 			ImpalerStats enemy = col.GetComponent<ImpalerStats>();
 			enemy.TakeDamage(currentDamage);
 		}
+        if (col.CompareTag("FrostGuardian"))
+        {
+            FrostGuardianStats enemy = col.GetComponent<FrostGuardianStats>();
+            enemy.TakeDamage(currentDamage);
+        }
 	}
 }
