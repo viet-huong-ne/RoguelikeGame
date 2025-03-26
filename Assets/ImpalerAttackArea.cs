@@ -19,11 +19,11 @@ public class ImpalerAttackArea : MonoBehaviour
 	{
 		if (col.CompareTag("Player") && canDamage)
 		{
-			HeroHealth hero = col.GetComponent<HeroHealth>();
-			if (hero != null)
-			{
-				hero.TakeDamage((int)currentDamage);
-			}
+			//HeroHealth hero = col.GetComponent<HeroHealth>();
+			//if (hero != null)
+			//{
+			//	hero.TakeDamage((int)currentDamage);
+			//}
 
 			StartCoroutine(DamageCooldown());
 
@@ -54,9 +54,11 @@ public class ImpalerAttackArea : MonoBehaviour
 		if (col != null && canDamage)
 		{
 			HeroHealth hero = col.GetComponent<HeroHealth>();
+			HeroKnight heroKnight = col.GetComponent<HeroKnight>();
 			if (hero != null)
 			{
 				hero.TakeDamage((int)damageAmount);
+				heroKnight.Stun();
 				StartCoroutine(DamageCooldown()); 
 			}
 		}

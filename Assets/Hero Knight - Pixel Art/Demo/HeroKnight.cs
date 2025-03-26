@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -128,5 +129,17 @@ public class HeroKnight : Singleton<HeroKnight>
 		{
 			Debug.Log("HeroKnight assigning default skills.");
 		}
+	}
+
+	public void Stun(float duration = 0.2f)
+	{
+		StartCoroutine(StunCoroutine(duration));
+	}
+
+	private IEnumerator StunCoroutine(float duration)
+	{
+		canMove = false;  // Disable movement
+		yield return new WaitForSeconds(duration);
+		canMove = true;   // Enable movement
 	}
 }
