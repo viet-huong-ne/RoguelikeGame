@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SkillSelectionManager : Singleton<SkillSelectionManager>
 {
-    [SerializeField] private GameObject skillSelectionPanelPrefab;
+    [SerializeField] private GameObject skillSelectionPanel;
     private GameObject skillSelectionPanelInstance;
     [SerializeField]
     private GameObject heroKnight;
@@ -17,6 +17,15 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
     // Danh sách để theo dõi các kỹ năng đã chọn
     private List<SkillScriptableObject> selectedSkills = new List<SkillScriptableObject>();
     [SerializeField] private HeroExperience heroExperience;
+    [SerializeField] private Canvas mainCanvas; // Gán giá trị này trong Inspector
+
+    void Start()
+    {
+        if (skillSelectionPanel == null)
+            Debug.LogError("SkillSelectionPanel chưa được gán trong Inspector!");
+        else
+            skillSelectionPanel.SetActive(false); // Đảm bảo nó tắt lúc đầu
+    }
 
     public bool IsSkillSelectionActive()
     {
@@ -37,19 +46,24 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         // Tạm dừng tất cả âm thanh
         PauseAllSoundEffects();
 
-        // Tạo panel chọn kỹ năng
-        skillSelectionPanelInstance = Instantiate(skillSelectionPanelPrefab, FindObjectOfType<Canvas>().transform);
+        // Bật panel
+        skillSelectionPanel.SetActive(true);
         isSkillSelectionActive = true;
 
-        Debug.Log("Skill selection panel created successfully.");
-
         // Lấy các nút SkillButton trong panel
-        SkillButton[] skillButtons = skillSelectionPanelInstance.GetComponentsInChildren<SkillButton>();
+        if (skillSelectionPanel == null)
+        {
+            Debug.LogError("SkillSelectionPanel chưa được gán trong Inspector!");
+            return;
+        }
+
+        SkillButton[] skillButtons = skillSelectionPanel.GetComponentsInChildren<SkillButton>();
+
         Debug.Log($"Found {skillButtons.Length} skill buttons.");
 
         if (skillButtons == null || skillButtons.Length != 3)
         {
-            Debug.LogError($"Skill selection panel must have exactly 3 skill buttons. Found: {skillButtons?.Length ?? 0}");
+            Debug.LogError($"Skill selection panel must have exactly 3 skill buttons. Found: {skillButtons.Length}");
             return;
         }
 
@@ -85,15 +99,10 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
 
     public void HideSkillSelectionPanel()
     {
-        if (skillSelectionPanelInstance != null)
-        {
-            Destroy(skillSelectionPanelInstance);
-        }
-
-        // Tiếp tục game
-        Time.timeScale = 1f;
+        skillSelectionPanel.SetActive(false);
         isSkillSelectionActive = false;
-        selectedSkills.Clear(); // Xóa danh sách kỹ năng đã chọn khi ẩn panel
+        Time.timeScale = 1f; // Tiếp tục game
+        selectedSkills.Clear(); // Xóa danh sách kỹ năng đã chọn
     }
 
     public void SelectSkill(SkillScriptableObject skill)

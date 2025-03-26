@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Object, Player, Monster, TileMap, Item, MiniMapIcon, PopUpText, MonsterAttackArea, Attack, Layer 1, Layer 2, Layer 3
 - Active game object:
-  - Name: SmallBlackHomeButton
-  - Tag: Untagged
-  - Layer: UI
+  - Name: HeroKnight
+  - Tag: Player
+  - Layer: Player
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
