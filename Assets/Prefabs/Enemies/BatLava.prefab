@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3360488495287489223}
   - component: {fileID: 3378178910232387337}
   - component: {fileID: 3771604104528491092}
+  - component: {fileID: 3850474004704278974}
   m_Layer: 14
   m_Name: AttackArea
   m_TagString: Untagged
@@ -67,7 +68,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 3.4638877, y: 0.0006517768}
+  m_Offset: {x: 3.47909, y: 0.031057656}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,7 +78,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.48350883, y: 0.33748746}
+  m_Size: {x: 0.6963506, y: 0.519923}
   m_EdgeRadius: 0
 --- !u!114 &3771604104528491092
 MonoBehaviour:
@@ -93,6 +94,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 496bbe8fdde7fbd46ac2fb859241310f, type: 2}
   currentDamage: 0
+--- !u!114 &3850474004704278974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862628140352208099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3f315bd7c687442843c42d4a0f8b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 496bbe8fdde7fbd46ac2fb859241310f, type: 2}
+  currentDamage: 0
+  attackOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &3184912454486946530
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,11 +210,11 @@ GameObject:
   - component: {fileID: -8941725653397667043}
   - component: {fileID: 6423662219983982076}
   - component: {fileID: 9008926741847893521}
-  - component: {fileID: -8913740562528382123}
-  - component: {fileID: 2154101282098748687}
+  - component: {fileID: 8056977364341961318}
+  - component: {fileID: 4099681351586916570}
   m_Layer: 8
   m_Name: BatLava
-  m_TagString: Enemy
+  m_TagString: BatLava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,7 +344,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -371,7 +387,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-8913740562528382123
+--- !u!114 &8056977364341961318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,12 +396,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6594371469435282635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3976185e7bf356c4884119f59e67333a, type: 3}
+  m_Script: {fileID: 11500000, guid: 788c312d65716f3449a6dfd4b39ca6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 496bbe8fdde7fbd46ac2fb859241310f, type: 2}
   animator: {fileID: -8941725653397667043}
---- !u!114 &2154101282098748687
+--- !u!114 &4099681351586916570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -394,15 +410,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6594371469435282635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd3315a0d265984f968f971954ded3e, type: 3}
+  m_Script: {fileID: 11500000, guid: e92afdc32d8bd4c4cb66d0190ebb95ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 496bbe8fdde7fbd46ac2fb859241310f, type: 2}
-  damageCooldown: 1
+  damageCooldown: 2
   hero: {fileID: 8778651562060787071, guid: 488b689740e9094419d23ac3d3f0f9b9, type: 3}
   damageText: {fileID: 6427111076622788948, guid: 725933c5adb40f548974957858df405d,
     type: 3}
-  currentMoveSpeed: 10
+  currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0
   damageEffectDuration: 0.2
@@ -413,7 +429,6 @@ MonoBehaviour:
   coinPrefab: {fileID: 100000, guid: 49e6ee33250214a9facc214f3a2fecb7, type: 3}
   sackOfGoldPrefab: {fileID: 5890640295506549874, guid: b342d026b4b7f744d873248467a31b95,
     type: 3}
-  keyPrefab: {fileID: 0}
   coinDropRate: 20
   sackOfGoldDropRate: 5
   experienceDropRate: 70

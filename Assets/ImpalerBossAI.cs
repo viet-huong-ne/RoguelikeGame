@@ -40,11 +40,9 @@ public class ImpalerBossAI : MonoBehaviour
 
 		int attackID = Random.Range(1, maxAttacks + 1);
 		animator.SetInteger("AttackID", attackID);
-		animator.SetBool("Walk", false);
 		yield return new WaitForSeconds(1.5f); 
 
 		animator.SetInteger("AttackID", 0);
-		animator.SetBool("Walk", true);
 		impalerMovement.ResumeMovement();
 		isAttacking = false;
 	}
