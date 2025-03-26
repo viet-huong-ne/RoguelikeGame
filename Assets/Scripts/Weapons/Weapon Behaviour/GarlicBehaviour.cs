@@ -20,7 +20,14 @@ public class GarlicBehaviour : MeleeWeaponBehaviour
 
             makedEnemies.Add(col.gameObject);
         }
-        if (col.CompareTag("BringerOfDeath"))
+		if (col.CompareTag("BatLava") && !makedEnemies.Contains(col.gameObject))
+		{
+			BatStats enemy = col.GetComponent<BatStats>();
+			enemy.TakeDamage(currentDamage);
+
+			makedEnemies.Add(col.gameObject);
+		}
+		if (col.CompareTag("BringerOfDeath"))
         {
             BODStats enemy = col.GetComponent<BODStats>();
             enemy.TakeDamage(currentDamage);

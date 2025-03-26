@@ -37,7 +37,12 @@ public class MeleeWeaponBehaviour : MonoBehaviour
             EnemyStats enemy = col.GetComponent<EnemyStats>();
             enemy.TakeDamage(currentDamage);
         }
-        if (col.CompareTag("BringerOfDeath"))
+		if (col.CompareTag("BatLava"))
+		{
+			BatStats enemy = col.GetComponent<BatStats>();
+			enemy.TakeDamage(currentDamage);
+		}
+		if (col.CompareTag("BringerOfDeath"))
         {
             BODStats enemy = col.GetComponent<BODStats>();
             enemy.TakeDamage(currentDamage);
