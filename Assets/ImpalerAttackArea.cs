@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class ImpalerAttackArea : MonoBehaviour
@@ -7,6 +7,7 @@ public class ImpalerAttackArea : MonoBehaviour
 	[SerializeField] private float currentDamage;
 	private bool canDamage = true;
 	private ImpalerStats bossStats;
+	public Vector3 attackOffset;
 
 	void Awake()
 	{
@@ -26,11 +27,7 @@ public class ImpalerAttackArea : MonoBehaviour
 
 			StartCoroutine(DamageCooldown());
 
-			// Ensure boss only attacks when player is in range
-			//if (!bossStats.IsAttacking)
-			//{
-			//	bossStats.PerformAttack();
-			//}
+			bossStats.TriggerAttackAnimation();
 		}
 	}
 
@@ -39,5 +36,37 @@ public class ImpalerAttackArea : MonoBehaviour
 		canDamage = false;
 		yield return new WaitForSeconds(2f);
 		canDamage = true;
+	}
+
+	public void PerformDamage(float damageAmount)
+	{
+		float radius = 1f; // Adjust based on attack range
+		Vector3 pos = transform.position;
+		pos += transform.right * attackOffset.x;
+		pos += transform.up * attackOffset.y;
+
+		Collider2D col = Physics2D.OverlapCircle(
+			pos,
+			radius,
+			LayerMask.GetMask("Player")
+		);
+		Debug.Log(col == null);
+		if (col != null && canDamage)
+		{
+			HeroHealth hero = col.GetComponent<HeroHealth>();
+			if (hero != null)
+			{
+				hero.TakeDamage((int)damageAmount);
+				StartCoroutine(DamageCooldown()); 
+			}
+		}
+	}
+
+
+	// Debug to visualize the OverlapCircle
+	public void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, 2f);
 	}
 }

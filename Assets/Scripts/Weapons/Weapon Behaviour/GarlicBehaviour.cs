@@ -26,5 +26,11 @@ public class GarlicBehaviour : MeleeWeaponBehaviour
             enemy.TakeDamage(currentDamage);
             makedEnemies.Add(col.gameObject);
         }
-    }
+		if (col.CompareTag("Impaler"))
+		{
+			ImpalerStats enemy = col.GetComponent<ImpalerStats>();
+			enemy.TakeDamage(currentDamage);
+			makedEnemies.Add(col.gameObject);
+		}
+	}
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 public class ImpalerStats : MonoBehaviour
 {
 	public EnemyScriptableObject enemyData;
-	private BODMovement bodMovement;
-	[SerializeField] private float damageCooldown = 2f;  // Set your cooldown duration
+	private ImpalerMovement impalerMovement;
+	[SerializeField] private float damageCooldown = 2f; 
 	public GameObject hero;
 	public GameObject damageText;
 	private Color originalColor;
@@ -22,24 +22,21 @@ public class ImpalerStats : MonoBehaviour
 
 	void Start()
 	{
-		bodMovement = GetComponent<BODMovement>();
+		impalerMovement = GetComponent<ImpalerMovement>();
 		animator = GetComponent<Animator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		killCounter = GameObject.Find("KCO").GetComponent<KillCounter>();
-
 		if (spriteRenderer != null)
 		{
 			originalColor = spriteRenderer.color;
 		}
 
-		// Change background music
 		GameObject backgroundMusicObject = GameObject.Find("BackgroundMusicManager");
 		if (backgroundMusicObject != null)
 		{
 			BackgroundMusicController musicController = backgroundMusicObject.GetComponent<BackgroundMusicController>();
 			if (musicController != null)
 			{
-				// Correct Resources.Load path
 				AudioClip newMusicClip = Resources.Load<AudioClip>("Music/BOD_Theme");
 				if (newMusicClip != null)
 				{
@@ -97,7 +94,7 @@ public class ImpalerStats : MonoBehaviour
 	public void TriggerAttackAnimation()
 	{
 		if (isDead) return;
-		int attackID = Random.Range(1, 7); 
+		int attackID = Random.Range(1, 1); 
 		animator.SetInteger("AttackID", attackID);
 		StartCoroutine(ResetAttack());
 	}
@@ -108,11 +105,11 @@ public class ImpalerStats : MonoBehaviour
 		animator.SetInteger("AttackID", 0);
 	}
 	public void Die()
-	{
+	{	
 		SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/BossDeath"), 1f);
-		if (isDead) return; // Prevent multiple executions
+		if (isDead) return;
 		isDead = true;
-		bodMovement.StopMovement();
+		impalerMovement.StopMovement();
 		currentMoveSpeed = 0;
 		animator.SetTrigger("Death");
 		float deathAnimationTime = animator.GetCurrentAnimatorStateInfo(0).length;
@@ -132,7 +129,6 @@ public class ImpalerStats : MonoBehaviour
 	{
 		if (prefab != null)
 		{
-			// Calculate spawn position with an offset to avoid overlap
 			float offsetX = 0.5f * (dropCount % 3) - 0.5f;
 			float offsetY = -0.5f * (dropCount / 3);
 
@@ -145,6 +141,24 @@ public class ImpalerStats : MonoBehaviour
 		else
 		{
 			Debug.LogError("Prefab not assigned in the Inspector.");
+		}
+	}
+
+	public void DealDamage()
+	{
+		Debug.Log("Dealing dame");
+		Transform attackArea = transform.Find("AttackArea"); // Find child object
+		if (attackArea != null)
+		{
+			ImpalerAttackArea attackScript = attackArea.GetComponent<ImpalerAttackArea>();
+			if (attackScript != null)
+			{
+				attackScript.PerformDamage(currentDamage); // Call method in ImpalerAttackArea
+			}
+		}
+		else
+		{
+			Debug.LogWarning("AttackArea not found on Impaler!");
 		}
 	}
 }

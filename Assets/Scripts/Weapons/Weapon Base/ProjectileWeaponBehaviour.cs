@@ -85,7 +85,13 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
             enemy.TakeDamage(currentDamage);
             ReducePierce();
         }
-    }
+		if (col.CompareTag("Impaler"))
+		{
+			ImpalerStats enemy = col.GetComponent<ImpalerStats>();
+			enemy.TakeDamage(currentDamage);
+			ReducePierce();
+		}
+	}
     void ReducePierce()
     {
         currentPierce--;

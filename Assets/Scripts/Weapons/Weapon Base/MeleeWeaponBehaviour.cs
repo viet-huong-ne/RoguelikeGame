@@ -42,5 +42,10 @@ public class MeleeWeaponBehaviour : MonoBehaviour
             BODStats enemy = col.GetComponent<BODStats>();
             enemy.TakeDamage(currentDamage);
         }
-    }
+		if (col.CompareTag("Impaler"))
+		{
+			ImpalerStats enemy = col.GetComponent<ImpalerStats>();
+			enemy.TakeDamage(currentDamage);
+		}
+	}
 }

@@ -10,7 +10,6 @@ public class ImpalerMovement : MonoBehaviour
 
 	private void Start()
 	{
-		// Find the player's transform (assuming only one HeroKnight instance exists in the scene)
 		HeroKnight heroKnight = FindObjectOfType<HeroKnight>();
 		if (heroKnight != null)
 		{
@@ -49,10 +48,10 @@ public class ImpalerMovement : MonoBehaviour
         }
 
         // Update animator's speed parameter
-        if (animator != null)
-        {
-            animator.SetFloat("Speed", enemyData.moveSpeed);
-        }
+        //if (animator != null)
+        //{
+        //    animator.SetFloat("Speed", enemyData.moveSpeed);
+        //}
     }
 
 	// Public method to stop movement
