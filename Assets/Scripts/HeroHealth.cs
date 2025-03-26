@@ -49,7 +49,7 @@
             {
                 healthBarInstance = Instantiate(healthBarPrefab, transform.position, Quaternion.identity);
                 healthBarInstance.transform.SetParent(canvas.transform, false); // Set the parent of the health bar to Canvas
-
+                Debug.Log("Parent của HealthBar: " + healthBarInstance.transform.parent.name);
                 // Lấy Image của thanh máu từ Prefab
                 healthBarImage = healthBarInstance.transform.Find("Health").GetComponent<Image>(); // Lấy Image của phần "Health"
 

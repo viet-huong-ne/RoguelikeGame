@@ -177,7 +177,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
         // Kiểm tra nếu chưa gán CooldownUI
         if (cooldownUI == null)
         {
-            cooldownUI = canvas.GetComponentInChildren<Cooldown>();
+            cooldownUI = FindObjectOfType<Cooldown>();
             if (cooldownUI == null)
             {
                 Debug.LogError("CooldownUI không tồn tại trong Canvas!");
@@ -206,7 +206,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
             SkillManager.Instance.AddAttachedSkill(skill);
 
             // Hiển thị icon cooldown
-            cooldownUI.ShowCooldownIcon(canvas.transform);
+            cooldownUI.ShowCooldownIcon();
 
             Debug.Log($"Skill {skill.skillName} đã được gắn thành công vào HeroKnight.");
         }

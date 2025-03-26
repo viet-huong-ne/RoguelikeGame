@@ -26,16 +26,7 @@ public class FastFoot : MonoBehaviour
         // Lấy tốc độ ban đầu từ HeroKnight
         currentSpeed = heroKnight.speed;
 
-        // Tìm và gán Cooldown script từ Canvas (nếu chưa gán trong Inspector)
-        if (cooldownUI == null)
-        {
-            // Tìm đối tượng Canvas chứa Cooldown và lấy tham chiếu đến script Cooldown
-            Canvas canvas = FindObjectOfType<Canvas>();
-            if (canvas != null)
-            {
-                cooldownUI = canvas.GetComponentInChildren<Cooldown>();
-            }
-        }
+        cooldownUI = FindObjectOfType<Cooldown>();
         // Tải trước âm thanh Dash
         dashSoundEffect = Resources.Load<AudioClip>("SoundEffects/Dash");
         if (dashSoundEffect == null)

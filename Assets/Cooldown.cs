@@ -5,6 +5,7 @@ public class Cooldown : MonoBehaviour
 {
     private Image abilityImage;
     private GameObject currentCooldownIcon;
+    private Transform canvas; // Thêm biến canvas
 
     [SerializeField]
     private GameObject dashIconPrefab; // Prefab cho background
@@ -19,6 +20,13 @@ public class Cooldown : MonoBehaviour
     {
         abilityImage = null; // Reset để đảm bảo không dùng dữ liệu cũ
 
+        // Tìm Canvas trong scene nếu chưa được gán
+        canvas = GameObject.Find("Canvas")?.transform;
+        if (canvas == null)
+        {
+            Debug.LogError("Canvas không tìm thấy trong Scene!");
+        }
+
         // Nếu cooldown icon đã tồn tại, đặt fillAmount về 0
         if (abilityImage != null)
             abilityImage.fillAmount = 0;
@@ -29,12 +37,14 @@ public class Cooldown : MonoBehaviour
         if (isCooldown)
         {
             currentCooldown -= Time.deltaTime;
-            abilityImage.fillAmount = Mathf.Clamp01(currentCooldown / cooldownTime);
+            if (abilityImage != null)
+                abilityImage.fillAmount = Mathf.Clamp01(currentCooldown / cooldownTime);
 
             if (currentCooldown <= 0)
             {
                 isCooldown = false;
-                abilityImage.fillAmount = 0;
+                if (abilityImage != null)
+                    abilityImage.fillAmount = 0;
             }
         }
     }
@@ -50,26 +60,24 @@ public class Cooldown : MonoBehaviour
         isCooldown = true;
     }
 
-    public void ShowCooldownIcon(Transform parentTransform)
+    public void ShowCooldownIcon()
     {
-        if (dashIconPrefab != null && dashIconCDPrefab != null)
+        if (dashIconPrefab != null && dashIconCDPrefab != null && canvas != null)
         {
-            // Tạo icon background
-            GameObject dashIcon = Instantiate(dashIconPrefab, parentTransform);
+            GameObject dashIcon = Instantiate(dashIconPrefab, canvas, false);
+            currentCooldownIcon = Instantiate(dashIconCDPrefab, canvas, false);
 
-            // Tạo icon filled và gắn nó vào icon background
-            currentCooldownIcon = Instantiate(dashIconCDPrefab, parentTransform);
+            // Reset vị trí để đảm bảo nó xuất hiện đúng trên UI
+            dashIcon.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            currentCooldownIcon.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
-            // Gắn Image component từ prefab để quản lý cooldown
             abilityImage = currentCooldownIcon.GetComponent<Image>();
-
-            // Đặt fillAmount về 0 khi khởi tạo
             if (abilityImage != null)
                 abilityImage.fillAmount = 0;
         }
         else
         {
-            Debug.LogError("DashIconPrefab hoặc DashIconCDPrefab chưa được gán!");
+            Debug.LogError("DashIconPrefab hoặc DashIconCDPrefab chưa được gán hoặc Canvas không tồn tại!");
         }
     }
 }
