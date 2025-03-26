@@ -60,16 +60,13 @@ public class Cooldown : MonoBehaviour
         isCooldown = true;
     }
 
-    public void ShowCooldownIcon()
+    public void ShowCooldownIcon(Transform parentTransform)
     {
         if (dashIconPrefab != null && dashIconCDPrefab != null && canvas != null)
         {
-            GameObject dashIcon = Instantiate(dashIconPrefab, canvas, false);
-            currentCooldownIcon = Instantiate(dashIconCDPrefab, canvas, false);
-
-            // Reset vị trí để đảm bảo nó xuất hiện đúng trên UI
-            dashIcon.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            currentCooldownIcon.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            GameObject dashIcon = Instantiate(dashIconPrefab, parentTransform);
+            // Tạo icon filled và gắn nó vào icon background
+            currentCooldownIcon = Instantiate(dashIconCDPrefab, parentTransform);
 
             abilityImage = currentCooldownIcon.GetComponent<Image>();
             if (abilityImage != null)

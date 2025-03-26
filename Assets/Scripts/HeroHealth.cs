@@ -49,6 +49,12 @@
             {
                 healthBarInstance = Instantiate(healthBarPrefab, transform.position, Quaternion.identity);
                 healthBarInstance.transform.SetParent(canvas.transform, false); // Set the parent of the health bar to Canvas
+                healthBarInstance.transform.SetAsFirstSibling(); 
+                Transform pauseMenu = GameObject.Find("PauseMenu")?.transform;
+                if (pauseMenu != null)
+                {
+                    pauseMenu.SetAsLastSibling(); // Đưa PauseMenu lên trên cùng
+                }
                 Debug.Log("Parent của HealthBar: " + healthBarInstance.transform.parent.name);
                 // Lấy Image của thanh máu từ Prefab
                 healthBarImage = healthBarInstance.transform.Find("Health").GetComponent<Image>(); // Lấy Image của phần "Health"
