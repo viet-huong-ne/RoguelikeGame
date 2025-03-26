@@ -34,13 +34,13 @@ public class ImpalerAttackArea : MonoBehaviour
 	private IEnumerator DamageCooldown()
 	{
 		canDamage = false;
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(0.3f);
 		canDamage = true;
 	}
 
 	public void PerformDamage(float damageAmount)
 	{
-		float radius = 1f; // Adjust based on attack range
+		float radius = 10f; // Adjust based on attack range
 		Vector3 pos = transform.position;
 		pos += transform.right * attackOffset.x;
 		pos += transform.up * attackOffset.y;

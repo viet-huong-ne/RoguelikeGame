@@ -94,9 +94,20 @@ public class ImpalerStats : MonoBehaviour
 	public void TriggerAttackAnimation()
 	{
 		if (isDead) return;
-		int attackID = Random.Range(1, 1); 
+		int attackID = GetWeightedAttackID();
 		animator.SetInteger("AttackID", attackID);
 		StartCoroutine(ResetAttack());
+	}
+
+	private int GetWeightedAttackID()
+	{
+		int roll = Random.Range(1, 101); // Roll between 1 and 100
+		if (roll <= 10) return 1; // 10% chance for attack 1
+		if (roll <= 28) return 2; // 18% chance for attack 2
+		if (roll <= 46) return 3; // 18% chance for attack 3
+		if (roll <= 64) return 4; // 18% chance for attack 4
+		if (roll <= 82) return 5; // 18% chance for attack 5
+		return 6; // 18% chance for attack 6
 	}
 
 	private IEnumerator ResetAttack()
