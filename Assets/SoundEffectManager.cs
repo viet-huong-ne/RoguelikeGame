@@ -1,30 +1,31 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
 public class SoundEffectManager : Singleton<SoundEffectManager>
 {
-    public static SoundEffectManager Instance;
-
     private List<AudioSource> audioSources = new List<AudioSource>();
     private GameObject audioSourceContainer;
+    private float globalSFXVolume = 1f; // Mặc định 100%
 
     private void Awake()
     {
-        // Singleton pattern
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
 
-        // Create a container for all sound effect sources
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        // Tạo GameObject chứa AudioSource
         audioSourceContainer = new GameObject("AudioSourceContainer");
-        audioSourceContainer.transform.parent = transform;
+        audioSourceContainer.transform.SetParent(transform);
+
+        // Thêm một AudioSource mặc định để tránh lỗi
+        AudioSource defaultSource = audioSourceContainer.AddComponent<AudioSource>();
+        audioSources.Add(defaultSource);
     }
 
     public void PlaySoundEffect(AudioClip clip, float volume = 1f, bool loop = false)
@@ -35,34 +36,46 @@ public class SoundEffectManager : Singleton<SoundEffectManager>
             return;
         }
 
-        // Get or create an AudioSource
         AudioSource audioSource = GetAvailableAudioSource();
+        if (audioSource == null)
+        {
+            Debug.LogError("SoundEffectManager: No available AudioSource!");
+            return;
+        }
+
         audioSource.clip = clip;
-        audioSource.volume = volume;
+        audioSource.volume = Mathf.Clamp01(volume * globalSFXVolume); // Áp dụng âm lượng toàn cục
         audioSource.loop = loop;
         audioSource.Play();
 
-        // If the sound is not looping, stop and recycle the AudioSource after it finishes
         if (!loop)
         {
             StartCoroutine(StopAndRecycleAudioSource(audioSource, clip.length));
         }
     }
 
-    public void StopAllSoundEffects()
+    public void SetSFXVolume(float value)
     {
-        foreach (AudioSource audioSource in audioSources)
+        globalSFXVolume = Mathf.Clamp(value / 100f, 0f, 1f); // Chuyển từ 0-100 về 0-1
+
+        foreach (AudioSource source in audioSources)
         {
-            if (audioSource.isPlaying)
+            if (source.isPlaying)
             {
-                audioSource.Stop();
+                source.volume = Mathf.Clamp01(source.volume * globalSFXVolume);
             }
         }
+
+        Debug.Log("SFX Volume Set To: " + globalSFXVolume);
+    }
+
+    public float GetSFXVolume()
+    {
+        return globalSFXVolume * 100f; // Trả về theo khoảng 0-100
     }
 
     private AudioSource GetAvailableAudioSource()
     {
-        // Find an available (idle) AudioSource
         foreach (AudioSource source in audioSources)
         {
             if (!source.isPlaying)
@@ -71,7 +84,7 @@ public class SoundEffectManager : Singleton<SoundEffectManager>
             }
         }
 
-        // If no available source, create a new one
+        // Tạo mới AudioSource nếu tất cả đang bận
         AudioSource newSource = audioSourceContainer.AddComponent<AudioSource>();
         audioSources.Add(newSource);
         return newSource;

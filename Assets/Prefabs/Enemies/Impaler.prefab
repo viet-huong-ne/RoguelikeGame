@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7247365946851877872}
   - component: {fileID: 8968431366172798906}
   - component: {fileID: 8601253317820839594}
-  - component: {fileID: 451278039004698794}
   - component: {fileID: 613521476192114071}
   - component: {fileID: 2406320944000602442}
   m_Layer: 8
@@ -33,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.52, y: 4.69, z: 1}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.5, y: 2.5, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8773208601999526366}
   - {fileID: 3975357384299495999}
@@ -191,22 +190,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &451278039004698794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712858310789068509}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 374cc22e14d9cf24fbd913bacf5c64b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7247365946851877872}
-  attackCooldown: 2
-  attackRange: 2
-  maxAttacks: 6
 --- !u!114 &613521476192114071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,8 +257,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.672, y: 0.928, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8969752797682826553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -340,6 +323,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 88135c67c1cebc442bc8b5bc88d0a487, type: 2}
   currentDamage: 0
   attackOffset: {x: 0, y: 0, z: 0}
+  attackCooldown: 3
 --- !u!1 &9069573012445742355
 GameObject:
   m_ObjectHideFlags: 0

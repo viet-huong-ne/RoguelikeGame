@@ -42,4 +42,14 @@ public class BackgroundMusicController : MonoBehaviour
             audioSource.Stop();
         }
     }
+
+    // Thêm phương thức điều chỉnh âm lượng theo Slider
+    public void SetMusicVolume(float value)
+    {
+        if (audioSource != null)
+        {
+            audioSource.volume = value / 100f; // Chuyển từ khoảng 0-100 về 0-1
+            Debug.Log("Music Volume Set To: " + audioSource.volume);
+        }
+    }
 }
