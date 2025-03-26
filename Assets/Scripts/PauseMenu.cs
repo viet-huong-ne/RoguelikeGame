@@ -5,6 +5,11 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject PausePanel;
     private bool isMuted = false;
+    
+    public void PlayClickSound()
+    {
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Click"), 1f);
+    }
 
     public void Pause()
     {

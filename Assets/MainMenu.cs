@@ -14,5 +14,8 @@ public class MainMenu : MonoBehaviour
 
     }
 
-
+    public void PlayClickSound()
+    {
+        SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/Click"), 1f);
+    }
 }
