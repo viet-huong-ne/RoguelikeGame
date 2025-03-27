@@ -40,6 +40,7 @@ public class PauseMenu : MonoBehaviour
 
         // Gỡ bỏ sự kiện để tránh gọi lại sau này
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        Time.timeScale = 1f;
     }
 
     private void DestroyDontDestroyOnLoadObjects()
