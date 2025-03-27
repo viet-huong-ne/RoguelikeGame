@@ -213,7 +213,8 @@ MonoBehaviour:
   damageEffectDuration: 0.2
   killCounter: {fileID: 6762532489318787552, guid: 8152f4d1d5fc7b54297b5a71b773dd70,
     type: 3}
-  keyPrefab: {fileID: 0}
+  keyPrefab: {fileID: 3586792564736082944, guid: 05a0a84e0a4ce494abd866cdf3a30ed5,
+    type: 3}
 --- !u!114 &2406320944000602442
 MonoBehaviour:
   m_ObjectHideFlags: 0

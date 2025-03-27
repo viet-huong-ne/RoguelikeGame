@@ -2,7 +2,7 @@
 - Project name: RoguelikeGame
 - Unity version: Unity 6000.0.38f1
 - Active scene:
-  - Name: FieldScene
+  - Name: LavaScene
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Skeleton, Canvas, Tree, Experience, Ground, Enemy, KCO, CCO, Coin, Portal, Key, Object, BringerOfDeath, Attack, BackgroundMusic, SoundEffect, MiniMapCamera, Impaler, FrostGuardian, BatLava, FireWorm
   - Layers:

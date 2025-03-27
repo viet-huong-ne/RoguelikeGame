@@ -55544,8 +55544,7 @@ MonoBehaviour:
     type: 3}
   theLastPrefab: {fileID: 1712858310789068509, guid: fad34c20156bafa4c8b26ec1eb9171cd,
     type: 3}
-  keyPrefab: {fileID: 3586792564736082944, guid: 05a0a84e0a4ce494abd866cdf3a30ed5,
-    type: 3}
+  keyPrefab: {fileID: 0}
   player: {fileID: 1819276869}
   initialSkeletons: 5
   initialMonsterInterval: 5
