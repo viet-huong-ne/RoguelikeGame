@@ -41,6 +41,7 @@ public class ResultPanel : MonoBehaviour
         Destroy(gameObject);
         // Tải scene chính
         SceneManager.LoadScene("MenuScene");
+        Time.timeScale = 1f;
     }
 
     private void DestroyDontDestroyOnLoadObjects()
