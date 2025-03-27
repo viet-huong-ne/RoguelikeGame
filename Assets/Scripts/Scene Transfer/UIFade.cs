@@ -9,15 +9,15 @@ public class UIFade : Singleton<UIFade>
 
     private IEnumerator fadeRoutine;
 
-    //void Awake()
-    //{
-    //    GameObject existingCanvas = GameObject.Find("Canvas"); // Tìm Canvas có sẵn trong Scene
-    //    if (existingCanvas != null && existingCanvas != this.gameObject)
-    //    {
-    //        Destroy(existingCanvas); // Xóa Canvas thừa
-    //    }
-    //    DontDestroyOnLoad(gameObject); // Giữ lại Canvas này
-    //}
+    void Awake()
+    {
+       GameObject existingCanvas = GameObject.Find("Canvas"); // Tìm Canvas có sẵn trong Scene
+       if (existingCanvas != null && existingCanvas != this.gameObject)
+       {
+           Destroy(existingCanvas); // Xóa Canvas thừa
+       }
+       DontDestroyOnLoad(gameObject); // Giữ lại Canvas này
+    }
 
     public void FadeToBlack()
     {
