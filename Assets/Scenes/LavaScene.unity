@@ -699,6 +699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroKnight
       objectReference: {fileID: 0}
+    - target: {fileID: 8778651562060787071, guid: 488b689740e9094419d23ac3d3f0f9b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55978,7 +55983,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1486389916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56611,7 +56616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1884114666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56624,12 +56629,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf54b3d8c3c1564382d9872805179ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSelectionPanelPrefab: {fileID: 2786238429121670801, guid: d1962fae2c7b34e46bb78480ddc0132e,
+  skillSelectionPanel: {fileID: 2786238429121670801, guid: d1962fae2c7b34e46bb78480ddc0132e,
     type: 3}
   heroKnight: {fileID: 8778651562060787071, guid: 488b689740e9094419d23ac3d3f0f9b9,
     type: 3}
   heroExperience: {fileID: 8702340591290088047, guid: 488b689740e9094419d23ac3d3f0f9b9,
     type: 3}
+  mainCanvas: {fileID: 163713440}
 --- !u!4 &1884114667
 Transform:
   m_ObjectHideFlags: 0
@@ -56916,6 +56922,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396258737847871098, guid: ff26876942960c74aaff292d0646229c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3396258737847871098, guid: ff26876942960c74aaff292d0646229c,
         type: 3}

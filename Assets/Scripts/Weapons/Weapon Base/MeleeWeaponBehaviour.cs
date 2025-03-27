@@ -37,7 +37,12 @@ public class MeleeWeaponBehaviour : MonoBehaviour
             EnemyStats enemy = col.GetComponent<EnemyStats>();
             enemy.TakeDamage(currentDamage);
         }
-        if (col.CompareTag("BringerOfDeath"))
+		if (col.CompareTag("BatLava"))
+		{
+			BatStats enemy = col.GetComponent<BatStats>();
+			enemy.TakeDamage(currentDamage);
+		}
+		if (col.CompareTag("BringerOfDeath"))
         {
             BODStats enemy = col.GetComponent<BODStats>();
             enemy.TakeDamage(currentDamage);
@@ -50,6 +55,11 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         if (col.CompareTag("FrostGuardian"))
         {
             FrostGuardianStats enemy = col.GetComponent<FrostGuardianStats>();
+            enemy.TakeDamage(currentDamage);
+        }
+        if (col.CompareTag("FireWorm"))
+        {
+            FireWormStats enemy = col.GetComponent<FireWormStats>();
             enemy.TakeDamage(currentDamage);
         }
 	}

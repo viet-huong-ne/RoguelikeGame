@@ -206,7 +206,7 @@ public class SkillSelectionManager : Singleton<SkillSelectionManager>
             SkillManager.Instance.AddAttachedSkill(skill);
 
             // Hiển thị icon cooldown
-            cooldownUI.ShowCooldownIcon();
+            cooldownUI.ShowCooldownIcon(canvas.transform);
 
             Debug.Log($"Skill {skill.skillName} đã được gắn thành công vào HeroKnight.");
         }
