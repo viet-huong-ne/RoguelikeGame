@@ -23,6 +23,8 @@ TagManager:
   - MiniMapCamera
   - Impaler
   - FrostGuardian
+  - BatLava
+  - FireWorm
   layers:
   - Default
   - TransparentFX

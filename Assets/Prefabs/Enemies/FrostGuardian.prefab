@@ -216,7 +216,7 @@ MonoBehaviour:
   damageEffectDuration: 0.2
   killCounter: {fileID: 6762532489318787552, guid: 8152f4d1d5fc7b54297b5a71b773dd70,
     type: 3}
-  keyPrefab: {fileID: 6815725995707714975, guid: cf975dec007882749a5dbb8d7d75f8af,
+  keyPrefab: {fileID: 3586792564736082944, guid: bd24fc99da9c59f4faff775e60860574,
     type: 3}
 --- !u!50 &1271581492963016723
 Rigidbody2D:

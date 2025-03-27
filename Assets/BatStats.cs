@@ -35,32 +35,6 @@ public class BatStats : MonoBehaviour
 		{
 			originalColor = spriteRenderer.color;
 		}
-
-		GameObject backgroundMusicObject = GameObject.Find("BackgroundMusicManager");
-		if (backgroundMusicObject != null)
-		{
-			BackgroundMusicController musicController = backgroundMusicObject.GetComponent<BackgroundMusicController>();
-			if (musicController != null)
-			{
-				AudioClip newMusicClip = Resources.Load<AudioClip>("Music/BOD_Theme");
-				if (newMusicClip != null)
-				{
-					musicController.ChangeMusic(newMusicClip);
-				}
-				else
-				{
-					Debug.LogWarning("New music clip not found in Resources/Music/BOD_Theme!");
-				}
-			}
-			else
-			{
-				Debug.LogWarning("BackgroundMusicController component not found on BackgroundMusic object!");
-			}
-		}
-		else
-		{
-			Debug.LogWarning("BackgroundMusic object not found in the scene!");
-		}
 	}
 
 	void Awake()
@@ -113,7 +87,6 @@ public class BatStats : MonoBehaviour
 	}
 	public void Die()
 	{	
-		SoundEffectManager.Instance.PlaySoundEffect(Resources.Load<AudioClip>("SoundEffects/BossDeath"), 1f);
 		if (isDead) return;
 		isDead = true;
 		batMovement.StopMovement();

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill description
+  m_text: Heal 50 HP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d84b57a9d3af1b449d3b5afcd58d491, type: 2}
   m_sharedMaterial: {fileID: 6526855983419194466, guid: 5d84b57a9d3af1b449d3b5afcd58d491,
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill name
+  m_text: Run run run
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d84b57a9d3af1b449d3b5afcd58d491, type: 2}
   m_sharedMaterial: {fileID: 6526855983419194466, guid: 5d84b57a9d3af1b449d3b5afcd58d491,
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill name
+  m_text: First-aid magic
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d84b57a9d3af1b449d3b5afcd58d491, type: 2}
   m_sharedMaterial: {fileID: 6526855983419194466, guid: 5d84b57a9d3af1b449d3b5afcd58d491,
@@ -896,7 +896,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e85fc00efdce2ed47a21636e80a833c6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -971,7 +971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill description
+  m_text: -0.5 Speed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d84b57a9d3af1b449d3b5afcd58d491, type: 2}
   m_sharedMaterial: {fileID: 6526855983419194466, guid: 5d84b57a9d3af1b449d3b5afcd58d491,
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a5a85590ed7602448a3b1ea734744bb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 511b7df189d509e4bbb3271bf1df0df5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1510,7 +1510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill name
+  m_text: Too Fast, Slow DOWN!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d84b57a9d3af1b449d3b5afcd58d491, type: 2}
   m_sharedMaterial: {fileID: 6526855983419194466, guid: 5d84b57a9d3af1b449d3b5afcd58d491,
@@ -1647,7 +1647,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill description
+  m_text: +1 speed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d84b57a9d3af1b449d3b5afcd58d491, type: 2}
   m_sharedMaterial: {fileID: 6526855983419194466, guid: 5d84b57a9d3af1b449d3b5afcd58d491,
